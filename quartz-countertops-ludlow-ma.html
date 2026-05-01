@@ -160,6 +160,21 @@
     .area-list li { padding: .25rem 0; font-weight: 500; color: rgba(255,255,255,.8); }
     .area-list li::before { content: "– "; color: rgba(212,160,23,.7); }
 
+    .testimonials { background: #0f0f0f; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .testimonial-card { background: rgba(255,255,255,.055); border-radius: 26px; padding: 1.5rem; border: 1px solid rgba(212,160,23,.2); }
+    .testimonial-stars { color: var(--gold-light); margin-bottom: .65rem; letter-spacing: .08em; }
+    .testimonial-card p { margin: 0 0 1rem; color: rgba(242,239,234,.72); }
+    .testimonial-card strong { color: rgba(255,255,255,.85); }
+
+    .page-links { background: linear-gradient(180deg, #101010, #171717); }
+    .page-link-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .page-link-card { display: block; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 1.35rem; transition: border-color .2s ease, transform .2s ease; }
+    .page-link-card:hover { border-color: rgba(212,160,23,.4); transform: translateY(-2px); }
+    .page-link-card span { display: block; color: var(--gold-light); font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .55rem; }
+    .page-link-card strong { display: block; color: var(--white); font-family: Cinzel, Georgia, serif; font-size: 1.25rem; line-height: 1.15; margin-bottom: .55rem; }
+    .page-link-card p { margin: 0; font-size: .9rem; }
+
     .faq { background: linear-gradient(180deg, #161616, #0f1113); }
     .faq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .faq-card { background: rgba(255,255,255,.055); border-radius: 26px; padding: 1.5rem; border: 1px solid rgba(212,160,23,.2); }
@@ -180,7 +195,7 @@
       .brand img { height: 54px; }
       .hero { min-height: 78vh; padding-top: 5rem; }
       .intro-grid, .cta, .area-grid { grid-template-columns: 1fr; }
-      .benefit-grid, .process-grid, .gallery-grid, .faq-grid { grid-template-columns: 1fr; }
+      .benefit-grid, .process-grid, .gallery-grid, .faq-grid, .testimonial-grid, .page-link-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-auto-rows: 240px; }
       .gallery-item:nth-child(1), .gallery-item:nth-child(6) { grid-column: auto; grid-row: auto; }
       .section-head { display: block; }
@@ -204,11 +219,12 @@
     </a>
     <div class="nav-links">
       <a href="/">Home</a>
+      <a href="/about">About</a>
       <a href="/granite-countertops-ludlow-ma">Granite</a>
       <a href="/quartz-countertops-ludlow-ma">Quartz</a>
-      <a href="/#portfolio">Portfolio</a>
-      <a href="/#service-area">Service Area</a>
-      <a class="btn btn-primary" href="#contact">Request Quote</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/contact">Contact</a>
+      <a class="btn btn-primary" href="/contact">Request Quote</a>
     </div>
   </nav>
 
@@ -220,7 +236,7 @@
         <h1>Custom Quartz Countertops in Ludlow, MA</h1>
         <p>Quartz kitchen countertops, islands, bathroom vanities, backsplashes, and custom stone surfaces fabricated and installed by D&C Granite & Marble Design Gallery.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Get a Quartz Quote</a>
+          <a class="btn btn-primary" href="/contact">Get a Quartz Quote</a>
           <a class="btn btn-outline" href="#quartz-work">View Quartz Work</a>
         </div>
       </div>
@@ -313,6 +329,21 @@
       </div>
     </section>
 
+    <section class="testimonials">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Quartz customer reviews</div>
+          <h2>Trusted for selection, service, and installation.</h2>
+        </div>
+        <p>Real feedback from customers who trusted D&C for countertop selection, fabrication, and installation.</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>“We absolutely loved these people! They were so helpful and nice... We love our new kitchen.”</p><strong>- Carrie P</strong></article>
+        <article class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>“Great professional quality and installation. We were very pleased with the timeline... and cost.”</p><strong>- Nick D</strong></article>
+        <article class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>“From picking out the right counter with help from Joyce and Maria to timing of installing... I would highly recommend this company.”</p><strong>- Betsy E</strong></article>
+      </div>
+    </section>
+
     <section class="faq" id="faq">
       <div class="section-head">
         <div>
@@ -328,12 +359,28 @@
       </div>
     </section>
 
+    <section class="page-links">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Explore more</div>
+          <h2>Continue planning your project.</h2>
+        </div>
+        <p>Compare materials, browse completed projects, or send us the details for a quote.</p>
+      </div>
+      <div class="page-link-grid">
+        <a class="page-link-card" href="/granite-countertops-ludlow-ma"><span>Service</span><strong>Granite Countertops</strong><p>Explore natural stone kitchens, islands, vanities, and custom granite details.</p></a>
+        <a class="page-link-card" href="/portfolio"><span>Gallery</span><strong>Project Portfolio</strong><p>See real kitchens, vanities, fireplaces, and stone details from D&C.</p></a>
+        <a class="page-link-card" href="/about"><span>About</span><strong>Our Craftsmanship</strong><p>Learn more about D&C’s process, values, and local reputation.</p></a>
+        <a class="page-link-card" href="/contact"><span>Quote</span><strong>Request a Quote</strong><p>Send project details, photos, or measurements to start the process.</p></a>
+      </div>
+    </section>
+
     <section id="contact" class="cta">
       <div>
         <div class="eyebrow">Start your quartz project</div>
         <h2>Get a quote for quartz countertops in Ludlow, MA.</h2>
         <p>Call the showroom, stop by during business hours, or send project details. Rough measurements, photos, or a sketch can help D&C provide a more accurate quartz countertop estimate.</p>
-        <a class="btn btn-primary" href="tel:+14135833399">Call (413) 583-3399</a>
+        <a class="btn btn-primary" href="/contact">Request a Quote</a>
       </div>
       <div class="contact-card">
         <div><strong>Showroom</strong>664 Center Street<br>Ludlow, MA 01056</div>
@@ -346,9 +393,9 @@
 
   <footer>
     <span>© 2026 D&C Granite and Marble Design Gallery</span>
-    <span>Quartz countertops, kitchen islands, vanity tops, backsplashes, and custom stonework in Ludlow and Western Massachusetts.</span>
+    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/portfolio">Portfolio</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
   </footer>
 
-  <a class="mobile-cta" href="tel:+14135833399">Call D&C Granite</a>
+  <a class="mobile-cta" href="/contact">Request a Quote</a>
 </body>
 </html>
