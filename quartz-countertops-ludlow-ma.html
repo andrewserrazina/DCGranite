@@ -86,7 +86,144 @@
       --stone-texture: radial-gradient(circle at 20% 12%, rgba(212,160,23,.16), transparent 26%), radial-gradient(circle at 78% 20%, rgba(255,255,255,.08), transparent 22%), linear-gradient(145deg, #0b0b0c 0%, #181818 48%, #0f1113 100%);
     }
 
-    * { box-sizing: border-box; }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: Montserrat, system-ui, sans-serif; 
+      color: var(--champagne); 
+      background: var(--obsidian); 
+      line-height: 1.65; 
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; transition: color .25s ease; }
+    img { max-width: 100%; display: block; height: auto; }
+    ::selection { background: var(--gold); color: var(--obsidian); }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gold);
+      color: var(--obsidian);
+      padding: 8px;
+      z-index: 100;
+      font-weight: 700;
+    }
+    .skip-link:focus { top: 0; }
+
+    .topbar { 
+      background: #050505; 
+      color: rgba(255,255,255,.74); 
+      font-size: .78rem; 
+      padding: .62rem 5vw; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      gap: 1rem; 
+      flex-wrap: wrap; 
+      border-bottom: 1px solid rgba(212,160,23,.2); 
+    }
+    .topbar-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .topbar-contact a:hover { color: var(--gold-light); }
+
+    .nav { 
+      position: sticky; 
+      top: 0; 
+      z-index: 999; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: .95rem 5vw; 
+      background: rgba(15,17,19,.92); 
+      backdrop-filter: blur(18px); 
+      border-bottom: 1px solid rgba(212,160,23,.18); 
+      transition: background .3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(15,17,19,.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .brand img { 
+      height: 64px; 
+      width: auto; 
+      filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); 
+      transition: filter .3s ease;
+    }
+    .brand img:hover {
+      filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
+    }
+
+    .nav-links { 
+      display: flex; 
+      align-items: center; 
+      gap: 1.35rem; 
+      color: rgba(255,255,255,.78); 
+      font-size: .84rem; 
+      font-weight: 700; 
+      letter-spacing: .08em; 
+      text-transform: uppercase; 
+    }
+    .nav-links a:not(.btn):hover { color: var(--gold-light); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--gold-light);
+      margin: 5px 0;
+      transition: all .3s ease;
+      border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+    @media (max-width: 768px) {
+      .topbar { font-size: .72rem; padding: .5rem 4vw; }
+      .topbar-contact { gap: 1rem; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(15,17,19,.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: right .4s cubic-bezier(.25,.46,.45,.94);
+        border-left: 1px solid rgba(212,160,23,.2);
+        box-shadow: -10px 0 40px rgba(0,0,0,.5);
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 1.1rem; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     html { scroll-behavior: smooth; }
     body { margin: 0; font-family: Montserrat, system-ui, sans-serif; color: var(--champagne); background: var(--obsidian); line-height: 1.65; }
     a { color: inherit; text-decoration: none; }
@@ -208,15 +345,27 @@
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
   <div class="topbar">
-    <span>664 Center Street, Ludlow, MA 01056</span>
-    <span>Mon–Fri 9:30–4:30 · Sat 9:30–1:00 · <a href="tel:+14135833399">(413) 583-3399</a></span>
+    <div>📍 664 Center Street, Ludlow, MA 01056</div>
+    <div class="topbar-contact">
+      <a href="tel:+14135833399">📞 (413) 583-3399</a>
+      <span>🕒 Mon–Fri 9:30–4:30 · Sat 9:30–1:00</span>
+    </div>
   </div>
 
   <nav class="nav" aria-label="Main navigation">
     <a class="brand" href="/" aria-label="D&C Granite home">
       <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery logo">
     </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/about">About</a>
@@ -228,8 +377,8 @@
     </div>
   </nav>
 
-  <main>
-    <section class="hero">
+  <main id="main-content">
+    <section class="hero fade-in">
       <div class="hero-content">
         <img class="hero-logo" src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery premium logo">
         <div class="eyebrow">Quartz countertops · Ludlow, Massachusetts</div>
@@ -242,7 +391,7 @@
       </div>
     </section>
 
-    <section class="intro">
+    <section class="intro fade-in">
       <div class="intro-grid">
         <div class="copy-card">
           <div class="eyebrow">Why quartz</div>
@@ -262,7 +411,7 @@
       </div>
     </section>
 
-    <section class="benefits">
+    <section class="benefits fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Modern performance</div>
@@ -278,7 +427,7 @@
       </div>
     </section>
 
-    <section class="process">
+    <section class="process fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Quartz process</div>
@@ -313,7 +462,7 @@
       </div>
     </section>
 
-    <section class="service-area" id="service-area">
+    <section class="service-area fade-in" id="service-area">
       <div class="area-grid">
         <div class="area-card">
           <div class="eyebrow">Local quartz installers</div>
@@ -329,7 +478,7 @@
       </div>
     </section>
 
-    <section class="testimonials">
+    <section class="testimonials fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Quartz customer reviews</div>
@@ -344,7 +493,7 @@
       </div>
     </section>
 
-    <section class="faq" id="faq">
+    <section class="faq fade-in" id="faq">
       <div class="section-head">
         <div>
           <div class="eyebrow">Quartz questions</div>
@@ -359,7 +508,7 @@
       </div>
     </section>
 
-    <section class="page-links">
+    <section class="page-links fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Explore more</div>
@@ -397,5 +546,48 @@
   </footer>
 
   <a class="mobile-cta" href="/contact">Request a Quote</a>
+
+  <script>
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+      document.body.style.overflow = menuToggle.classList.contains('active') ? 'hidden' : '';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
+  </script>
 </body>
 </html>

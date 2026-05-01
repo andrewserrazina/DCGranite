@@ -75,117 +75,568 @@
       --stone-texture: radial-gradient(circle at 20% 12%, rgba(212,160,23,.16), transparent 26%), radial-gradient(circle at 78% 20%, rgba(255,255,255,.08), transparent 22%), linear-gradient(145deg, #0b0b0c 0%, #181818 48%, #0f1113 100%);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: Montserrat, system-ui, sans-serif; color: var(--champagne); background: var(--obsidian); line-height: 1.65; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    body { 
+      font-family: Montserrat, system-ui, sans-serif; 
+      color: var(--champagne); 
+      background: var(--obsidian); 
+      line-height: 1.65; 
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; transition: color .25s ease; }
+    img { max-width: 100%; display: block; height: auto; }
     ::selection { background: var(--gold); color: var(--obsidian); }
 
-    .topbar { background: #050505; color: rgba(255,255,255,.74); font-size: .78rem; padding: .62rem 5vw; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid rgba(212,160,23,.2); }
-    .nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: .95rem 5vw; background: rgba(15,17,19,.86); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(212,160,23,.18); }
-    .brand img { height: 64px; width: auto; filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); }
-    .nav-links { display: flex; align-items: center; gap: 1.35rem; color: rgba(255,255,255,.78); font-size: .84rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gold);
+      color: var(--obsidian);
+      padding: 8px;
+      z-index: 100;
+      font-weight: 700;
+    }
+    .skip-link:focus { top: 0; }
+
+    .topbar { 
+      background: #050505; 
+      color: rgba(255,255,255,.74); 
+      font-size: .78rem; 
+      padding: .62rem 5vw; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      gap: 1rem; 
+      flex-wrap: wrap; 
+      border-bottom: 1px solid rgba(212,160,23,.2); 
+    }
+    .topbar-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .topbar-contact a:hover { color: var(--gold-light); }
+
+    .nav { 
+      position: sticky; 
+      top: 0; 
+      z-index: 999; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: .95rem 5vw; 
+      background: rgba(15,17,19,.92); 
+      backdrop-filter: blur(18px); 
+      border-bottom: 1px solid rgba(212,160,23,.18); 
+      transition: background .3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(15,17,19,.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .brand img { 
+      height: 64px; 
+      width: auto; 
+      filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); 
+      transition: filter .3s ease;
+    }
+    .brand img:hover {
+      filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
+    }
+
+    .nav-links { 
+      display: flex; 
+      align-items: center; 
+      gap: 1.35rem; 
+      color: rgba(255,255,255,.78); 
+      font-size: .84rem; 
+      font-weight: 700; 
+      letter-spacing: .08em; 
+      text-transform: uppercase; 
+    }
     .nav-links a:not(.btn):hover { color: var(--gold-light); }
 
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: .95rem 1.35rem; border-radius: 999px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; transition: transform .2s ease; border: 0; cursor: pointer; }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--gold-light);
+      margin: 5px 0;
+      transition: all .3s ease;
+      border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+    @media (max-width: 768px) {
+      .topbar { font-size: .72rem; padding: .5rem 4vw; }
+      .topbar-contact { gap: 1rem; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(15,17,19,.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: right .4s cubic-bezier(.25,.46,.45,.94);
+        border-left: 1px solid rgba(212,160,23,.2);
+        box-shadow: -10px 0 40px rgba(0,0,0,.5);
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 1.1rem; }
+    }
+
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: .95rem 1.55rem; 
+      border-radius: 999px; 
+      font-weight: 900; 
+      text-transform: uppercase; 
+      letter-spacing: .08em; 
+      font-size: .8rem; 
+      transition: all .3s cubic-bezier(.25,.46,.45,.94); 
+      border: 0; 
+      cursor: pointer; 
+      white-space: nowrap;
+    }
     .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--gold); color: #0b0b0b; box-shadow: 0 10px 25px rgba(212,160,23,.2); border: 1px solid rgba(212,160,23,.5); }
-    .btn-outline { border: 1px solid rgba(212,160,23,.35); color: var(--champagne); background: transparent; }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { 
+      background: var(--gold); 
+      color: #0b0b0b; 
+      box-shadow: 0 10px 25px rgba(212,160,23,.2); 
+      border: 1px solid rgba(212,160,23,.5); 
+    }
+    .btn-primary:hover {
+      box-shadow: 0 14px 32px rgba(212,160,23,.3);
+      background: var(--gold-light);
+    }
+    .btn-outline { 
+      border: 1px solid rgba(212,160,23,.35); 
+      color: var(--champagne); 
+      background: transparent; 
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(212,160,23,.08);
+    }
 
-    .hero { position: relative; min-height: 72vh; display: grid; align-items: center; padding: 7rem 5vw 5rem; background: linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.78), rgba(10,10,10,.32)), url('/images/2020-09-12-094820389-scaled.webp') center/cover; overflow: hidden; }
-    .hero::before { content: ""; position: absolute; inset: 0; background: var(--stone-texture); opacity: .55; mix-blend-mode: multiply; }
-    .hero-content { position: relative; z-index: 1; max-width: 940px; }
-    .hero-logo { width: min(620px, 90vw); margin-bottom: 2rem; filter: drop-shadow(0 20px 55px rgba(0,0,0,.55)); }
-    .eyebrow { text-transform: uppercase; letter-spacing: .24em; font-size: .73rem; color: var(--gold-light); font-weight: 900; margin-bottom: 1rem; }
-    h1, h2, h3 { font-family: Cinzel, Georgia, serif; line-height: 1.02; margin: 0; font-weight: 600; letter-spacing: .02em; }
-    h1 { font-size: clamp(2.8rem, 7vw, 6.5rem); color: var(--white); max-width: 980px; }
-    h2 { font-size: clamp(2.1rem, 4.8vw, 4.35rem); color: var(--white); }
-    h3 { font-size: 1.45rem; color: var(--white); }
-    p { color: rgba(242,239,234,.68); }
-    .hero p { font-size: clamp(1rem, 1.8vw, 1.25rem); color: rgba(255,255,255,.78); max-width: 760px; margin: 1.25rem 0 2rem; }
-    .hero-actions { display: flex; gap: .85rem; flex-wrap: wrap; }
+    .hero { 
+      position: relative; 
+      min-height: 72vh; 
+      display: grid; 
+      align-items: center; 
+      padding: 7rem 5vw 5rem; 
+      background: linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.78), rgba(10,10,10,.32)), url('/images/2020-09-12-094820389-scaled.webp') center/cover; 
+      overflow: hidden; 
+    }
+    .hero::before { 
+      content: ""; 
+      position: absolute; 
+      inset: 0; 
+      background: var(--stone-texture); 
+      opacity: .55; 
+      mix-blend-mode: multiply; 
+    }
+    .hero-content { 
+      position: relative; 
+      z-index: 1; 
+      max-width: 940px; 
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-logo { 
+      width: min(620px, 90vw); 
+      margin-bottom: 2rem; 
+      filter: drop-shadow(0 20px 55px rgba(0,0,0,.55)); 
+    }
+    .eyebrow { 
+      text-transform: uppercase; 
+      letter-spacing: .24em; 
+      font-size: .73rem; 
+      color: var(--gold-light); 
+      font-weight: 900; 
+      margin-bottom: 1rem; 
+    }
+    h1, h2, h3 { 
+      font-family: Cinzel, Georgia, serif; 
+      line-height: 1.12; 
+      margin: 0; 
+      font-weight: 600; 
+      letter-spacing: .02em; 
+    }
+    h1 { 
+      font-size: clamp(2.5rem, 7vw, 6.5rem); 
+      color: var(--white); 
+      max-width: 980px; 
+      margin-bottom: .5rem;
+    }
+    h2 { 
+      font-size: clamp(1.8rem, 4.5vw, 4.35rem); 
+      color: var(--white); 
+      margin-bottom: .8rem;
+    }
+    h3 { 
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); 
+      color: var(--white); 
+      margin-bottom: .6rem;
+    }
+    p { 
+      color: rgba(242,239,234,.72); 
+      margin-bottom: 1rem;
+    }
+    .hero p { 
+      font-size: clamp(1rem, 1.6vw, 1.25rem); 
+      color: rgba(255,255,255,.82); 
+      max-width: 760px; 
+      margin: 1.25rem 0 2rem; 
+    }
+    .hero-actions { 
+      display: flex; 
+      gap: .85rem; 
+      flex-wrap: wrap; 
+    }
 
-    section { padding: 6rem 5vw; position: relative; }
-    .story { background: linear-gradient(180deg, var(--obsidian), #171717); }
-    .story-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center; }
-    .story-card, .values-card, .cta-card { background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); border-radius: 34px; padding: 2.6rem; box-shadow: var(--shadow); border: 1px solid rgba(212,160,23,.22); }
-    .quote-mark { font-family: Cinzel, Georgia, serif; font-size: 5rem; line-height: .8; color: var(--gold); }
-    blockquote { margin: 0; font-family: Cinzel, Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 3.1rem); line-height: 1.05; color: var(--white); }
-    .image-stack { position: relative; min-height: 540px; }
-    .image-stack img { position: absolute; object-fit: cover; border-radius: 30px; box-shadow: var(--shadow); border: 1px solid rgba(212,160,23,.18); }
-    .image-stack img:first-child { inset: 0 14% 18% 0; height: 82%; width: 76%; }
-    .image-stack img:last-child { right: 0; bottom: 0; height: 50%; width: 54%; border: 10px solid var(--obsidian); }
+    section { 
+      padding: 6rem 5vw; 
+      position: relative; 
+    }
+    @media (max-width: 768px) {
+      section { padding: 4rem 5vw; }
+    }
 
-    .values { background: #121212; }
-    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2.6rem; }
-    .section-head p { max-width: 620px; margin: 0; }
-    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .values-card { border-radius: 20px; padding: 1.8rem; box-shadow: none; }
-    .values-card span { color: var(--gold); font-weight: 800; letter-spacing: .08em; font-size: .72rem; }
-    .values-card h3 { margin: .55rem 0 .5rem; font-size: 1.25rem; }
-    .values-card p { margin: 0; font-size: .95rem; }
-
-    .process { background: linear-gradient(rgba(7,7,7,.9), rgba(7,7,7,.95)), url('/images/Silver-Fantasy-leather-finish-1-1.webp') center/cover fixed; }
-    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; counter-reset: step; }
-    .process-card { background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.035)); border-radius: 30px; padding: 2rem; border: 1px solid rgba(212,160,23,.2); box-shadow: 0 18px 55px rgba(0,0,0,.2); position: relative; overflow: hidden; }
-    .process-card::before { counter-increment: step; content: "0" counter(step); font-family: Cinzel, Georgia, serif; font-size: 6rem; color: rgba(212,160,23,.15); position: absolute; right: 1.1rem; top: .5rem; line-height: 1; }
-    .process-card h3, .process-card p { position: relative; }
-
-    .local { background: linear-gradient(180deg, #101010, #1a1a1a); }
-    .local-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 1rem; align-items: stretch; }
-    .local-list { list-style: none; padding: 0; margin: 1.2rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35rem 1.5rem; }
-    .local-list li { padding: .25rem 0; font-weight: 500; color: rgba(255,255,255,.8); }
-    .local-list li::before { content: "– "; color: rgba(212,160,23,.7); }
-
-    .cta { margin: 0 5vw 6rem; padding: 4rem; border-radius: 40px; background: linear-gradient(100deg, rgba(0,0,0,.92), rgba(15,17,19,.72)), url('/images/Kitchen-Blue-Pearl-1.webp') center/cover; color: white; display: grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items: center; box-shadow: var(--shadow); border: 1px solid rgba(212,160,23,.24); }
-    .cta-card { padding: 1.5rem; border-radius: 28px; box-shadow: none; }
-    .cta-card div { padding: .8rem 0; border-bottom: 1px solid rgba(212,160,23,.14); }
-    .cta-card div:last-child { border-bottom: 0; }
-    .cta-card strong { display: block; color: var(--gold-light); font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; }
-
-    footer { background: #050505; color: rgba(255,255,255,.62); padding: 2rem 5vw; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(212,160,23,.18); }
-    .mobile-cta { display: none; position: fixed; z-index: 40; left: 1rem; right: 1rem; bottom: 1rem; background: var(--gold-gradient); color: #050505; text-align: center; padding: 1rem; border-radius: 999px; font-weight: 950; box-shadow: 0 18px 45px rgba(0,0,0,.35); text-transform: uppercase; letter-spacing: .08em; }
-
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .brand img { height: 54px; }
-      .hero { min-height: 68vh; padding-top: 5rem; }
-      .story-grid, .local-grid, .cta { grid-template-columns: 1fr; }
-      .values-grid, .process-grid { grid-template-columns: 1fr; }
-      .section-head { display: block; }
-      section { padding: 4.5rem 5vw; }
+    .story { 
+      background: linear-gradient(180deg, var(--obsidian), #171717); 
+    }
+    .story-grid { 
+      display: grid; 
+      grid-template-columns: 1.05fr .95fr; 
+      gap: 3rem; 
+      align-items: center; 
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; }
+    }
+    .story-card, .values-card, .cta-card { 
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); 
+      border-radius: 34px; 
+      padding: 2.6rem; 
+      box-shadow: var(--shadow); 
+      border: 1px solid rgba(212,160,23,.22); 
+      transition: all .3s ease;
+    }
+    .story-card:hover {
+      border-color: rgba(212,160,23,.35);
+      transform: translateY(-3px);
+    }
+    .quote-mark { 
+      font-family: Cinzel, Georgia, serif; 
+      font-size: 5rem; 
+      line-height: .8; 
+      color: var(--gold); 
+    }
+    blockquote { 
+      margin: 0 0 1.5rem; 
+      font-family: Cinzel, Georgia, serif; 
+      font-size: clamp(1.6rem, 3.5vw, 3.1rem); 
+      line-height: 1.15; 
+      color: var(--white); 
+    }
+    .image-stack { 
+      position: relative; 
+      min-height: 540px; 
+    }
+    @media (max-width: 768px) {
       .image-stack { min-height: 390px; }
-      .local-list { grid-template-columns: 1fr; }
-      .cta { padding: 2rem; }
+    }
+    .image-stack img { 
+      position: absolute; 
+      object-fit: cover; 
+      border-radius: 30px; 
+      box-shadow: var(--shadow); 
+      border: 1px solid rgba(212,160,23,.18); 
+      transition: transform .4s ease;
+    }
+    .image-stack img:hover {
+      transform: scale(1.02);
+      z-index: 2;
+    }
+    .image-stack img:first-child { 
+      inset: 0 14% 18% 0; 
+      height: 82%; 
+      width: 76%; 
+    }
+    .image-stack img:last-child { 
+      right: 0; 
+      bottom: 0; 
+      height: 50%; 
+      width: 54%; 
+      border: 10px solid var(--obsidian); 
+    }
+
+    .values { 
+      background: #121212; 
+    }
+    .section-head { 
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 900px) {
+      .section-head { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    .values-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+      gap: 1.2rem; 
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .values-card { 
+      border-radius: 24px; 
+      padding: 2rem; 
+    }
+    .values-card:hover {
+      background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+    }
+    .values-card span { 
+      color: var(--gold); 
+      font-weight: 900; 
+      letter-spacing: .08em; 
+      font-size: .72rem; 
+      display: block;
+      margin-bottom: .6rem;
+    }
+    .values-card h3 { 
+      margin-bottom: .8rem; 
+      font-size: 1.35rem; 
+    }
+    .values-card p { 
+      margin: 0; 
+      font-size: .95rem; 
+    }
+
+    .process { 
+      background: linear-gradient(rgba(7,7,7,.92), rgba(7,7,7,.96)), url('/images/Silver-Fantasy-leather-finish-1-1.webp') center/cover fixed; 
+    }
+    .process-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 2rem; 
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .process-card { 
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03)); 
+      border-radius: 24px; 
+      padding: 2.5rem; 
+      box-shadow: var(--shadow); 
+      border: 1px solid rgba(212,160,23,.22); 
+      transition: all .4s ease;
+    }
+    .process-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212,160,23,.4);
+      box-shadow: 0 32px 100px rgba(0,0,0,.5);
+    }
+    .process-card h3 { 
+      margin-bottom: 1rem; 
+      color: var(--gold-light);
+    }
+
+    .local { 
+      background: #0a0a0a; 
+    }
+    .local-grid { 
+      display: grid; 
+      grid-template-columns: 1.2fr .8fr; 
+      gap: 2rem; 
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .local-grid { grid-template-columns: 1fr; }
+    }
+    .local-list { 
+      list-style: none; 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+      gap: .6rem; 
+      margin-top: 1.5rem; 
+    }
+    .local-list li { 
+      padding: .6rem 1rem; 
+      background: rgba(212,160,23,.08); 
+      border-radius: 8px; 
+      font-size: .88rem; 
+      color: rgba(255,255,255,.85); 
+      border: 1px solid rgba(212,160,23,.15); 
+      transition: all .3s ease;
+    }
+    .local-list li:hover {
+      background: rgba(212,160,23,.15);
+      border-color: rgba(212,160,23,.3);
+    }
+
+    .cta { 
+      margin: 0 auto; 
+      max-width: 1400px;
+      padding: 5rem; 
+      border-radius: 40px; 
+      background: var(--stone-texture);
+      color: white; 
+      display: grid; 
+      grid-template-columns: 1.3fr 1fr; 
+      gap: 3rem; 
+      align-items: center; 
+      box-shadow: var(--shadow); 
+      border: 1px solid rgba(212,160,23,.24); 
+    }
+    @media (max-width: 900px) {
+      .cta { 
+        grid-template-columns: 1fr; 
+        padding: 3rem 2rem; 
+        gap: 2rem;
+      }
+    }
+    .cta-card {
+      display: grid;
+      gap: 1.2rem;
+    }
+    .cta-card div {
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(212,160,23,.18);
+    }
+    .cta-card div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    .cta-card strong { 
+      display: block; 
+      color: var(--gold-light); 
+      font-size: .75rem; 
+      text-transform: uppercase; 
+      letter-spacing: .14em; 
+      margin-bottom: .3rem;
+    }
+    .cta-card a:hover {
+      color: var(--gold-light);
+    }
+
+    footer { 
+      background: #050505; 
+      color: rgba(255,255,255,.6); 
+      padding: 2.5rem 5vw; 
+      border-top: 1px solid rgba(212,160,23,.15); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 2rem; 
+      flex-wrap: wrap; 
+      font-size: .85rem; 
+    }
+    footer a:hover { color: var(--gold-light); }
+
+    .mobile-cta { 
+      display: none; 
+      position: fixed; 
+      bottom: 20px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      z-index: 998; 
+      background: var(--gold); 
+      color: #0b0b0b; 
+      padding: 1rem 2rem; 
+      border-radius: 999px; 
+      font-weight: 900; 
+      text-transform: uppercase; 
+      letter-spacing: .08em; 
+      font-size: .85rem; 
+      box-shadow: 0 12px 40px rgba(212,160,23,.4); 
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+    }
+    @media (max-width: 768px) {
       .mobile-cta { display: block; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="topbar">
-    <span>664 Center Street, Ludlow, MA 01056</span>
-    <span>Mon–Fri 9:30–4:30 · Sat 9:30–1:00 · <a href="tel:+14135833399">(413) 583-3399</a></span>
+    <div>📍 664 Center Street, Ludlow, MA 01056</div>
+    <div class="topbar-contact">
+      <a href="tel:+14135833399">📞 (413) 583-3399</a>
+      <span>🕒 Mon–Fri 9:30–4:30 · Sat 9:30–1:00</span>
+    </div>
   </div>
 
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="/" aria-label="D&C Granite home">
-      <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery logo">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
+      <img src="/images/DC-Granite-and-Marble-Design-Gallery-Logo-2023-3-500.png" alt="D&C Granite and Marble Design Gallery" width="200" height="64" />
     </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/granite-countertops-ludlow-ma">Granite</a>
       <a href="/quartz-countertops-ludlow-ma">Quartz</a>
       <a href="/portfolio">Portfolio</a>
-      <a class="btn btn-primary" href="/contact">Request Quote</a>
+      <a href="/contact" class="btn btn-primary">Request Quote</a>
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
     <section class="hero">
       <div class="hero-content">
-        <img class="hero-logo" src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery premium logo">
+        <img class="hero-logo" src="/images/DC-Granite-and-Marble-Design-Gallery-Logo-2023-3-500.png" alt="D&C Granite and Marble Design Gallery" width="620" height="198" />
         <div class="eyebrow">About D&C · Ludlow, Massachusetts</div>
         <h1>Craftsmanship you can see in every edge, seam, and finish.</h1>
         <p>D&C Granite & Marble Design Gallery is a local stone shop built around honest work, careful fabrication, and custom countertops made to fit real homes across Western Massachusetts.</p>
@@ -196,23 +647,23 @@
       </div>
     </section>
 
-    <section class="story">
+    <section class="story fade-in">
       <div class="story-grid">
         <div class="story-card">
-          <div class="quote-mark">“</div>
+          <div class="quote-mark">"</div>
           <blockquote>I do for you as I would do for me.</blockquote>
           <p>That simple idea is the standard behind D&C Granite & Marble Design Gallery. Owner and master craftsman Luis Serrazina began learning stonework at age 13, building decades of hands-on experience before creating a business focused on quality, trust, and personal attention.</p>
           <p>For customers, that means the work is never treated like a generic install. Every countertop, vanity, fireplace, and custom stone piece is approached with the goal of making it look right, fit right, and last.</p>
         </div>
 
         <div class="image-stack" aria-label="D&C Granite project photos">
-          <img src="/images/IMG_20201204_120939-scaled.webp" alt="Custom kitchen stonework by D&C Granite and Marble">
-          <img src="/images/IMG_20201209_125716-scaled.webp" alt="Bathroom vanity stone countertop by D&C Granite and Marble">
+          <img src="/images/IMG_20201204_120939-scaled.webp" alt="Custom kitchen stonework by D&C Granite and Marble" width="800" height="600" loading="lazy" />
+          <img src="/images/IMG_20201209_125716-scaled.webp" alt="Bathroom vanity stone countertop by D&C Granite and Marble" width="600" height="450" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <section class="values">
+    <section class="values fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">How we work</div>
@@ -221,14 +672,30 @@
         <p>Good stonework comes from the decisions people do not always notice at first: measurements, layout, seams, edge profiles, polishing, and final fit.</p>
       </div>
       <div class="values-grid">
-        <article class="values-card"><span>01</span><h3>Honest guidance</h3><p>Customers get help choosing the right material, not just the most expensive one.</p></article>
-        <article class="values-card"><span>02</span><h3>Custom fabrication</h3><p>Each project is measured, cut, finished, and installed for the actual space.</p></article>
-        <article class="values-card"><span>03</span><h3>Local service</h3><p>D&C works with homeowners, contractors, and remodelers across Western MA.</p></article>
-        <article class="values-card"><span>04</span><h3>Lasting finish</h3><p>The goal is stonework that looks beautiful on day one and holds up over time.</p></article>
+        <article class="values-card">
+          <span>01</span>
+          <h3>Honest guidance</h3>
+          <p>Customers get help choosing the right material, not just the most expensive one.</p>
+        </article>
+        <article class="values-card">
+          <span>02</span>
+          <h3>Custom fabrication</h3>
+          <p>Each project is measured, cut, finished, and installed for the actual space.</p>
+        </article>
+        <article class="values-card">
+          <span>03</span>
+          <h3>Local service</h3>
+          <p>D&C works with homeowners, contractors, and remodelers across Western MA.</p>
+        </article>
+        <article class="values-card">
+          <span>04</span>
+          <h3>Lasting finish</h3>
+          <p>The goal is stonework that looks beautiful on day one and holds up over time.</p>
+        </article>
       </div>
     </section>
 
-    <section class="process">
+    <section class="process fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">The D&C difference</div>
@@ -237,13 +704,22 @@
         <p>From slab selection to installation, D&C keeps the process straightforward and personal.</p>
       </div>
       <div class="process-grid">
-        <article class="process-card"><h3>Listen First</h3><p>The project starts with your room, your style, your budget, and how you actually use the space.</p></article>
-        <article class="process-card"><h3>Measure Carefully</h3><p>Templates, sink cutouts, edges, backsplashes, and seams are planned before fabrication starts.</p></article>
-        <article class="process-card"><h3>Finish Properly</h3><p>Installation is handled with care so the final surface feels like part of the home.</p></article>
+        <article class="process-card">
+          <h3>Listen First</h3>
+          <p>The project starts with your room, your style, your budget, and how you actually use the space.</p>
+        </article>
+        <article class="process-card">
+          <h3>Measure Carefully</h3>
+          <p>Templates, sink cutouts, edges, backsplashes, and seams are planned before fabrication starts.</p>
+        </article>
+        <article class="process-card">
+          <h3>Finish Properly</h3>
+          <p>Installation is handled with care so the final surface feels like part of the home.</p>
+        </article>
       </div>
     </section>
 
-    <section class="local">
+    <section class="local fade-in">
       <div class="local-grid">
         <div class="story-card">
           <div class="eyebrow">Local roots</div>
@@ -259,12 +735,12 @@
       </div>
     </section>
 
-    <section class="cta">
+    <section class="cta fade-in">
       <div>
         <div class="eyebrow">Start your project</div>
         <h2>Ready to talk countertops?</h2>
         <p>Call the showroom, stop by during business hours, or send project details. Photos, sketches, or rough measurements can help D&C provide a more accurate starting estimate.</p>
-        <a class="btn btn-primary" href="tel:+14135833399">Call (413) 583-3399</a>
+        <a class="btn btn-primary" href="/contact">Request a Quote</a>
       </div>
       <div class="cta-card">
         <div><strong>Showroom</strong>664 Center Street<br>Ludlow, MA 01056</div>
@@ -277,9 +753,50 @@
 
   <footer>
     <span>© 2026 D&C Granite and Marble Design Gallery</span>
-    <span>Custom granite, quartz, marble countertops, vanities, fireplaces, and stonework in Ludlow and Western Massachusetts.</span>
+    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
   </footer>
 
-  <a class="mobile-cta" href="tel:+14135833399">Call D&C Granite</a>
+  <a class="mobile-cta" href="/contact">Request a Quote</a>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+      document.body.style.overflow = menuToggle.classList.contains('active') ? 'hidden' : '';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+  </script>
 </body>
 </html>

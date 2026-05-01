@@ -93,18 +93,34 @@
       --stone-texture: radial-gradient(circle at 20% 12%, rgba(212,160,23,.18), transparent 26%), radial-gradient(circle at 78% 20%, rgba(255,255,255,.08), transparent 22%), linear-gradient(145deg, #0b0b0c 0%, #181818 48%, #0f1113 100%);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Montserrat, system-ui, sans-serif;
       color: var(--champagne);
       background: var(--obsidian);
       line-height: 1.65;
+      overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; transition: color .25s ease; }
+    img { max-width: 100%; display: block; height: auto; }
     ::selection { background: var(--gold); color: var(--obsidian); }
+
+    /* Skip to content for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gold);
+      color: var(--obsidian);
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+      font-weight: 700;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
 
     .topbar {
       background: #050505;
@@ -113,140 +129,203 @@
       padding: .62rem 5vw;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
       border-bottom: 1px solid rgba(212,160,23,.2);
+    }
+    .topbar-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .topbar-contact a:hover {
+      color: var(--gold-light);
     }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 999;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: .95rem 5vw;
-      background: rgba(15,17,19,.86);
+      background: rgba(15,17,19,.92);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(212,160,23,.18);
+      transition: background .3s ease;
     }
-    .brand { display: flex; align-items: center; gap: .8rem; }
+    .nav.scrolled {
+      background: rgba(15,17,19,.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
     .brand img {
-      height: 58px;
+      height: 64px;
       width: auto;
-      max-width: 360px;
-      object-fit: contain;
       filter: drop-shadow(0 12px 26px rgba(212,160,23,.2));
+      transition: filter .3s ease;
     }
-    .nav-links { display: flex; align-items: center; gap: 1.35rem; color: rgba(255,255,255,.78); font-size: .84rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .nav-links a:not(.btn):hover { color: var(--gold-light); }
+    .brand img:hover {
+      filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+      color: rgba(255,255,255,.78);
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:not(.btn):hover {
+      color: var(--gold-light);
+    }
+
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--gold-light);
+      margin: 5px 0;
+      transition: all .3s ease;
+      border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        font-size: .72rem;
+        padding: .5rem 4vw;
+      }
+      .topbar-contact {
+        gap: 1rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(15,17,19,.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right .4s cubic-bezier(.25,.46,.45,.94);
+        border-left: 1px solid rgba(212,160,23,.2);
+        box-shadow: -10px 0 40px rgba(0,0,0,.5);
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links a {
+        font-size: 1.1rem;
+      }
+    }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: .5rem;
-      padding: .95rem 1.35rem;
+      padding: .95rem 1.55rem;
       border-radius: 999px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: .08em;
       font-size: .8rem;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      transition: all .3s cubic-bezier(.25,.46,.45,.94);
+      border: 0;
+      cursor: pointer;
+      white-space: nowrap;
     }
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
     .btn-primary {
       background: var(--gold);
       color: #0b0b0b;
       box-shadow: 0 10px 25px rgba(212,160,23,.2);
       border: 1px solid rgba(212,160,23,.5);
     }
+    .btn-primary:hover {
+      box-shadow: 0 14px 32px rgba(212,160,23,.3);
+      background: var(--gold-light);
+    }
     .btn-outline {
       border: 1px solid rgba(212,160,23,.35);
       color: var(--champagne);
       background: transparent;
     }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(212,160,23,.08);
+    }
 
     .hero {
       position: relative;
-      min-height: 86vh;
+      min-height: 72vh;
       display: grid;
       align-items: center;
-      padding: 7rem 5vw 9rem;
-      background:
-        linear-gradient(90deg, rgba(5,5,5,.82), rgba(10,10,10,.52), rgba(10,10,10,.18)),
-        url('/images/Kitchen-Blue-Pearl-1.webp') center/cover no-repeat;
+      padding: 7rem 5vw 5rem;
+      background: linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.8), rgba(10,10,10,.36)), url('/images/IMG_20201204_120939-scaled.webp') center/cover;
       overflow: hidden;
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.68), rgba(0,0,0,.32), rgba(0,0,0,.05)),
-        url('/images/Kitchen-Blue-Pearl-1.webp') center/cover no-repeat;
-      z-index: 0;
+      background: var(--stone-texture);
+      opacity: .55;
+      mix-blend-mode: multiply;
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -10% -25% -10%;
-      height: 200px;
-      background: radial-gradient(ellipse at center, rgba(212,160,23,.18), transparent 70%);
-      z-index: 0;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 940px;
+      animation: fadeInUp 1s ease-out;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 920px; }
-    .hero-logo { display: none; }
-    .hero-kicker-line {
-      width: 92px;
-      height: 3px;
-      background: var(--gold);
-      margin: 1.6rem 0 1.3rem;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .hero-trust-strip {
-      position: absolute;
-      left: 5vw;
-      right: 5vw;
-      bottom: 2rem;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      max-width: 980px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 12px;
-      background: rgba(8,8,8,.58);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-    }
-    .hero-trust-item {
-      display: flex;
-      align-items: center;
-      gap: .8rem;
-      padding: 1.2rem 1.35rem;
-      border-right: 1px solid rgba(255,255,255,.1);
-    }
-    .hero-trust-item:last-child { border-right: 0; }
-    .hero-trust-icon {
-      color: var(--gold);
-      font-size: 1.6rem;
-      line-height: 1;
-      flex: 0 0 auto;
-    }
-    .hero-trust-item strong {
-      display: block;
-      color: var(--white);
-      font-size: .78rem;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      line-height: 1.2;
-    }
-    .hero-trust-item span {
-      display: block;
-      color: rgba(242,239,234,.68);
-      font-size: .82rem;
-      margin-top: .2rem;
-      line-height: 1.25;
+    .hero-logo {
+      width: min(620px, 90vw);
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 20px 55px rgba(0,0,0,.55));
     }
     .eyebrow {
       text-transform: uppercase;
@@ -258,339 +337,498 @@
     }
     h1, h2, h3 {
       font-family: Cinzel, Georgia, serif;
-      line-height: 1.02;
+      line-height: 1.12;
       margin: 0;
       font-weight: 600;
       letter-spacing: .02em;
     }
-    h1 { font-size: clamp(2.9rem, 7.4vw, 6.7rem); color: var(--white); max-width: 980px; }
-    h2 { font-size: clamp(2.1rem, 4.8vw, 4.35rem); color: var(--white); }
-    h3 { font-size: 1.6rem; color: var(--white); }
-    .hero p { font-size: clamp(1rem, 1.8vw, 1.26rem); color: rgba(255,255,255,.78); max-width: 770px; margin: 1.25rem 0 2rem; }
-    .hero-actions { display: flex; gap: .85rem; flex-wrap: wrap; }
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 6.5rem);
+      color: var(--white);
+      max-width: 980px;
+      margin-bottom: .5rem;
+    }
+    h2 {
+      font-size: clamp(2rem, 4.8vw, 4.35rem);
+      color: var(--white);
+      margin-bottom: .8rem;
+    }
+    h3 {
+      font-size: clamp(1.25rem, 3vw, 1.65rem);
+      color: var(--white);
+      margin-bottom: .6rem;
+    }
+    p {
+      color: rgba(242,239,234,.72);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: rgba(255,255,255,.82);
+      max-width: 760px;
+      margin: 1.25rem 0 2rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: .85rem;
+      flex-wrap: wrap;
+    }
 
-    section { padding: 6rem 5vw; position: relative; }
-    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2.6rem; }
-    .section-head p { max-width: 620px; color: rgba(242,239,234,.68); margin: 0; }
-
-    .about { background: linear-gradient(180deg, var(--obsidian), #171717); }
-    .about-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 3rem; align-items: center; }
-    .about-card {
-      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
-      border-radius: 34px;
-      padding: 2.6rem;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(212,160,23,.24);
+    section {
+      padding: 6rem 5vw;
       position: relative;
-      overflow: hidden;
     }
-    .about-card::before {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,160,23,.2), transparent 68%);
-      right: -90px;
-      top: -90px;
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 5vw;
+      }
     }
-    .quote-mark { font-family: Cinzel, Georgia, serif; font-size: 5rem; line-height: .8; color: var(--gold); position: relative; }
-    .about-card blockquote { margin: 0; font-family: Cinzel, Georgia, serif; font-size: clamp(1.8rem, 3.4vw, 3.1rem); line-height: 1.05; color: var(--white); position: relative; }
-    .about-card p { color: rgba(242,239,234,.68); margin-bottom: 0; position: relative; }
-    .image-stack { position: relative; min-height: 520px; }
-    .image-stack img { position: absolute; object-fit: cover; border-radius: 34px; box-shadow: var(--shadow); border: 1px solid rgba(212,160,23,.22); }
-    .image-stack img:first-child { inset: 0 14% 18% 0; height: 82%; width: 76%; }
-    .image-stack img:last-child { right: 0; bottom: 0; height: 50%; width: 54%; border: 10px solid var(--obsidian); }
+
+    .section-head {
+      max-width: 1400px;
+      margin: 0 auto 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
 
     .services {
-      background:
-        linear-gradient(rgba(7,7,7,.88), rgba(7,7,7,.94)),
-        url('https://images.unsplash.com/photo-1604076913837-52ab5629fba9?auto=format&fit=crop&w=2200&q=86') center/cover fixed;
+      background: var(--stone-texture);
     }
-    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .service-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
     .service-card {
-      padding: 1.8rem;
-      min-height: auto;
-      border-radius: 20px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      display: flex;
-      flex-direction: column;
-      gap: .6rem;
-      box-shadow: none;
-    }
-    .service-card span { color: var(--gold); font-weight: 700; letter-spacing: .08em; font-size: .7rem; }
-    .service-card h3 { margin: .3rem 0; line-height: 1.2; font-size: 1.3rem; }
-    .service-card p { color: rgba(255,255,255,.65); margin: 0; line-height: 1.5; font-size: .95rem; }
-
-    .process { background: #121212; }
-    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; counter-reset: step; }
-    .process-card {
-      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
-      border-radius: 30px;
-      padding: 2rem;
-      border: 1px solid rgba(212,160,23,.2);
-      box-shadow: 0 18px 55px rgba(0,0,0,.2);
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.22);
+      transition: all .4s cubic-bezier(.25,.46,.45,.94);
       position: relative;
       overflow: hidden;
     }
-    .process-card::before {
-      counter-increment: step;
-      content: "0" counter(step);
-      font-family: Cinzel, Georgia, serif;
-      font-size: 6rem;
-      color: rgba(212,160,23,.15);
+    .service-card::before {
+      content: "";
       position: absolute;
-      right: 1.1rem;
-      top: .5rem;
-      line-height: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
     }
-    .process-card h3, .process-card p { position: relative; }
-    .process-card p { color: rgba(242,239,234,.65); }
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,160,23,.4);
+      box-shadow: 0 32px 100px rgba(212,160,23,.15);
+    }
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--gold-gradient);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 20px rgba(212,160,23,.25);
+    }
 
-    .materials {
-      background:
-        linear-gradient(rgba(15,17,19,.9), rgba(15,17,19,.9)),
-        url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=2200&q=85') center/cover fixed;
+    .process {
+      background: linear-gradient(180deg, var(--obsidian), #0a0a0a);
     }
-    .material-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .material-card {
-      border-radius: 30px;
-      overflow: hidden;
-      background: #101010;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(212,160,23,.22);
+    .process-steps {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
     }
-    .material-card img { height: 270px; width: 100%; object-fit: cover; filter: saturate(.92) contrast(1.06); }
-    .material-card div { padding: 1.5rem; }
-    .material-card p { color: rgba(242,239,234,.66); margin-bottom: 0; }
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      width: 72px;
+      height: 72px;
+      background: var(--gold-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Cinzel, Georgia, serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--obsidian);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 12px 30px rgba(212,160,23,.3);
+    }
+    .process-step h3 {
+      margin-bottom: 1rem;
+    }
 
-    .service-area { background: linear-gradient(180deg, #101010, #1a1a1a); }
-    .area-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: stretch; }
+    .service-area {
+      background: #0a0a0a;
+    }
+    .area-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .area-grid {
+        grid-template-columns: 1fr;
+      }
+    }
     .area-card {
-      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
-      border-radius: 30px;
-      padding: 2rem;
-      box-shadow: 0 18px 50px rgba(0,0,0,.2);
-      border: 1px solid rgba(212,160,23,.2);
+      background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.18);
     }
-    .area-card p { color: rgba(242,239,234,.68); }
     .area-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: .35rem 1.5rem;
-      margin: 1rem 0 0;
-      padding: 0;
       list-style: none;
-    }
-    .area-list li { padding: .25rem 0; border: 0; background: transparent; font-weight: 500; color: rgba(255,255,255,.8); text-align: left; }
-    .area-list li::before { content: "– "; color: rgba(212,160,23,.7); }
-    .area-list li:hover { color: var(--white); }
-
-    .portfolio { background: #0f0f0f; }
-    .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      grid-auto-rows: 260px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .6rem;
+      margin-top: 1.5rem;
+    }
+    .area-list li {
+      padding: .6rem 1rem;
+      background: rgba(212,160,23,.08);
+      border-radius: 8px;
+      font-size: .88rem;
+      color: rgba(255,255,255,.85);
+      border: 1px solid rgba(212,160,23,.15);
+      transition: all .3s ease;
+    }
+    .area-list li:hover {
+      background: rgba(212,160,23,.15);
+      border-color: rgba(212,160,23,.3);
+    }
+
+    .portfolio {
+      background: var(--obsidian);
+    }
+    .portfolio-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .portfolio-item {
       position: relative;
+      border-radius: 16px;
       overflow: hidden;
-      border-radius: 20px;
-      border: 1px solid rgba(212,160,23,.16);
-      background: #0b0b0b;
-      margin: 0;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow);
+      transition: all .4s cubic-bezier(.25,.46,.45,.94);
+      border: 1px solid rgba(212,160,23,.15);
     }
-    .portfolio-item:nth-child(1), .portfolio-item:nth-child(6), .portfolio-item:nth-child(12) { grid-column: span 2; grid-row: span 2; }
-    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.94) contrast(1.04); transition: transform .35s ease, filter .35s ease; }
-    .portfolio-item:hover img { transform: scale(1.035); filter: saturate(1) contrast(1.08); }
+    .portfolio-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 32px 100px rgba(0,0,0,.5);
+      border-color: rgba(212,160,23,.35);
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+    }
     .portfolio-caption {
       position: absolute;
+      bottom: 0;
       left: 0;
       right: 0;
-      bottom: 0;
-      padding: 1.1rem;
-      background: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,0));
-      color: rgba(255,255,255,.92);
-      font-size: .82rem;
-      font-weight: 700;
+      padding: 1.2rem 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,.92), transparent);
+      color: var(--white);
+      font-weight: 600;
+      font-size: .92rem;
       letter-spacing: .04em;
+      transform: translateY(100%);
+      transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+    }
+    .portfolio-item:hover .portfolio-caption {
+      transform: translateY(0);
     }
 
-    .faq { background: linear-gradient(180deg, #161616, #0f1113); }
-    .faq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .faq-card { background: rgba(255,255,255,.055); border-radius: 26px; padding: 1.5rem; border: 1px solid rgba(212,160,23,.2); }
-    .faq-card h3 { font-size: 1.35rem; margin-bottom: .75rem; }
-    .faq-card p { color: rgba(242,239,234,.66); margin: 0; }
+    .testimonials {
+      background: #0f0f0f;
+    }
+    .testimonial-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .faq-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.18);
+      transition: all .3s ease;
+    }
+    .faq-card:hover {
+      border-color: rgba(212,160,23,.32);
+      transform: translateY(-3px);
+    }
+
+    .faq {
+      background: linear-gradient(180deg, #0a0a0a, var(--obsidian));
+    }
+    .faq-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .faq-card h3 {
+      margin-bottom: 1rem;
+      color: var(--gold-light);
+    }
 
     .cta {
-      margin: 0 5vw 6rem;
-      padding: 4rem;
-      border-radius: 40px;
-      background:
-        linear-gradient(100deg, rgba(0,0,0,.92), rgba(15,17,19,.72)),
-        url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=2200&q=86') center/cover;
-      color: white;
+      background: var(--stone-texture);
+      padding: 7rem 5vw;
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 2rem;
-      align-items: center;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(212,160,23,.24);
+      grid-template-columns: 1.3fr 1fr;
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .cta p { color: rgba(255,255,255,.74); font-size: 1.08rem; }
-    .contact-card { background: rgba(255,255,255,.08); border: 1px solid rgba(212,160,23,.22); border-radius: 28px; padding: 1.5rem; backdrop-filter: blur(14px); }
-    .contact-card div { padding: .8rem 0; border-bottom: 1px solid rgba(212,160,23,.14); }
-    .contact-card div:last-child { border-bottom: 0; }
-    .contact-card strong { display: block; color: var(--gold-light); font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; }
+    @media (max-width: 900px) {
+      .cta {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 5rem 5vw;
+      }
+    }
+    .contact-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.22);
+      display: grid;
+      gap: 1.5rem;
+      align-self: start;
+    }
+    .contact-card strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: .4rem;
+    }
+    .contact-card a:hover {
+      color: var(--gold-light);
+    }
 
-    footer { background: #050505; color: rgba(255,255,255,.62); padding: 2rem 5vw; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(212,160,23,.18); }
+    footer {
+      background: #050505;
+      color: rgba(255,255,255,.6);
+      padding: 2.5rem 5vw;
+      border-top: 1px solid rgba(212,160,23,.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: .85rem;
+    }
+    footer a:hover {
+      color: var(--gold-light);
+    }
 
     .mobile-cta {
       display: none;
       position: fixed;
-      z-index: 40;
-      left: 1rem;
-      right: 1rem;
-      bottom: 1rem;
-      background: var(--gold-gradient);
-      color: #050505;
-      text-align: center;
-      padding: 1rem;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 998;
+      background: var(--gold);
+      color: #0b0b0b;
+      padding: 1rem 2rem;
       border-radius: 999px;
-      font-weight: 950;
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: .08em;
+      font-size: .85rem;
+      box-shadow: 0 12px 40px rgba(212,160,23,.4);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+    }
+    @media (max-width: 768px) {
+      .mobile-cta {
+        display: block;
+      }
     }
 
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .brand img { height: 48px; max-width: 280px; }
-      .hero { min-height: 82vh; padding: 5rem 5vw 15rem; }
-      .hero-trust-strip { grid-template-columns: 1fr; max-width: none; bottom: 1rem; }
-      .hero-trust-item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.1); padding: .9rem 1rem; }
-      .hero-trust-item:last-child { border-bottom: 0; }
-      .about-grid, .cta, .area-grid { grid-template-columns: 1fr; }
-      .service-grid, .process-grid, .material-grid, .faq-grid { grid-template-columns: 1fr; }
-      .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
-      .portfolio-item:nth-child(1), .portfolio-item:nth-child(6), .portfolio-item:nth-child(12) { grid-column: auto; grid-row: auto; }
-      .section-head { display: block; }
-      .image-stack { min-height: 390px; }
-      section { padding: 4.5rem 5vw; }
-      .cta { padding: 2rem; }
-      .mobile-cta { display: block; }
-      .area-list { grid-template-columns: 1fr; }
+    /* Smooth fade-in for sections */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="topbar">
-    <span>664 Center Street, Ludlow, MA 01056</span>
-    <span>Mon–Fri 9:30–4:30 · Sat 9:30–1:00 · <a href="tel:+14135833399">(413) 583-3399</a></span>
+    <div>📍 664 Center Street, Ludlow, MA 01056</div>
+    <div class="topbar-contact">
+      <a href="tel:+14135833399">📞 (413) 583-3399</a>
+      <span>🕒 Mon–Fri 9:30–4:30 · Sat 9:30–1:00</span>
+    </div>
   </div>
 
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="/" aria-label="D&C Granite home">
-      <img src="/images/DCGraniteWidePNG.png" alt="D&C Granite and Marble Design Gallery logo">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
+      <img src="/images/DC-Granite-and-Marble-Design-Gallery-Logo-2023-3-500.png" alt="D&C Granite and Marble Design Gallery" width="200" height="64" />
     </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
       <a href="/granite-countertops-ludlow-ma">Granite</a>
       <a href="/quartz-countertops-ludlow-ma">Quartz</a>
       <a href="/portfolio">Portfolio</a>
-      <a href="/contact">Contact</a>
-      <a class="btn btn-primary" href="/contact">Request Quote</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="btn btn-primary">Get a Quote</a>
     </div>
   </nav>
 
-  <main id="top">
-    <section class="hero">
+  <main id="main-content">
+    <header class="hero" role="banner">
       <div class="hero-content">
-        <div class="eyebrow">Custom stonework in Western Massachusetts</div>
-        <h1>Beautiful stone. Expertly crafted.</h1>
-        <div class="hero-kicker-line"></div>
-        <p>Granite, quartz, and marble countertops custom made for your home by D&C Granite & Marble Design Gallery in Ludlow, MA.</p>
+        <img class="hero-logo" src="/images/DC-Granite-and-Marble-Design-Gallery-Logo-2023-3-500.png" alt="D&C Granite and Marble Design Gallery" width="620" height="198" />
+        <div class="eyebrow">Ludlow, MA · Western Massachusetts</div>
+        <h1>Premium granite, quartz, and marble for kitchens, bathrooms, and custom stonework.</h1>
+        <p>D&C Granite & Marble Design Gallery specializes in custom countertops, bathroom vanities, fireplace surrounds, and precision stone fabrication. Serving Ludlow, Springfield, and all of Western Massachusetts since 1990.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact">Start Your Project</a>
-          <a class="btn btn-outline" href="/portfolio">View Our Work</a>
+          <a href="/contact" class="btn btn-primary">Request a Quote</a>
+          <a href="#portfolio" class="btn btn-outline">View Our Work</a>
         </div>
       </div>
-      <div class="hero-trust-strip" aria-label="D&C Granite highlights">
-        <div class="hero-trust-item"><div class="hero-trust-icon">◇</div><div><strong>Premium Materials</strong><span>Granite, Quartz & Marble</span></div></div>
-        <div class="hero-trust-item"><div class="hero-trust-icon">▱</div><div><strong>Custom Fabrication</strong><span>Made for your home</span></div></div>
-        <div class="hero-trust-item"><div class="hero-trust-icon">✦</div><div><strong>Expert Installation</strong><span>Precision in every detail</span></div></div>
-        <div class="hero-trust-item"><div class="hero-trust-icon">⌖</div><div><strong>Local & Trusted</strong><span>Proudly serving Western MA</span></div></div>
-      </div>
-    </section>
+    </header>
 
-    <section id="about" class="about">
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="quote-mark">“</div>
-          <blockquote>I do for you as I would do for me.</blockquote>
-          <p>This is the standard behind every D&C project. Owner and master craftsman Luis Serrazina began learning stonework at age 13, eventually building D&C Granite & Marble Design Gallery around experience, honesty, and careful custom work for homeowners throughout Western Massachusetts.</p>
-        </div>
-        <div class="image-stack" aria-label="Kitchen and stone detail photos">
-          <img src="/images/IMG_20201215_144723-scaled.webp" alt="Modern white kitchen with stone countertops in Western Massachusetts">
-          <img src="/images/IMG_20201209_125716-scaled.webp" alt="Custom bathroom vanity with granite countertop and two sinks">
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="services">
+    <section class="services fade-in">
       <div class="section-head">
         <div>
-          <div class="eyebrow">What we build</div>
-          <h2>Custom countertops, vanities, fireplaces, and stonework.</h2>
+          <div class="eyebrow">What we do</div>
+          <h2>Expert stone fabrication and installation.</h2>
         </div>
-        <p>Whether you need a single granite countertop in Ludlow, a quartz kitchen island near Springfield, or a full kitchen or bath transformation, D&C handles the project with a craftsman’s eye from slab selection through installation.</p>
+        <p>From selecting your slab to precision templating and flawless installation, D&C handles every phase of your countertop project with decades of stone fabrication expertise.</p>
       </div>
       <div class="service-grid">
-        <article class="service-card"><span>01</span><div><h3>Granite Countertops</h3><p>Granite countertops measured, fabricated, and finished for kitchens throughout Ludlow, Springfield, Chicopee, and Western MA.</p></div></article>
-        <article class="service-card"><span>02</span><div><h3>Quartz Countertops</h3><p>Low-maintenance quartz countertops and kitchen islands with clean modern finishes and durable everyday performance.</p></div></article>
-        <article class="service-card"><span>03</span><div><h3>Marble Vanities</h3><p>Elegant marble vanity tops, jacuzzi surrounds, and bathroom stonework designed for daily use and lasting style.</p></div></article>
-        <article class="service-card"><span>04</span><div><h3>Fireplaces & Remodels</h3><p>Custom fireplace surrounds, backsplashes, sinks, cabinets, and remodel support for kitchens and bathrooms.</p></div></article>
+        <div class="service-card">
+          <div class="service-icon">🪨</div>
+          <h3>Granite Countertops</h3>
+          <p>Natural stone slabs with unique patterns. Heat-resistant, durable, and timeless for kitchens and bathrooms throughout Western Massachusetts.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Quartz Countertops</h3>
+          <p>Engineered stone surfaces that combine beauty with low maintenance. Perfect for busy kitchens and modern designs in Ludlow and Springfield homes.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛁</div>
+          <h3>Bathroom Vanities</h3>
+          <p>Custom marble and granite vanity tops fabricated to your exact measurements. Undermount sinks, edge profiles, and backsplash options available.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔥</div>
+          <h3>Fireplace Surrounds</h3>
+          <p>Granite, marble, and stone hearths and mantels that add elegance to living spaces. Custom-cut to fit your fireplace dimensions.</p>
+        </div>
       </div>
     </section>
 
-    <section id="process" class="process">
+    <section class="process fade-in">
       <div class="section-head">
         <div>
-          <div class="eyebrow">Simple process</div>
-          <h2>From showroom idea to finished countertop installation.</h2>
+          <div class="eyebrow">How it works</div>
+          <h2>From showroom to installation.</h2>
         </div>
-        <p>A better finished project starts with a better process: clear pricing, precise measurements, expert fabrication, and careful installation.</p>
+        <p>D&C makes the countertop process clear and straightforward. You're involved at every step, from choosing materials to final installation.</p>
       </div>
-      <div class="process-grid">
-        <article class="process-card"><h3>Visit & Quote</h3><p>Bring a sketch, measurements, photos, or ideas to the Ludlow showroom. Choose your stone, review options, and receive a clear estimate.</p></article>
-        <article class="process-card"><h3>Template</h3><p>Once your slab is selected, D&C comes to your home or business to create a precise template for the final countertop, vanity, or stone feature.</p></article>
-        <article class="process-card"><h3>Fabricate & Install</h3><p>Your stone is cut, hand-finished, and installed with attention to seams, fit, sinks, backsplashes, and the final details.</p></article>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Visit the Showroom</h3>
+          <p>Browse granite, quartz, and marble slabs. Discuss your project, budget, edge profiles, sinks, and backsplash options with our team.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Precision Template</h3>
+          <p>After cabinets are installed, we create a detailed template of your countertop area to ensure an exact fit.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Fabrication</h3>
+          <p>Your stone is cut, polished, and finished at our Ludlow facility using precision tools and decades of craftsmanship.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Installation</h3>
+          <p>Our experienced installers deliver and set your countertops with care, leaving your kitchen or bathroom ready to use.</p>
+        </div>
       </div>
     </section>
 
-    <section id="materials" class="materials">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Stone selection</div>
-          <h2>Granite, quartz, marble, and remnants sourced for your style.</h2>
-        </div>
-        <p>Inventory changes often. Stop by the showroom to see current slabs and remnants, or let D&C source a specific color or material for your countertop, vanity, fireplace, or custom stone project.</p>
-      </div>
-      <div class="material-grid">
-        <article class="material-card"><img src="/images/Kitchen-Blue-Pearl-1.webp" alt="Blue Pearl granite kitchen countertop"><div><h3>Granite</h3><p>Durable, natural, one-of-a-kind slabs with depth, movement, and timeless character.</p></div></article>
-        <article class="material-card"><img src="/images/Silver-Fantasy-leather-finish-1-1.webp" alt="Silver Fantasy stone countertop leather finish"><div><h3>Quartz</h3><p>Low-maintenance engineered stone with clean consistency and modern color options.</p></div></article>
-        <article class="material-card"><img src="/images/IMG_20201209_125716-scaled.webp" alt="Bathroom vanity with marble-style stone countertop"><div><h3>Marble</h3><p>Classic luxury for vanities, bathrooms, fireplaces, and statement applications.</p></div></article>
-      </div>
-    </section>
-
-    <section class="service-area" id="service-area">
+    <section class="service-area fade-in" id="service-area">
       <div class="area-grid">
         <div class="area-card">
           <div class="eyebrow">Local service area</div>
-          <h2>Serving homeowners across Western Massachusetts.</h2>
+          <h2>Serving all of Western Massachusetts.</h2>
           <p>D&C Granite & Marble Design Gallery is based in Ludlow, MA and works with homeowners, contractors, remodelers, and businesses throughout the greater Springfield area.</p>
         </div>
         <div class="area-card">
@@ -602,7 +840,7 @@
       </div>
     </section>
 
-    <section id="portfolio" class="portfolio">
+    <section id="portfolio" class="portfolio fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Recent work</div>
@@ -611,28 +849,28 @@
         <p>A look at D&C Granite & Marble projects across Western Massachusetts, including granite kitchens, quartz countertops, bathroom vanities, fireplaces, and custom stone details.</p>
       </div>
       <div class="portfolio-grid">
-        <figure class="portfolio-item"><img src="/images/2020-09-12-094820389-scaled.webp" loading="lazy" alt="Granite kitchen countertop near stove in Ludlow MA"><figcaption class="portfolio-caption">Granite Kitchen Detail</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/2020-09-12-100205706-01-scaled.webp" loading="lazy" alt="Granite countertop with undermount sink in Western Massachusetts kitchen"><figcaption class="portfolio-caption">Kitchen Countertop & Sink</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/DANNY-DIAZ-010-1.webp" loading="lazy" alt="Black granite tub surround and bathroom stonework"><figcaption class="portfolio-caption">Tub Surround</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_07-1.webp" loading="lazy" alt="Marble bathroom vanity with custom cabinetry"><figcaption class="portfolio-caption">Double Vanity</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_0114-1.jpg" loading="lazy" alt="Blue Pearl granite kitchen countertops"><figcaption class="portfolio-caption">Blue Pearl Kitchen</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_0694-1-1.webp" loading="lazy" alt="Custom granite kitchen island with wood cabinetry"><figcaption class="portfolio-caption">Custom Kitchen Island</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_1601-1.jpg" loading="lazy" alt="Granite countertops with farmhouse sink and dark cabinetry"><figcaption class="portfolio-caption">Farmhouse Sink</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_1613-1.webp" loading="lazy" alt="White kitchen cabinets with dark granite countertops"><figcaption class="portfolio-caption">Dark Granite Kitchen</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_20201204_120939-scaled.webp" loading="lazy" alt="Granite kitchen island and countertops with custom backsplash"><figcaption class="portfolio-caption">Full Kitchen Stonework</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_20201209_125716-scaled.webp" loading="lazy" alt="Bathroom vanity with granite countertop and two undermount sinks"><figcaption class="portfolio-caption">Bathroom Vanity</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_20201209_125907-1-scaled.webp" loading="lazy" alt="Granite fireplace surround and hearth"><figcaption class="portfolio-caption">Fireplace Surround</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_20201215_144723-scaled.webp" loading="lazy" alt="Modern white kitchen with quartz countertops and large island"><figcaption class="portfolio-caption">Modern Quartz Kitchen</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_20210210_124753-1-scaled.webp" loading="lazy" alt="Granite kitchen countertops with island"><figcaption class="portfolio-caption">Granite Kitchen</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/IMG_20210219_111151-1-scaled.webp" loading="lazy" alt="Custom bathroom stone vanity and shower detail"><figcaption class="portfolio-caption">Bathroom Stonework</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/Kitchen-Blue-Pearl-1.webp" loading="lazy" alt="Blue Pearl granite countertops in kitchen"><figcaption class="portfolio-caption">Blue Pearl</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/Leyden-Northfield-1.webp" loading="lazy" alt="Granite countertop project in Northfield MA"><figcaption class="portfolio-caption">Northfield Project</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/Picture-237-1.webp" loading="lazy" alt="Granite kitchen island and countertop detail"><figcaption class="portfolio-caption">Granite Kitchen</figcaption></figure>
-        <figure class="portfolio-item"><img src="/images/Silver-Fantasy-leather-finish-1-1.webp" loading="lazy" alt="Silver Fantasy leather finish stone countertop"><figcaption class="portfolio-caption">Silver Fantasy</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/2020-09-12-094820389-scaled.webp" loading="lazy" alt="Granite kitchen countertop near stove in Ludlow MA" width="800" height="600"><figcaption class="portfolio-caption">Granite Kitchen Detail</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/2020-09-12-100205706-01-scaled.webp" loading="lazy" alt="Granite countertop with undermount sink in Western Massachusetts kitchen" width="800" height="600"><figcaption class="portfolio-caption">Kitchen Countertop & Sink</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/DANNY-DIAZ-010-1.webp" loading="lazy" alt="Black granite tub surround and bathroom stonework" width="800" height="600"><figcaption class="portfolio-caption">Tub Surround</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_07-1.webp" loading="lazy" alt="Marble bathroom vanity with custom cabinetry" width="800" height="600"><figcaption class="portfolio-caption">Double Vanity</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_0114-1.jpg" loading="lazy" alt="Blue Pearl granite kitchen countertops" width="800" height="600"><figcaption class="portfolio-caption">Blue Pearl Kitchen</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_0694-1-1.webp" loading="lazy" alt="Custom granite kitchen island with wood cabinetry" width="800" height="600"><figcaption class="portfolio-caption">Custom Kitchen Island</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_1601-1.jpg" loading="lazy" alt="Granite countertops with farmhouse sink and dark cabinetry" width="800" height="600"><figcaption class="portfolio-caption">Farmhouse Sink</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_1613-1.webp" loading="lazy" alt="White kitchen cabinets with dark granite countertops" width="800" height="600"><figcaption class="portfolio-caption">Dark Granite Kitchen</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_20201204_120939-scaled.webp" loading="lazy" alt="Granite kitchen island and countertops with custom backsplash" width="800" height="600"><figcaption class="portfolio-caption">Full Kitchen Stonework</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_20201209_125716-scaled.webp" loading="lazy" alt="Bathroom vanity with granite countertop and two undermount sinks" width="800" height="600"><figcaption class="portfolio-caption">Bathroom Vanity</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_20201209_125907-1-scaled.webp" loading="lazy" alt="Granite fireplace surround and hearth" width="800" height="600"><figcaption class="portfolio-caption">Fireplace Surround</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_20201215_144723-scaled.webp" loading="lazy" alt="Modern white kitchen with quartz countertops and large island" width="800" height="600"><figcaption class="portfolio-caption">Modern Quartz Kitchen</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_20210210_124753-1-scaled.webp" loading="lazy" alt="Granite kitchen countertops with island" width="800" height="600"><figcaption class="portfolio-caption">Granite Kitchen</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/IMG_20210219_111151-1-scaled.webp" loading="lazy" alt="Custom bathroom stone vanity and shower detail" width="800" height="600"><figcaption class="portfolio-caption">Bathroom Stonework</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/Kitchen-Blue-Pearl-1.webp" loading="lazy" alt="Blue Pearl granite countertops in kitchen" width="800" height="600"><figcaption class="portfolio-caption">Blue Pearl</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/Leyden-Northfield-1.webp" loading="lazy" alt="Granite countertop project in Northfield MA" width="800" height="600"><figcaption class="portfolio-caption">Northfield Project</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/Picture-237-1.webp" loading="lazy" alt="Granite kitchen island and countertop detail" width="800" height="600"><figcaption class="portfolio-caption">Granite Kitchen</figcaption></figure>
+        <figure class="portfolio-item"><img src="/images/Silver-Fantasy-leather-finish-1-1.webp" loading="lazy" alt="Silver Fantasy leather finish stone countertop" width="800" height="600"><figcaption class="portfolio-caption">Silver Fantasy</figcaption></figure>
       </div>
     </section>
 
-    <section class="testimonials" style="background:#0f0f0f;">
+    <section class="testimonials fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Customer reviews</div>
@@ -640,17 +878,17 @@
         </div>
         <p>Real feedback from D&C Granite & Marble customers across Western Massachusetts.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
-        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.6rem;">★★★★★</div><p>“Best granite in western mass. We searched many suppliers and no others could beat the quality and value of D&C.”</p><strong>- Chris S</strong></div>
-        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.6rem;">★★★★★</div><p>“We love our new kitchen and the granite is beautiful and perfectly installed. Thank you!”</p><strong>- Carrie P</strong></div>
-        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.6rem;">★★★★★</div><p>“Great professional quality and installation... only 3 weeks from call to order, templating and installation.”</p><strong>- Nick D</strong></div>
-        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.6rem;">★★★★★</div><p>“Their products and workmanship far exceeded my expectations. The very best buying experience I have ever had.”</p><strong>- Theresa L</strong></div>
-        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.6rem;">★★★★★</div><p>“From picking out the right counter... to the installation itself by owner Louis and crew, I would highly recommend this company.”</p><strong>- Betsy E</strong></div>
-        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.6rem;">★★★★★</div><p>“Perfect! I feel so fortunate that we ended up with D&C Granite. Our renovation was complex and they took the time needed.”</p><strong>- Anne M</strong></div>
+      <div class="testimonial-grid">
+        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"Best granite in western mass. We searched many suppliers and no others could beat the quality and value of D&C."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Chris S</strong></div>
+        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"We love our new kitchen and the granite is beautiful and perfectly installed. Thank you!"</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Carrie P</strong></div>
+        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"Great professional quality and installation... only 3 weeks from call to order, templating and installation."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Nick D</strong></div>
+        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"Their products and workmanship far exceeded my expectations. The very best buying experience I have ever had."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Theresa L</strong></div>
+        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"From picking out the right counter... to the installation itself by owner Louis and crew, I would highly recommend this company."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Betsy E</strong></div>
+        <div class="faq-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"Perfect! I feel so fortunate that we ended up with D&C Granite. Our renovation was complex and they took the time needed."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Anne M</strong></div>
       </div>
     </section>
 
-    <section class="faq" id="faq">
+    <section class="faq fade-in" id="faq">
       <div class="section-head">
         <div>
           <div class="eyebrow">Questions homeowners ask</div>
@@ -665,7 +903,7 @@
       </div>
     </section>
 
-    <section id="contact" class="cta">
+    <section id="contact" class="cta fade-in">
       <div>
         <div class="eyebrow">Start your project</div>
         <h2>Get a quote for granite countertops in Ludlow, MA.</h2>
@@ -687,5 +925,58 @@
   </footer>
 
   <a class="mobile-cta" href="/contact">Request a Quote</a>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      const isExpanded = menuToggle.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', isExpanded);
+      document.body.style.overflow = isExpanded ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Navbar scroll effect
+    const nav = document.querySelector('.nav');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      lastScroll = currentScroll;
+    });
+
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+  </script>
 </body>
 </html>

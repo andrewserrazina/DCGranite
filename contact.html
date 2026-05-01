@@ -75,172 +75,736 @@
       --gold-gradient: linear-gradient(135deg, #8B6413 0%, #D4A017 36%, #F2D77A 55%, #B17A10 100%);
       --stone-texture: radial-gradient(circle at 20% 12%, rgba(212,160,23,.16), transparent 26%), radial-gradient(circle at 78% 20%, rgba(255,255,255,.08), transparent 22%), linear-gradient(145deg, #0b0b0c 0%, #181818 48%, #0f1113 100%);
     }
-    * { box-sizing: border-box; }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: Montserrat, system-ui, sans-serif; color: var(--champagne); background: var(--obsidian); line-height: 1.65; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    body { 
+      font-family: Montserrat, system-ui, sans-serif; 
+      color: var(--champagne); 
+      background: var(--obsidian); 
+      line-height: 1.65; 
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; transition: color .25s ease; }
+    img { max-width: 100%; display: block; height: auto; }
     ::selection { background: var(--gold); color: var(--obsidian); }
 
-    .topbar { background: #050505; color: rgba(255,255,255,.74); font-size: .78rem; padding: .62rem 5vw; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid rgba(212,160,23,.2); }
-    .nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: .95rem 5vw; background: rgba(15,17,19,.86); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(212,160,23,.18); }
-    .brand img { height: 64px; width: auto; filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); }
-    .nav-links { display: flex; align-items: center; gap: 1.35rem; color: rgba(255,255,255,.78); font-size: .84rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .nav-links a:not(.btn):hover { color: var(--gold-light); }
+    /* Skip to content for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gold);
+      color: var(--obsidian);
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+      font-weight: 700;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
 
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: .95rem 1.35rem; border-radius: 999px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; transition: transform .2s ease; border: 0; cursor: pointer; }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--gold); color: #0b0b0b; box-shadow: 0 10px 25px rgba(212,160,23,.2); border: 1px solid rgba(212,160,23,.5); }
-    .btn-outline { border: 1px solid rgba(212,160,23,.35); color: var(--champagne); background: transparent; }
+    .topbar { 
+      background: #050505; 
+      color: rgba(255,255,255,.74); 
+      font-size: .78rem; 
+      padding: .62rem 5vw; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      gap: 1rem; 
+      flex-wrap: wrap; 
+      border-bottom: 1px solid rgba(212,160,23,.2); 
+    }
+    .topbar-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .topbar-contact a:hover {
+      color: var(--gold-light);
+    }
+    
+    .nav { 
+      position: sticky; 
+      top: 0; 
+      z-index: 999; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: .95rem 5vw; 
+      background: rgba(15,17,19,.92); 
+      backdrop-filter: blur(18px); 
+      border-bottom: 1px solid rgba(212,160,23,.18); 
+      transition: background .3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(15,17,19,.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .brand img { 
+      height: 64px; 
+      width: auto; 
+      filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); 
+      transition: filter .3s ease;
+    }
+    .brand img:hover {
+      filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
+    }
+    
+    .nav-links { 
+      display: flex; 
+      align-items: center; 
+      gap: 1.35rem; 
+      color: rgba(255,255,255,.78); 
+      font-size: .84rem; 
+      font-weight: 700; 
+      letter-spacing: .08em; 
+      text-transform: uppercase; 
+    }
+    .nav-links a:not(.btn):hover { 
+      color: var(--gold-light); 
+    }
 
-    .hero { position: relative; min-height: 68vh; display: grid; align-items: center; padding: 7rem 5vw 5rem; background: linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.8), rgba(10,10,10,.36)), url('/images/IMG_20201204_120939-scaled.webp') center/cover; overflow: hidden; }
-    .hero::before { content: ""; position: absolute; inset: 0; background: var(--stone-texture); opacity: .55; mix-blend-mode: multiply; }
-    .hero-content { position: relative; z-index: 1; max-width: 940px; }
-    .hero-logo { width: min(620px, 90vw); margin-bottom: 2rem; filter: drop-shadow(0 20px 55px rgba(0,0,0,.55)); }
-    .eyebrow { text-transform: uppercase; letter-spacing: .24em; font-size: .73rem; color: var(--gold-light); font-weight: 900; margin-bottom: 1rem; }
-    h1, h2, h3 { font-family: Cinzel, Georgia, serif; line-height: 1.02; margin: 0; font-weight: 600; letter-spacing: .02em; }
-    h1 { font-size: clamp(2.8rem, 7vw, 6.5rem); color: var(--white); max-width: 980px; }
-    h2 { font-size: clamp(2.1rem, 4.8vw, 4.35rem); color: var(--white); }
-    h3 { font-size: 1.45rem; color: var(--white); }
-    p { color: rgba(242,239,234,.68); }
-    .hero p { font-size: clamp(1rem, 1.8vw, 1.25rem); color: rgba(255,255,255,.78); max-width: 760px; margin: 1.25rem 0 2rem; }
-    .hero-actions { display: flex; gap: .85rem; flex-wrap: wrap; }
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--gold-light);
+      margin: 5px 0;
+      transition: all .3s ease;
+      border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
 
-    section { padding: 6rem 5vw; position: relative; }
-    .quote-section { background: linear-gradient(180deg, var(--obsidian), #171717); }
-    .quote-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 1.5rem; align-items: start; }
-    .info-card, .form-card, .map-card { background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); border-radius: 30px; padding: 2rem; box-shadow: var(--shadow); border: 1px solid rgba(212,160,23,.2); }
-    .info-list { display: grid; gap: 1rem; margin-top: 1.5rem; }
-    .info-item { padding-bottom: 1rem; border-bottom: 1px solid rgba(212,160,23,.14); }
-    .info-item:last-child { border-bottom: 0; padding-bottom: 0; }
-    .info-item strong { display: block; color: var(--gold-light); font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; margin-bottom: .25rem; }
-    .info-item a:hover { color: var(--gold-light); }
+    @media (max-width: 768px) {
+      .topbar {
+        font-size: .72rem;
+        padding: .5rem 4vw;
+      }
+      .topbar-contact {
+        gap: 1rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(15,17,19,.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right .4s cubic-bezier(.25,.46,.45,.94);
+        border-left: 1px solid rgba(212,160,23,.2);
+        box-shadow: -10px 0 40px rgba(0,0,0,.5);
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links a {
+        font-size: 1.1rem;
+      }
+    }
 
-    .steps { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .65rem; }
-    .steps li { color: rgba(255,255,255,.78); }
-    .steps li::before { content: "– "; color: rgba(212,160,23,.75); }
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: .95rem 1.55rem; 
+      border-radius: 999px; 
+      font-weight: 900; 
+      text-transform: uppercase; 
+      letter-spacing: .08em; 
+      font-size: .8rem; 
+      transition: all .3s cubic-bezier(.25,.46,.45,.94); 
+      border: 0; 
+      cursor: pointer; 
+      white-space: nowrap;
+    }
+    .btn:hover { 
+      transform: translateY(-2px); 
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .btn-primary { 
+      background: var(--gold); 
+      color: #0b0b0b; 
+      box-shadow: 0 10px 25px rgba(212,160,23,.2); 
+      border: 1px solid rgba(212,160,23,.5); 
+    }
+    .btn-primary:hover {
+      box-shadow: 0 14px 32px rgba(212,160,23,.3);
+      background: var(--gold-light);
+    }
+    .btn-outline { 
+      border: 1px solid rgba(212,160,23,.35); 
+      color: var(--champagne); 
+      background: transparent; 
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(212,160,23,.08);
+    }
 
-    form { display: grid; gap: 1rem; margin-top: 1.5rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    label { display: grid; gap: .4rem; color: rgba(255,255,255,.78); font-weight: 700; font-size: .82rem; letter-spacing: .04em; }
+    .hero { 
+      position: relative; 
+      min-height: 50vh; 
+      display: grid; 
+      align-items: center; 
+      padding: 5rem 5vw 4rem; 
+      background: linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.8), rgba(10,10,10,.36)), url('/images/IMG_20201204_120939-scaled.webp') center/cover; 
+      overflow: hidden; 
+    }
+    .hero::before { 
+      content: ""; 
+      position: absolute; 
+      inset: 0; 
+      background: var(--stone-texture); 
+      opacity: .55; 
+      mix-blend-mode: multiply; 
+    }
+    .hero-content { 
+      position: relative; 
+      z-index: 1; 
+      max-width: 940px; 
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .hero-logo { 
+      width: min(520px, 90vw); 
+      margin-bottom: 1.5rem; 
+      filter: drop-shadow(0 20px 55px rgba(0,0,0,.55)); 
+    }
+    .eyebrow { 
+      text-transform: uppercase; 
+      letter-spacing: .24em; 
+      font-size: .73rem; 
+      color: var(--gold-light); 
+      font-weight: 900; 
+      margin-bottom: 1rem; 
+    }
+    h1, h2, h3 { 
+      font-family: Cinzel, Georgia, serif; 
+      line-height: 1.12; 
+      margin: 0; 
+      font-weight: 600; 
+      letter-spacing: .02em; 
+    }
+    h1 { 
+      font-size: clamp(2.2rem, 6vw, 5rem); 
+      color: var(--white); 
+      max-width: 980px; 
+      margin-bottom: .5rem;
+    }
+    h2 { 
+      font-size: clamp(1.8rem, 4.5vw, 3.8rem); 
+      color: var(--white); 
+      margin-bottom: .8rem;
+    }
+    h3 { 
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); 
+      color: var(--white); 
+      margin-bottom: .6rem;
+    }
+    p { 
+      color: rgba(242,239,234,.72); 
+      margin-bottom: 1rem;
+    }
+    .hero p { 
+      font-size: clamp(1rem, 1.6vw, 1.15rem); 
+      color: rgba(255,255,255,.82); 
+      max-width: 760px; 
+      margin: 1rem 0 1.5rem; 
+    }
+    .hero-actions { 
+      display: flex; 
+      gap: .85rem; 
+      flex-wrap: wrap; 
+    }
+
+    section { 
+      padding: 6rem 5vw; 
+      position: relative; 
+    }
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 5vw;
+      }
+    }
+    
+    .quote-section { 
+      background: linear-gradient(180deg, var(--obsidian), #171717); 
+    }
+    .quote-grid { 
+      display: grid; 
+      grid-template-columns: .9fr 1.1fr; 
+      gap: 2rem; 
+      align-items: start; 
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .quote-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .info-card, .form-card, .map-card { 
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); 
+      border-radius: 30px; 
+      padding: 2.5rem; 
+      box-shadow: var(--shadow); 
+      border: 1px solid rgba(212,160,23,.2); 
+    }
+    .info-list { 
+      display: grid; 
+      gap: 1.2rem; 
+      margin-top: 1.5rem; 
+    }
+    .info-item { 
+      padding-bottom: 1.2rem; 
+      border-bottom: 1px solid rgba(212,160,23,.14); 
+    }
+    .info-item:last-child { 
+      border-bottom: 0; 
+      padding-bottom: 0; 
+    }
+    .info-item strong { 
+      display: block; 
+      color: var(--gold-light); 
+      font-size: .75rem; 
+      text-transform: uppercase; 
+      letter-spacing: .14em; 
+      margin-bottom: .3rem; 
+    }
+    .info-item a:hover { 
+      color: var(--gold-light); 
+    }
+
+    .steps { 
+      list-style: none; 
+      padding: 0; 
+      margin: 1.5rem 0 0; 
+      display: grid; 
+      gap: .75rem; 
+    }
+    .steps li { 
+      color: rgba(255,255,255,.82); 
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .steps li::before { 
+      content: "→"; 
+      color: var(--gold-light); 
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    form { 
+      display: grid; 
+      gap: 1.2rem; 
+      margin-top: 1.5rem; 
+    }
+    .form-row { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 1.2rem; 
+    }
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    label { 
+      display: grid; 
+      gap: .5rem; 
+      color: rgba(255,255,255,.82); 
+      font-weight: 700; 
+      font-size: .82rem; 
+      letter-spacing: .04em; 
+    }
     input, select, textarea {
       width: 100%;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.28);
+      background: rgba(0,0,0,.3);
       color: var(--white);
       border-radius: 14px;
-      padding: .95rem 1rem;
+      padding: 1rem;
       font-family: Montserrat, system-ui, sans-serif;
       font-size: .95rem;
       outline: none;
+      transition: all .3s ease;
     }
-    input:focus, select:focus, textarea:focus { border-color: rgba(212,160,23,.55); box-shadow: 0 0 0 3px rgba(212,160,23,.12); }
-    textarea { min-height: 150px; resize: vertical; }
-    select option { background: #111; color: #fff; }
-    .form-note { font-size: .86rem; color: rgba(242,239,234,.58); margin: .25rem 0 0; }
-    .upload-note { border: 1px dashed rgba(212,160,23,.35); border-radius: 16px; padding: 1rem; color: rgba(255,255,255,.7); background: rgba(212,160,23,.055); }
+    input:focus, select:focus, textarea:focus { 
+      border-color: rgba(212,160,23,.6); 
+      box-shadow: 0 0 0 3px rgba(212,160,23,.15); 
+      background: rgba(0,0,0,.4);
+    }
+    textarea { 
+      resize: vertical; 
+      min-height: 140px; 
+    }
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23F2D77A' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
 
-    .map-section { background: #0f0f0f; padding-top: 0; }
-    .map-card { overflow: hidden; padding: 0; }
-    .map-card iframe { width: 100%; height: 420px; border: 0; display: block; filter: grayscale(1) contrast(1.08) brightness(.8); }
+    .upload-note {
+      background: rgba(212,160,23,.08);
+      border: 1px solid rgba(212,160,23,.2);
+      border-radius: 12px;
+      padding: 1.2rem;
+      font-size: .88rem;
+      color: rgba(255,255,255,.78);
+    }
+    .upload-note strong {
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: .4rem;
+    }
+    .upload-note a {
+      color: var(--gold-light);
+      text-decoration: underline;
+    }
 
-    .service-area { background: linear-gradient(180deg, #101010, #1a1a1a); }
-    .area-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: stretch; }
-    .area-card { background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.035)); border-radius: 30px; padding: 2rem; box-shadow: 0 18px 50px rgba(0,0,0,.2); border: 1px solid rgba(212,160,23,.2); }
-    .area-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35rem 1.5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
-    .area-list li { padding: .25rem 0; font-weight: 500; color: rgba(255,255,255,.8); }
-    .area-list li::before { content: "– "; color: rgba(212,160,23,.7); }
+    .form-success {
+      display: none;
+      background: rgba(76, 175, 80, .15);
+      border: 2px solid rgba(76, 175, 80, .5);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .form-success.show {
+      display: block;
+      animation: slideIn .5s ease-out;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .form-success h3 {
+      color: #4CAF50;
+      margin-bottom: .5rem;
+    }
 
-    footer { background: #050505; color: rgba(255,255,255,.62); padding: 2rem 5vw; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(212,160,23,.18); }
-    .mobile-cta { display: none; position: fixed; z-index: 40; left: 1rem; right: 1rem; bottom: 1rem; background: var(--gold-gradient); color: #050505; text-align: center; padding: 1rem; border-radius: 999px; font-weight: 950; box-shadow: 0 18px 45px rgba(0,0,0,.35); text-transform: uppercase; letter-spacing: .08em; }
+    .map-section {
+      padding: 0;
+    }
+    .map-card {
+      border-radius: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-top: 1px solid rgba(212,160,23,.2);
+      border-bottom: 1px solid rgba(212,160,23,.2);
+    }
+    .map-card iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+      display: block;
+    }
 
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .brand img { height: 54px; }
-      .hero { min-height: 68vh; padding-top: 5rem; }
-      .quote-grid, .area-grid, .form-row { grid-template-columns: 1fr; }
-      section { padding: 4.5rem 5vw; }
-      .mobile-cta { display: block; }
-      .area-list { grid-template-columns: 1fr; }
-      .map-card iframe { height: 340px; }
+    .section-head {
+      max-width: 1400px;
+      margin: 0 auto 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .testimonials {
+      background: #0f0f0f;
+    }
+    .testimonial-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .area-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.18);
+      transition: all .3s ease;
+    }
+    .area-card:hover {
+      border-color: rgba(212,160,23,.32);
+      transform: translateY(-3px);
+    }
+
+    .page-links {
+      background: #111;
+    }
+    .page-link-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .page-links .area-card {
+      cursor: pointer;
+    }
+    .page-links .area-card:hover {
+      border-color: var(--gold);
+      background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+    }
+    .page-links .area-card strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: .5rem;
+      color: var(--gold-light);
+    }
+
+    .service-area {
+      background: #0a0a0a;
+    }
+    .area-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .area-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .area-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .6rem;
+      margin-top: 1.5rem;
+    }
+    .area-list li {
+      padding: .6rem 1rem;
+      background: rgba(212,160,23,.08);
+      border-radius: 8px;
+      font-size: .88rem;
+      color: rgba(255,255,255,.85);
+      border: 1px solid rgba(212,160,23,.15);
+      transition: all .3s ease;
+    }
+    .area-list li:hover {
+      background: rgba(212,160,23,.15);
+      border-color: rgba(212,160,23,.3);
+    }
+
+    footer {
+      background: #050505;
+      color: rgba(255,255,255,.6);
+      padding: 2.5rem 5vw;
+      border-top: 1px solid rgba(212,160,23,.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: .85rem;
+    }
+    footer a:hover {
+      color: var(--gold-light);
+    }
+
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 998;
+      background: var(--gold);
+      color: #0b0b0b;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .85rem;
+      box-shadow: 0 12px 40px rgba(212,160,23,.4);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+    }
+    @media (max-width: 768px) {
+      .mobile-cta {
+        display: block;
+      }
+    }
+
+    /* Smooth fade-in for sections */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="topbar">
-    <span>664 Center Street, Ludlow, MA 01056</span>
-    <span>Mon–Fri 9:30–4:30 · Sat 9:30–1:00 · <a href="tel:+14135833399">(413) 583-3399</a></span>
+    <div>📍 664 Center Street, Ludlow, MA 01056</div>
+    <div class="topbar-contact">
+      <a href="tel:+14135833399">📞 (413) 583-3399</a>
+      <span>🕒 Mon–Fri 9:30–4:30 · Sat 9:30–1:00</span>
+    </div>
   </div>
 
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="/" aria-label="D&C Granite home">
-      <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery logo">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
+      <img src="/images/DC-Granite-and-Marble-Design-Gallery-Logo-2023-3-500.png" alt="D&C Granite and Marble Design Gallery" width="200" height="64" />
     </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
       <a href="/granite-countertops-ludlow-ma">Granite</a>
       <a href="/quartz-countertops-ludlow-ma">Quartz</a>
       <a href="/portfolio">Portfolio</a>
-      <a href="/contact">Contact</a>
-      <a class="btn btn-primary" href="/contact">Request Quote</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="btn btn-primary">Get a Quote</a>
     </div>
   </nav>
 
-  <main>
-    <section class="hero">
+  <main id="main-content">
+    <header class="hero">
       <div class="hero-content">
-        <img class="hero-logo" src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery premium logo">
-        <div class="eyebrow">Contact · Ludlow, Massachusetts</div>
-        <h1>Request a Countertop Quote</h1>
-        <p>Tell us about your kitchen, bathroom, fireplace, or custom stone project. Rough measurements, photos, or a sketch can help us give you a better starting estimate.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact">Request a Quote</a>
-          <a class="btn btn-outline" href="#quote-form">Send Project Details</a>
-        </div>
+        <img class="hero-logo" src="/images/DC-Granite-and-Marble-Design-Gallery-Logo-2023-3-500.png" alt="D&C Granite and Marble Design Gallery" width="520" height="166" />
+        <div class="eyebrow">Contact our showroom</div>
+        <h1>Let's talk about your countertop project.</h1>
+        <p>Call, visit the showroom, or send us your project details below. We're here to help you choose the perfect stone and bring your vision to life.</p>
       </div>
-    </section>
+    </header>
 
-    <section class="quote-section" id="quote-form">
+    <section class="quote-section fade-in">
       <div class="quote-grid">
         <aside class="info-card">
-          <div class="eyebrow">Showroom info</div>
-          <h2>Visit, call, or send the details.</h2>
-          <p>D&C Granite & Marble Design Gallery is located in Ludlow, MA and serves homeowners, contractors, and remodelers throughout Western Massachusetts.</p>
-
+          <div class="eyebrow">Get in touch</div>
+          <h2>Three ways to reach us.</h2>
+          
           <div class="info-list">
-            <div class="info-item"><strong>Phone</strong><a href="tel:+14135833399">(413) 583-3399</a></div>
-            <div class="info-item"><strong>Email</strong><a href="mailto:info@dcgraniteandmarble.net">info@dcgraniteandmarble.net</a></div>
-            <div class="info-item"><strong>Showroom</strong>664 Center Street<br>Ludlow, MA 01056</div>
-            <div class="info-item"><strong>Hours</strong>Mon–Fri 9:30 AM–4:30 PM<br>Sat 9:30 AM–1:00 PM</div>
+            <div class="info-item">
+              <strong>Phone</strong>
+              <a href="tel:+14135833399">(413) 583-3399</a>
+              <p style="margin-top:.4rem;font-size:.88rem;">Call during business hours for immediate assistance or to schedule a showroom visit.</p>
+            </div>
+            <div class="info-item">
+              <strong>Email</strong>
+              <a href="mailto:info@dcgraniteandmarble.net">info@dcgraniteandmarble.net</a>
+              <p style="margin-top:.4rem;font-size:.88rem;">Send photos, measurements, or questions about your project.</p>
+            </div>
+            <div class="info-item">
+              <strong>Showroom</strong>
+              664 Center Street<br>
+              Ludlow, MA 01056
+              <p style="margin-top:.4rem;font-size:.88rem;">Mon–Fri 9:30 AM–4:30 PM<br>Sat 9:30 AM–1:00 PM</p>
+            </div>
           </div>
 
+          <h3 style="margin-top:2rem;margin-bottom:.8rem;">For faster quotes, include:</h3>
           <ul class="steps">
-            <li>Send photos of the room or existing countertop</li>
-            <li>Include rough measurements if you have them</li>
-            <li>Tell us if you are considering granite, quartz, marble, or remnants</li>
-            <li>Stop by the showroom to review slabs and options</li>
+            <li>Photos of the room or existing countertop</li>
+            <li>Rough measurements if you have them</li>
+            <li>Your preference: granite, quartz, marble, or remnants</li>
+            <li>Project timeline and any special requirements</li>
           </ul>
         </aside>
 
         <div class="form-card">
           <div class="eyebrow">Project details</div>
-          <h2>Tell us what you’re working on.</h2>
-          <p>This form is ready to connect to Formspree, Netlify Forms, Cloudflare Pages Functions, or another form handler.</p>
+          <h2>Tell us what you're working on.</h2>
+          <p>Fill out the form below and we'll get back to you within 1 business day. For urgent requests, please call the showroom directly.</p>
 
-          <form name="quote-request" method="POST" action="mailto:info@dcgraniteandmarble.net" enctype="text/plain">
+          <form id="quoteForm" name="quote-request" netlify netlify-honeypot="bot-field" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="quote-request" />
+            <p style="display:none;">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+
             <div class="form-row">
               <label>Full Name
-                <input type="text" name="name" placeholder="Your name" required>
+                <input type="text" name="name" placeholder="Your name" required />
               </label>
               <label>Phone
-                <input type="tel" name="phone" placeholder="(413) 555-1234" required>
+                <input type="tel" name="phone" placeholder="(413) 555-1234" required />
               </label>
             </div>
 
             <div class="form-row">
               <label>Email
-                <input type="email" name="email" placeholder="you@example.com">
+                <input type="email" name="email" placeholder="you@example.com" />
               </label>
               <label>Project Type
                 <select name="project_type" required>
@@ -268,33 +832,37 @@
                 </select>
               </label>
               <label>Project Location
-                <input type="text" name="project_location" placeholder="Town / city">
+                <input type="text" name="project_location" placeholder="Town / city" />
               </label>
             </div>
 
             <label>Project Details
-              <textarea name="message" placeholder="Tell us about the project, approximate size, timeline, color/style ideas, and whether you already have cabinets installed."></textarea>
+              <textarea name="message" placeholder="Tell us about the project, approximate size, timeline, color/style ideas, and whether you already have cabinets installed." required></textarea>
             </label>
 
             <div class="upload-note">
-              <strong>Have photos?</strong><br>
-              After submitting, email photos or measurements to <a href="mailto:info@dcgraniteandmarble.net">info@dcgraniteandmarble.net</a>. You can include pictures of your current countertop, kitchen layout, inspiration photos, or a rough sketch.
+              <strong>Have photos or measurements?</strong>
+              After submitting, email them to <a href="mailto:info@dcgraniteandmarble.net">info@dcgraniteandmarble.net</a>. Include pictures of your current countertop, kitchen layout, inspiration photos, or a rough sketch with dimensions.
             </div>
 
             <button class="btn btn-primary" type="submit">Send Quote Request</button>
-            <p class="form-note">Note: for a production website, connect this form to a form handler so submissions do not rely on the visitor’s email app.</p>
           </form>
+
+          <div class="form-success" id="formSuccess">
+            <h3>✓ Thank you for your request!</h3>
+            <p>We've received your information and will respond within 1 business day. For urgent requests, please call us at (413) 583-3399.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="map-section">
       <div class="map-card">
-        <iframe title="D&C Granite and Marble Design Gallery map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=664%20Center%20Street%2C%20Ludlow%2C%20MA%2001056&output=embed"></iframe>
+        <iframe title="D&C Granite and Marble Design Gallery map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=664%20Center%20Street%2C%20Ludlow%2C%20MA%2001056&output=embed" aria-label="Map showing D&C Granite showroom location at 664 Center Street, Ludlow, MA"></iframe>
       </div>
     </section>
 
-    <section class="testimonials" style="background:#0f0f0f; padding:6rem 5vw;">
+    <section class="testimonials fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Customer reviews</div>
@@ -302,21 +870,22 @@
         </div>
         <p>Real feedback from customers across Western Massachusetts.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
-        <div class="area-card"><div style="color:#F2D77A;">★★★★★</div><p>“From the owner on down everyone was so professional, knowledgeable and a pleasure to work with.”</p><strong>- Theresa L</strong></div>
-        <div class="area-card"><div style="color:#F2D77A;">★★★★★</div><p>“D&C was super helpful & always willing to work with us as we made our final choices.”</p><strong>- Bernadette B</strong></div>
-        <div class="area-card"><div style="color:#F2D77A;">★★★★★</div><p>“Perfect! Our renovation was complex and they took the time needed to do everything perfectly.”</p><strong>- Anne M</strong></div>
+      <div class="testimonial-grid">
+        <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"From the owner on down everyone was so professional, knowledgeable and a pleasure to work with."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Theresa L</strong></div>
+        <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"D&C was super helpful & always willing to work with us as we made our final choices."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Bernadette B</strong></div>
+        <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"Perfect! Our renovation was complex and they took the time needed to do everything perfectly."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Anne M</strong></div>
       </div>
     </section>
 
-    <section class="page-links" style="background:#111; padding:6rem 5vw;">
+    <section class="page-links fade-in">
       <div class="section-head">
         <div>
           <div class="eyebrow">Explore more</div>
           <h2>Not ready yet?</h2>
         </div>
+        <p>Browse our materials, view completed projects, or learn more about our process.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <div class="page-link-grid">
         <a href="/granite-countertops-ludlow-ma" class="area-card"><strong>Granite</strong><p>Explore natural stone.</p></a>
         <a href="/quartz-countertops-ludlow-ma" class="area-card"><strong>Quartz</strong><p>Modern surfaces.</p></a>
         <a href="/portfolio" class="area-card"><strong>Portfolio</strong><p>See real projects.</p></a>
@@ -324,7 +893,7 @@
       </div>
     </section>
 
-    <section class="service-area" id="service-area">
+    <section class="service-area fade-in" id="service-area">
       <div class="area-grid">
         <div class="area-card">
           <div class="eyebrow">Local service area</div>
@@ -346,6 +915,89 @@
     <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
   </footer>
 
-  <a class="mobile-cta" href="/contact">Request a Quote</a>
+  <a class="mobile-cta" href="#quoteForm">Request a Quote</a>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      const isExpanded = menuToggle.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', isExpanded);
+      document.body.style.overflow = isExpanded ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Navbar scroll effect
+    const nav = document.querySelector('.nav');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      lastScroll = currentScroll;
+    });
+
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
+    // Form submission handling
+    const form = document.getElementById('quoteForm');
+    const formSuccess = document.getElementById('formSuccess');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        });
+        
+        if (response.ok) {
+          form.style.display = 'none';
+          formSuccess.classList.add('show');
+          
+          // Scroll to success message
+          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        alert('There was an error submitting the form. Please call us directly at (413) 583-3399 or email info@dcgraniteandmarble.net');
+      }
+    });
+  </script>
 </body>
 </html>
