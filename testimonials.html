@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Customer Reviews & Testimonials | D&C Granite Ludlow MA</title>
+  <meta name="description" content="Read reviews from D&C Granite customers across Western Massachusetts. Real feedback about granite, quartz, and marble countertop installation in Ludlow, Springfield, and surrounding areas." />
+  <meta name="keywords" content="D&C Granite reviews, granite countertop reviews Ludlow MA, customer testimonials, countertop installer reviews Springfield MA" />
+  <meta name="author" content="D&C Granite and Marble Design Gallery" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dcgraniteandmarble.net/testimonials" />
+
+  <meta property="og:title" content="Customer Testimonials | D&C Granite & Marble" />
+  <meta property="og:description" content="Real customer reviews and testimonials from Western Massachusetts homeowners." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dcgraniteandmarble.net/testimonials" />
+  <meta name="theme-color" content="#0F1113" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --obsidian: #0F1113;
+      --gold: #D4A017;
+      --gold-light: #F2D77A;
+      --champagne: #F2EFEA;
+      --white: #FFFFFF;
+      --shadow: 0 28px 90px rgba(0,0,0,.34);
+      --gold-gradient: linear-gradient(135deg, #8B6413 0%, #D4A017 36%, #F2D77A 55%, #B17A10 100%);
+      --stone-texture: radial-gradient(circle at 20% 12%, rgba(212,160,23,.16), transparent 26%), radial-gradient(circle at 78% 20%, rgba(255,255,255,.08), transparent 22%), linear-gradient(145deg, #0b0b0c 0%, #181818 48%, #0f1113 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: Montserrat, system-ui, sans-serif; 
+      color: var(--champagne); 
+      background: var(--obsidian); 
+      line-height: 1.65; 
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; transition: color .25s ease; }
+    img { max-width: 100%; display: block; height: auto; }
+    ::selection { background: var(--gold); color: var(--obsidian); }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gold);
+      color: var(--obsidian);
+      padding: 8px;
+      z-index: 100;
+      font-weight: 700;
+    }
+    .skip-link:focus { top: 0; }
+
+    .topbar { 
+      background: #050505; 
+      color: rgba(255,255,255,.74); 
+      font-size: .78rem; 
+      padding: .62rem 5vw; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      gap: 1rem; 
+      flex-wrap: wrap; 
+      border-bottom: 1px solid rgba(212,160,23,.2); 
+    }
+    .topbar-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .topbar-contact a:hover { color: var(--gold-light); }
+
+    .nav { 
+      position: sticky; 
+      top: 0; 
+      z-index: 999; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: .95rem 5vw; 
+      background: rgba(15,17,19,.92); 
+      backdrop-filter: blur(18px); 
+      border-bottom: 1px solid rgba(212,160,23,.18); 
+      transition: background .3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(15,17,19,.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .brand img { 
+      height: 64px; 
+      width: auto; 
+      filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); 
+      transition: filter .3s ease;
+    }
+    .brand img:hover {
+      filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
+    }
+
+    .nav-links { 
+      display: flex; 
+      align-items: center; 
+      gap: 1.35rem; 
+      color: rgba(255,255,255,.78); 
+      font-size: .84rem; 
+      font-weight: 700; 
+      letter-spacing: .08em; 
+      text-transform: uppercase; 
+    }
+    .nav-links a:not(.btn):hover { color: var(--gold-light); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--gold-light);
+      margin: 5px 0;
+      transition: all .3s ease;
+      border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+    @media (max-width: 768px) {
+      .topbar { font-size: .72rem; padding: .5rem 4vw; }
+      .topbar-contact { gap: 1rem; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(15,17,19,.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: right .4s cubic-bezier(.25,.46,.45,.94);
+        border-left: 1px solid rgba(212,160,23,.2);
+        box-shadow: -10px 0 40px rgba(0,0,0,.5);
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 1.1rem; }
+    }
+
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: .95rem 1.55rem; 
+      border-radius: 999px; 
+      font-weight: 900; 
+      text-transform: uppercase; 
+      letter-spacing: .08em; 
+      font-size: .8rem; 
+      transition: all .3s cubic-bezier(.25,.46,.45,.94); 
+      border: 0; 
+      cursor: pointer; 
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { 
+      background: var(--gold); 
+      color: #0b0b0b; 
+      box-shadow: 0 10px 25px rgba(212,160,23,.2); 
+      border: 1px solid rgba(212,160,23,.5); 
+    }
+    .btn-primary:hover {
+      box-shadow: 0 14px 32px rgba(212,160,23,.3);
+      background: var(--gold-light);
+    }
+
+    .hero { 
+      position: relative; 
+      min-height: 45vh; 
+      display: grid; 
+      align-items: center; 
+      padding: 4rem 5vw 3rem; 
+      background: linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.8), rgba(10,10,10,.36)), url('/images/IMG_20201204_120939-scaled.webp') center/cover; 
+      overflow: hidden; 
+    }
+    .hero::before { 
+      content: ""; 
+      position: absolute; 
+      inset: 0; 
+      background: var(--stone-texture); 
+      opacity: .55; 
+      mix-blend-mode: multiply; 
+    }
+    .hero-content { 
+      position: relative; 
+      z-index: 1; 
+      max-width: 940px; 
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .eyebrow { 
+      text-transform: uppercase; 
+      letter-spacing: .24em; 
+      font-size: .73rem; 
+      color: var(--gold-light); 
+      font-weight: 900; 
+      margin-bottom: 1rem; 
+    }
+    h1, h2, h3 { 
+      font-family: Cinzel, Georgia, serif; 
+      line-height: 1.12; 
+      margin: 0; 
+      font-weight: 600; 
+      letter-spacing: .02em; 
+    }
+    h1 { 
+      font-size: clamp(2rem, 5.5vw, 4.5rem); 
+      color: var(--white); 
+      max-width: 980px; 
+      margin-bottom: .5rem;
+    }
+    h2 { 
+      font-size: clamp(1.8rem, 4.5vw, 4.35rem); 
+      color: var(--white); 
+      margin-bottom: .8rem;
+    }
+    h3 { 
+      font-size: clamp(1.05rem, 2vw, 1.35rem); 
+      color: var(--white); 
+      margin-bottom: .6rem;
+    }
+    p { 
+      color: rgba(242,239,234,.72); 
+      margin-bottom: 1rem;
+    }
+    .hero p { 
+      font-size: clamp(.95rem, 1.5vw, 1.15rem); 
+      color: rgba(255,255,255,.82); 
+      max-width: 760px; 
+      margin: 1rem 0 1.5rem; 
+    }
+
+    section { 
+      padding: 6rem 5vw; 
+      position: relative; 
+    }
+    @media (max-width: 768px) {
+      section { padding: 4rem 5vw; }
+    }
+
+    .stats {
+      background: linear-gradient(180deg, var(--obsidian), #0f0f0f);
+      text-align: center;
+    }
+    .stats-grid {
+      max-width: 1000px;
+      margin: 2rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+    .stat-card {
+      padding: 2rem;
+    }
+    .stat-number {
+      font-family: Cinzel, Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--gold-light);
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .stat-label {
+      color: rgba(255,255,255,.8);
+      font-size: .95rem;
+    }
+
+    .testimonials {
+      background: #0a0a0a;
+    }
+    .testimonial-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.22);
+      transition: all .3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(212,160,23,.35);
+      transform: translateY(-3px);
+    }
+    .stars {
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      letter-spacing: .2rem;
+    }
+    .testimonial-text {
+      color: rgba(255,255,255,.9);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(212,160,23,.15);
+    }
+    .author-info strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 1rem;
+      margin-bottom: .2rem;
+    }
+    .author-info span {
+      color: rgba(255,255,255,.6);
+      font-size: .85rem;
+    }
+
+    .cta-section {
+      background: var(--stone-texture);
+      padding: 7rem 5vw;
+      text-align: center;
+    }
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .cta-content h2 {
+      margin-bottom: 1rem;
+    }
+    .cta-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    footer { 
+      background: #050505; 
+      color: rgba(255,255,255,.6); 
+      padding: 2.5rem 5vw; 
+      border-top: 1px solid rgba(212,160,23,.15); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 2rem; 
+      flex-wrap: wrap; 
+      font-size: .85rem; 
+    }
+    footer a:hover { color: var(--gold-light); }
+
+    .mobile-cta { 
+      display: none; 
+      position: fixed; 
+      bottom: 20px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      z-index: 998; 
+      background: var(--gold); 
+      color: #0b0b0b; 
+      padding: 1rem 2rem; 
+      border-radius: 999px; 
+      font-weight: 900; 
+      text-transform: uppercase; 
+      letter-spacing: .08em; 
+      font-size: .85rem; 
+      box-shadow: 0 12px 40px rgba(212,160,23,.4); 
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+    }
+    @media (max-width: 768px) {
+      .mobile-cta { display: block; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="topbar">
+    <div>📍 664 Center Street, Ludlow, MA 01056</div>
+    <div class="topbar-contact">
+      <a href="tel:+14135833399">📞 (413) 583-3399</a>
+      <span>🕒 Mon–Fri 9:30–4:30 · Sat 9:30–1:00</span>
+    </div>
+  </div>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
+      <img src="/images/DCGraniteWide.png" alt="D&C Granite and Marble Design Gallery" width="200" height="64" />
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/granite-countertops-ludlow-ma">Granite</a>
+      <a href="/quartz-countertops-ludlow-ma">Quartz</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="btn btn-primary">Get a Quote</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <header class="hero" role="banner">
+      <div class="hero-content">
+        <div class="eyebrow">Customer reviews</div>
+        <h1>What Homeowners Are Saying</h1>
+        <p>Real feedback from D&C Granite customers across Western Massachusetts who have trusted us with their countertop projects.</p>
+      </div>
+    </header>
+
+    <section class="stats fade-in">
+      <div class="eyebrow">By the numbers</div>
+      <h2>Trusted by Western Massachusetts</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Years in Business</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4.9★</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials fade-in">
+      <div style="max-width:1400px;margin:0 auto 3rem;">
+        <div class="eyebrow">Real experiences</div>
+        <h2>Hear from our customers.</h2>
+      </div>
+      <div class="testimonial-grid">
+        
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Best granite in western mass. We searched many suppliers and no others could beat the quality and value of D&C. Professional from start to finish."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Chris S.</strong>
+              <span>Springfield, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"We love our new kitchen and the granite is beautiful and perfectly installed. Thank you!"</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Carrie P.</strong>
+              <span>Ludlow, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Great professional quality and installation... only 3 weeks from call to order, templating and installation. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Nick D.</strong>
+              <span>Chicopee, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Their products and workmanship far exceeded my expectations. The very best buying experience I have ever had."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Theresa L.</strong>
+              <span>Wilbraham, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"From picking out the right counter material to the installation itself by owner Louis and crew, I would highly recommend this company."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Betsy E.</strong>
+              <span>Longmeadow, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Perfect! I feel so fortunate that we ended up with D&C Granite. Our renovation was complex and they took the time needed to do everything perfectly."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Anne M.</strong>
+              <span>Springfield, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"D&C was super helpful and always willing to work with us as we made our final choices. Very happy with the results!"</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Bernadette B.</strong>
+              <span>Holyoke, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"The team was professional, courteous, and the installation was flawless. Our kitchen looks amazing!"</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Michael R.</strong>
+              <span>East Longmeadow, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Excellent service from beginning to end. The granite we selected is even more beautiful installed than it was in the showroom."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Sarah K.</strong>
+              <span>Agawam, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Fair pricing, quality work, and great communication throughout the process. Couldn't ask for more."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>David L.</strong>
+              <span>West Springfield, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"They helped us choose the perfect granite for our kitchen. The craftsmanship is outstanding."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Jennifer M.</strong>
+              <span>Palmer, MA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"The attention to detail was impressive. Our bathroom vanity looks like it came straight out of a magazine."</p>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <strong>Robert T.</strong>
+              <span>South Hadley, MA</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="cta-section fade-in">
+      <div class="cta-content">
+        <div class="eyebrow">Join our satisfied customers</div>
+        <h2>Start Your Countertop Project</h2>
+        <p>Experience the same quality craftsmanship and professional service. Contact D&C Granite to discuss your project and get a quote.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="/contact">Request a Quote</a>
+          <a class="btn btn-primary" href="tel:+14135833399">Call (413) 583-3399</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 D&C Granite and Marble Design Gallery</span>
+    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/portfolio">Portfolio</a> · <a href="/testimonials">Reviews</a> · <a href="/contact">Contact</a></span>
+  </footer>
+
+  <a class="mobile-cta" href="/contact">Request a Quote</a>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+      document.body.style.overflow = menuToggle.classList.contains('active') ? 'hidden' : '';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+  </script>
+</body>
+</html>
