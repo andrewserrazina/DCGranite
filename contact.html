@@ -787,27 +787,22 @@
           <h2>Tell us what you're working on.</h2>
           <p>Fill out the form below and we'll get back to you within 1 business day. For urgent requests, please call the showroom directly.</p>
 
-          <form id="quoteForm" name="quote-request" netlify netlify-honeypot="bot-field" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="quote-request" />
-            <p style="display:none;">
-              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-            </p>
-
+          <form id="quoteForm" name="quote-request">
             <div class="form-row">
               <label>Full Name
-                <input type="text" name="name" placeholder="Your name" required />
+                <input type="text" id="name" name="name" placeholder="Your name" required />
               </label>
               <label>Phone
-                <input type="tel" name="phone" placeholder="(413) 555-1234" required />
+                <input type="tel" id="phone" name="phone" placeholder="(413) 555-1234" required />
               </label>
             </div>
 
             <div class="form-row">
               <label>Email
-                <input type="email" name="email" placeholder="you@example.com" />
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
               </label>
               <label>Project Type
-                <select name="project_type" required>
+                <select id="project_type" name="project_type" required>
                   <option value="">Select one</option>
                   <option>Kitchen countertops</option>
                   <option>Kitchen island</option>
@@ -822,7 +817,7 @@
 
             <div class="form-row">
               <label>Material Interest
-                <select name="material_interest">
+                <select id="material_interest" name="material_interest">
                   <option value="">Not sure yet</option>
                   <option>Granite</option>
                   <option>Quartz</option>
@@ -832,12 +827,12 @@
                 </select>
               </label>
               <label>Project Location
-                <input type="text" name="project_location" placeholder="Town / city" />
+                <input type="text" id="project_location" name="project_location" placeholder="Town / city" />
               </label>
             </div>
 
             <label>Project Details
-              <textarea name="message" placeholder="Tell us about the project, approximate size, timeline, color/style ideas, and whether you already have cabinets installed." required></textarea>
+              <textarea id="message" name="message" placeholder="Tell us about the project, approximate size, timeline, color/style ideas, and whether you already have cabinets installed." required></textarea>
             </label>
 
             <div class="upload-note">
@@ -849,8 +844,8 @@
           </form>
 
           <div class="form-success" id="formSuccess">
-            <h3>✓ Thank you for your request!</h3>
-            <p>We've received your information and will respond within 1 business day. For urgent requests, please call us at (413) 583-3399.</p>
+            <h3>✓ Your email client should open shortly!</h3>
+            <p>Please review and send the email from your email application. If your email client didn't open automatically, please email us directly at <a href="mailto:info@dcgraniteandmarble.net" style="color: var(--gold-light);">info@dcgraniteandmarble.net</a> or call (413) 583-3399.</p>
           </div>
         </div>
       </div>
@@ -973,30 +968,47 @@
     const form = document.getElementById('quoteForm');
     const formSuccess = document.getElementById('formSuccess');
     
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      const formData = new FormData(form);
+      // Get form values
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const projectType = document.getElementById('project_type').value;
+      const materialInterest = document.getElementById('material_interest').value;
+      const projectLocation = document.getElementById('project_location').value;
+      const message = document.getElementById('message').value;
       
-      try {
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
-        });
-        
-        if (response.ok) {
-          form.style.display = 'none';
-          formSuccess.classList.add('show');
-          
-          // Scroll to success message
-          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        alert('There was an error submitting the form. Please call us directly at (413) 583-3399 or email info@dcgraniteandmarble.net');
-      }
+      // Build email subject and body
+      const subject = encodeURIComponent(`Quote Request: ${projectType} - ${name}`);
+      const body = encodeURIComponent(
+`New Quote Request from Website
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+
+Project Type: ${projectType}
+Material Interest: ${materialInterest || 'Not specified'}
+Location: ${projectLocation || 'Not specified'}
+
+Project Details:
+${message}
+
+---
+This request was submitted via the D&C Granite website contact form.`
+      );
+      
+      // Open mailto link
+      window.location.href = `mailto:info@dcgraniteandmarble.net?subject=${subject}&body=${body}`;
+      
+      // Show success message
+      setTimeout(() => {
+        form.style.display = 'none';
+        formSuccess.classList.add('show');
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 500);
     });
   </script>
 </body>
