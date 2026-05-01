@@ -131,7 +131,13 @@
       border-bottom: 1px solid rgba(212,160,23,.18);
     }
     .brand { display: flex; align-items: center; gap: .8rem; }
-    .brand img { height: 64px; width: auto; filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); }
+    .brand img {
+      height: 58px;
+      width: auto;
+      max-width: 360px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 26px rgba(212,160,23,.2));
+    }
     .nav-links { display: flex; align-items: center; gap: 1.35rem; color: rgba(255,255,255,.78); font-size: .84rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
     .nav-links a:not(.btn):hover { color: var(--gold-light); }
 
@@ -163,22 +169,23 @@
 
     .hero {
       position: relative;
-      min-height: 88vh;
+      min-height: 86vh;
       display: grid;
       align-items: center;
-      padding: 7rem 5vw 5rem;
+      padding: 7rem 5vw 9rem;
       background:
-        linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.76), rgba(10,10,10,.25)),
-        url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=88') center/cover;
+        linear-gradient(90deg, rgba(5,5,5,.82), rgba(10,10,10,.52), rgba(10,10,10,.18)),
+        url('/images/Kitchen-Blue-Pearl-1.webp') center/cover no-repeat;
       overflow: hidden;
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: var(--stone-texture);
-      opacity: .56;
-      mix-blend-mode: multiply;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.68), rgba(0,0,0,.32), rgba(0,0,0,.05)),
+        url('/images/Kitchen-Blue-Pearl-1.webp') center/cover no-repeat;
+      z-index: 0;
     }
     .hero::after {
       content: "";
@@ -186,9 +193,61 @@
       inset: auto -10% -25% -10%;
       height: 200px;
       background: radial-gradient(ellipse at center, rgba(212,160,23,.18), transparent 70%);
+      z-index: 0;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 900px; }
-    .hero-logo { width: min(760px, 92vw); margin-bottom: 2.2rem; filter: drop-shadow(0 20px 55px rgba(0,0,0,.55)); }
+    .hero-content { position: relative; z-index: 1; max-width: 920px; }
+    .hero-logo { display: none; }
+    .hero-kicker-line {
+      width: 92px;
+      height: 3px;
+      background: var(--gold);
+      margin: 1.6rem 0 1.3rem;
+    }
+    .hero-trust-strip {
+      position: absolute;
+      left: 5vw;
+      right: 5vw;
+      bottom: 2rem;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      max-width: 980px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      background: rgba(8,8,8,.58);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding: 1.2rem 1.35rem;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .hero-trust-item:last-child { border-right: 0; }
+    .hero-trust-icon {
+      color: var(--gold);
+      font-size: 1.6rem;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+    .hero-trust-item strong {
+      display: block;
+      color: var(--white);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      line-height: 1.2;
+    }
+    .hero-trust-item span {
+      display: block;
+      color: rgba(242,239,234,.68);
+      font-size: .82rem;
+      margin-top: .2rem;
+      line-height: 1.25;
+    }
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: .24em;
@@ -408,8 +467,11 @@
 
     @media (max-width: 980px) {
       .nav-links { display: none; }
-      .brand img { height: 54px; }
-      .hero { min-height: 78vh; padding-top: 5rem; }
+      .brand img { height: 48px; max-width: 280px; }
+      .hero { min-height: 82vh; padding: 5rem 5vw 15rem; }
+      .hero-trust-strip { grid-template-columns: 1fr; max-width: none; bottom: 1rem; }
+      .hero-trust-item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.1); padding: .9rem 1rem; }
+      .hero-trust-item:last-child { border-bottom: 0; }
       .about-grid, .cta, .area-grid { grid-template-columns: 1fr; }
       .service-grid, .process-grid, .material-grid, .faq-grid { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
@@ -431,7 +493,7 @@
 
   <nav class="nav" aria-label="Main navigation">
     <a class="brand" href="/" aria-label="D&C Granite home">
-      <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery logo">
+      <img src="/images/DCGraniteWidePNG.png" alt="D&C Granite and Marble Design Gallery logo">
     </a>
     <div class="nav-links">
       <a href="/">Home</a>
@@ -447,14 +509,20 @@
   <main id="top">
     <section class="hero">
       <div class="hero-content">
-        <img class="hero-logo" src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery premium logo">
-        <div class="eyebrow">Custom stonework · Ludlow, Massachusetts</div>
-        <h1>Granite Countertops in Ludlow, MA</h1>
-        <p>Custom granite, quartz, and marble countertops for kitchens, bathrooms, and fireplaces across Ludlow and Western Massachusetts.</p>
+        <div class="eyebrow">Custom stonework in Western Massachusetts</div>
+        <h1>Beautiful stone. Expertly crafted.</h1>
+        <div class="hero-kicker-line"></div>
+        <p>Granite, quartz, and marble countertops custom made for your home by D&C Granite & Marble Design Gallery in Ludlow, MA.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/contact">Start Your Project</a>
           <a class="btn btn-outline" href="/portfolio">View Our Work</a>
         </div>
+      </div>
+      <div class="hero-trust-strip" aria-label="D&C Granite highlights">
+        <div class="hero-trust-item"><div class="hero-trust-icon">◇</div><div><strong>Premium Materials</strong><span>Granite, Quartz & Marble</span></div></div>
+        <div class="hero-trust-item"><div class="hero-trust-icon">▱</div><div><strong>Custom Fabrication</strong><span>Made for your home</span></div></div>
+        <div class="hero-trust-item"><div class="hero-trust-icon">✦</div><div><strong>Expert Installation</strong><span>Precision in every detail</span></div></div>
+        <div class="hero-trust-item"><div class="hero-trust-icon">⌖</div><div><strong>Local & Trusted</strong><span>Proudly serving Western MA</span></div></div>
       </div>
     </section>
 
