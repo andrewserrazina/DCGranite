@@ -170,6 +170,64 @@
     }
     .nav-links a:not(.btn):hover { color: var(--gold-light); }
 
+    /* Dropdown Navigation Styles */
+    .nav-item {
+      position: relative;
+    }
+    .nav-item > a,
+    .nav-item > span {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      cursor: pointer;
+    }
+    .dropdown-arrow {
+      font-size: .7rem;
+      transition: transform .3s ease;
+    }
+    .nav-item:hover .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 1rem;
+      background: rgba(15,17,19,.98);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(212,160,23,.3);
+      border-radius: 12px;
+      padding: .8rem 0;
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+      z-index: 1000;
+    }
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      margin-top: .5rem;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: .7rem 1.5rem;
+      color: rgba(255,255,255,.85);
+      font-size: .8rem;
+      text-transform: none;
+      letter-spacing: .04em;
+      transition: all .2s ease;
+      border-left: 3px solid transparent;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(212,160,23,.12);
+      color: var(--gold-light);
+      border-left-color: var(--gold-light);
+      padding-left: 1.7rem;
+    }
+
     .menu-toggle {
       display: none;
       background: none;
@@ -211,7 +269,38 @@
         box-shadow: -10px 0 40px rgba(0,0,0,.5);
       }
       .nav-links.active { right: 0; }
-      .nav-links a { font-size: 1.1rem; }
+      .nav-links a,
+      .nav-links .nav-item > span {
+        font-size: 1.1rem; }
+      
+      /* Mobile dropdown styles */
+      .nav-item {
+        width: 100%;
+        text-align: center;
+      }
+      .dropdown-menu {
+        position: static;
+        transform: none;
+        margin-top: 0;
+        opacity: 1;
+        visibility: visible;
+        background: rgba(0,0,0,.3);
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s ease, padding .3s ease;
+        padding: 0;
+      }
+      .nav-item.mobile-open .dropdown-menu {
+        max-height: 400px;
+        padding: .5rem 0;
+      }
+      .dropdown-menu a {
+        font-size: 1rem;
+        padding: .8rem 1.5rem;
+      }
     }
 
     .fade-in {
@@ -235,6 +324,64 @@
     .brand img { height: 64px; width: auto; filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); }
     .nav-links { display: flex; align-items: center; gap: 1.35rem; color: rgba(255,255,255,.78); font-size: .84rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
     .nav-links a:not(.btn):hover { color: var(--gold-light); }
+
+    /* Dropdown Navigation Styles */
+    .nav-item {
+      position: relative;
+    }
+    .nav-item > a,
+    .nav-item > span {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      cursor: pointer;
+    }
+    .dropdown-arrow {
+      font-size: .7rem;
+      transition: transform .3s ease;
+    }
+    .nav-item:hover .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 1rem;
+      background: rgba(15,17,19,.98);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(212,160,23,.3);
+      border-radius: 12px;
+      padding: .8rem 0;
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+      z-index: 1000;
+    }
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      margin-top: .5rem;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: .7rem 1.5rem;
+      color: rgba(255,255,255,.85);
+      font-size: .8rem;
+      text-transform: none;
+      letter-spacing: .04em;
+      transition: all .2s ease;
+      border-left: 3px solid transparent;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(212,160,23,.12);
+      color: var(--gold-light);
+      border-left-color: var(--gold-light);
+      padding-left: 1.7rem;
+    }
 
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: .95rem 1.35rem; border-radius: 999px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; transition: transform .2s ease; }
     .btn:hover { transform: translateY(-2px); }
@@ -366,14 +513,25 @@
       <span></span>
       <span></span>
     </button>
-    <div class="nav-links">
+        <div class="nav-links">
       <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/granite-countertops-ludlow-ma">Granite</a>
-      <a href="/quartz-countertops-ludlow-ma">Quartz</a>
+      <div class="nav-item">
+        <span>
+          Services
+          <span class="dropdown-arrow">▼</span>
+        </span>
+        <div class="dropdown-menu">
+          <a href="/granite-countertops-ludlow-ma">Granite Countertops</a>
+          <a href="/quartz-countertops-ludlow-ma">Quartz Countertops</a>
+          <a href="/bathroom-vanities">Bathroom Vanities</a>
+          <a href="/fireplace-surrounds">Fireplace Surrounds</a>
+        </div>
+      </div>
       <a href="/portfolio">Portfolio</a>
-      <a href="/contact">Contact</a>
-      <a class="btn btn-primary" href="/contact">Request Quote</a>
+      <a href="/faq">FAQ</a>
+      <a href="/testimonials">Reviews</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="btn btn-primary">Get a Quote</a>
     </div>
   </nav>
 
@@ -566,6 +724,25 @@
         menuToggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
+    });
+
+    // Mobile dropdown toggle
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const trigger = item.querySelector('span');
+      if (trigger && window.innerWidth <= 768) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          item.classList.toggle('mobile-open');
+        });
+      }
+    });
+
+    // Re-init mobile dropdown on resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        navItems.forEach(item => item.classList.remove('mobile-open'));
+      }
     });
 
     const nav = document.querySelector('.nav');
