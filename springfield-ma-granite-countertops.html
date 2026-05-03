@@ -225,6 +225,10 @@
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
+    
+    @media (max-width: 768px) {
+      .topbar { display: none; }
+    }
     @media (max-width: 768px) {
       .topbar { font-size: .72rem; padding: .5rem 4vw; }
       .topbar-contact { gap: 1rem; }
@@ -589,6 +593,14 @@
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+  
+    
+    @media (max-width: 480px) {
+      section { padding: 3rem 4vw; }
+      .hero { padding: 1.5rem 4vw 2.5rem; }
+      h1 { font-size: clamp(1.8rem, 5vw, 5rem); }
+      .intro-card, .material-card, .service-card { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
