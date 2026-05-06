@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0ST495NY7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S0ST495NY7');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -1141,6 +1149,39 @@ This request was submitted via the D&C Granite website contact form.`
         formSuccess.classList.add('show');
         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 500);
+    });
+  </script>
+
+  <!-- GA4 Enhanced Event Tracking -->
+  <script>
+    // Track phone number clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'phone_call', {
+          'event_category': 'Contact',
+          'event_label': 'Phone Click'
+        });
+      });
+    });
+
+    // Track Get Quote button clicks
+    document.querySelectorAll('.btn-primary').forEach(button => {
+      button.addEventListener('click', () => {
+        gtag('event', 'cta_click', {
+          'event_category': 'Engagement',
+          'event_label': 'Get Quote Button'
+        });
+      });
+    });
+
+    // Track email link clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'email_click', {
+          'event_category': 'Contact',
+          'event_label': 'Email Click'
+        });
+      });
     });
   </script>
 </body>
