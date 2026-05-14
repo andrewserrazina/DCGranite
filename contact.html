@@ -536,6 +536,19 @@
       font-weight: 700;
     }
 
+    .microsoft-form-container {
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border: 1px solid rgba(212,160,23,.15);
+    }
+    .microsoft-form-container iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
     form { 
       display: grid; 
       gap: 1.2rem; 
@@ -861,6 +874,7 @@
         </div>
       </div>
       <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a>
       <a href="/faq">FAQ</a>
       <a href="/testimonials">Reviews</a>
       <a href="/about">About</a>
@@ -882,13 +896,18 @@
       <div class="quote-grid">
         <aside class="info-card">
           <div class="eyebrow">Get in touch</div>
-          <h2>Three ways to reach us.</h2>
+          <h2>Four ways to reach us.</h2>
           
           <div class="info-list">
             <div class="info-item">
+              <strong>Schedule a Visit</strong>
+              <a href="https://outlook.office365.com/owa/calendar/ShowroomTour@dcgraniteandmarble.net/bookings/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:.6rem;display:inline-flex;">📅 Book Showroom Tour</a>
+              <p style="margin-top:.6rem;font-size:.88rem;">Choose a convenient time to visit our showroom and see our stone selection in person.</p>
+            </div>
+            <div class="info-item">
               <strong>Phone</strong>
               <a href="tel:+14135833399">(413) 583-3399</a>
-              <p style="margin-top:.4rem;font-size:.88rem;">Call during business hours for immediate assistance or to schedule a showroom visit.</p>
+              <p style="margin-top:.4rem;font-size:.88rem;">Call during business hours for immediate assistance or questions.</p>
             </div>
             <div class="info-item">
               <strong>Email</strong>
@@ -914,64 +933,13 @@
 
         <div class="form-card">
           <div class="eyebrow">Project details</div>
-          <h2>Tell us what you're working on.</h2>
+          <h2>Request a quote.</h2>
           <p>Fill out the form below and we'll get back to you within 1 business day. For urgent requests, please call the showroom directly.</p>
 
-          <form id="quoteForm" name="quote-request">
-            <div class="form-row">
-              <label>Full Name
-                <input type="text" id="name" name="name" placeholder="Your name" required />
-              </label>
-              <label>Phone
-                <input type="tel" id="phone" name="phone" placeholder="(413) 555-1234" required />
-              </label>
-            </div>
-
-            <div class="form-row">
-              <label>Email
-                <input type="email" id="email" name="email" placeholder="you@example.com" required />
-              </label>
-              <label>Project Type
-                <select id="project_type" name="project_type" required>
-                  <option value="">Select one</option>
-                  <option>Kitchen countertops</option>
-                  <option>Kitchen island</option>
-                  <option>Bathroom vanity</option>
-                  <option>Fireplace surround</option>
-                  <option>Remnant project</option>
-                  <option>Commercial project</option>
-                  <option>Other custom stonework</option>
-                </select>
-              </label>
-            </div>
-
-            <div class="form-row">
-              <label>Material Interest
-                <select id="material_interest" name="material_interest">
-                  <option value="">Not sure yet</option>
-                  <option>Granite</option>
-                  <option>Quartz</option>
-                  <option>Marble</option>
-                  <option>Remnant</option>
-                  <option>Other stone</option>
-                </select>
-              </label>
-              <label>Project Location
-                <input type="text" id="project_location" name="project_location" placeholder="Town / city" />
-              </label>
-            </div>
-
-            <label>Project Details
-              <textarea id="message" name="message" placeholder="Tell us about the project, approximate size, timeline, color/style ideas, and whether you already have cabinets installed." required></textarea>
-            </label>
-
-            <div class="upload-note">
-              <strong>Have photos or measurements?</strong>
-              After submitting, email them to <a href="mailto:info@dcgraniteandmarble.net">info@dcgraniteandmarble.net</a>. Include pictures of your current countertop, kitchen layout, inspiration photos, or a rough sketch with dimensions.
-            </div>
-
-            <button class="btn btn-primary" type="submit">Send Quote Request</button>
-          </form>
+          <div class="microsoft-form-container">
+            <iframe width="640px" height="1000px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=k1JZcFmGREGnbjp7LL6Pod587W94Mm1GvnjJ9AbQ_KhUMlBEUTA0N05ENFJHMEo0S1UzTklHQkZUSy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; width: 100%; min-height: 1000px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+          </div>
+        </div>
 
           <div class="form-success" id="formSuccess">
             <h3>✓ Your email client should open shortly!</h3>
@@ -1037,7 +1005,8 @@
 
   <footer>
     <span>© 2026 D&C Granite and Marble Design Gallery</span>
-    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
+    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
   </footer>
 
   <a class="mobile-cta" href="#quoteForm">Request a Quote</a>
@@ -1112,53 +1081,6 @@
     });
 
     fadeElements.forEach(el => fadeObserver.observe(el));
-
-    // Form submission handling
-    const form = document.getElementById('quoteForm');
-    const formSuccess = document.getElementById('formSuccess');
-    
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Get form values
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const email = document.getElementById('email').value;
-      const projectType = document.getElementById('project_type').value;
-      const materialInterest = document.getElementById('material_interest').value;
-      const projectLocation = document.getElementById('project_location').value;
-      const message = document.getElementById('message').value;
-      
-      // Build email subject and body
-      const subject = encodeURIComponent(`Quote Request: ${projectType} - ${name}`);
-      const body = encodeURIComponent(
-`New Quote Request from Website
-
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-
-Project Type: ${projectType}
-Material Interest: ${materialInterest || 'Not specified'}
-Location: ${projectLocation || 'Not specified'}
-
-Project Details:
-${message}
-
----
-This request was submitted via the D&C Granite website contact form.`
-      );
-      
-      // Open mailto link
-      window.location.href = `mailto:info@dcgraniteandmarble.net?subject=${subject}&body=${body}`;
-      
-      // Show success message
-      setTimeout(() => {
-        form.style.display = 'none';
-        formSuccess.classList.add('show');
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 500);
-    });
   </script>
 
   <!-- GA4 Enhanced Event Tracking -->
