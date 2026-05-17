@@ -463,6 +463,70 @@
       h1 { font-size: clamp(1.8rem, 5vw, 5rem); }
       .intro-card, .material-card, .service-card { padding: 2rem 1.5rem; }
     }
+
+    /* Portfolio CTA Cards */
+    .portfolio-cta-card {
+      background: linear-gradient(135deg, #D4A017, #F4C430);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      color: white;
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 300px;
+    }
+    .portfolio-cta-card h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: white;
+    }
+    .portfolio-cta-card p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      opacity: 0.95;
+      color: white;
+    }
+    .cta-btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cta-btn-primary {
+      background: white;
+      color: #D4A017;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .cta-btn-phone {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      border: 2px solid white;
+    }
+    @media (max-width: 768px) {
+      .portfolio-cta-card {
+        padding: 30px 20px;
+        min-height: 250px;
+      }
+      .cta-btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .cta-btn-primary,
+      .cta-btn-phone {
+        width: 100%;
+      }
+    }
   </style>
 
   <!-- Microsoft Clarity -->
@@ -511,6 +575,7 @@
         </div>
       </div>
       <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a>
       <a href="/faq">FAQ</a>
       <a href="/testimonials">Reviews</a>
       <a href="/about">About</a>
@@ -553,13 +618,46 @@
         <figure class="gallery-item" data-category="kitchen" data-title="Granite Kitchen Detail"><img src="/images/2020-09-12-094820389-scaled.webp" loading="lazy" alt="Granite kitchen countertop near stove in Ludlow MA"><figcaption class="gallery-caption"><span>Kitchen</span>Granite Kitchen Detail</figcaption></figure>
         <figure class="gallery-item" data-category="kitchen" data-title="Kitchen Countertop & Sink"><img src="/images/2020-09-12-100205706-01-scaled.webp" loading="lazy" alt="Granite countertop with undermount sink in Western Massachusetts kitchen"><figcaption class="gallery-caption"><span>Kitchen</span>Countertop & Sink</figcaption></figure>
         <figure class="gallery-item" data-category="bathroom" data-title="Tub Surround"><img src="/images/DANNY-DIAZ-010-1.webp" loading="lazy" alt="Black granite tub surround and bathroom stonework in Massachusetts"><figcaption class="gallery-caption"><span>Bathroom</span>Tub Surround</figcaption></figure>
+        
+        <!-- CTA Card #1 -->
+        <div class="portfolio-cta-card">
+          <h3>Love These Styles?</h3>
+          <p>Join 400+ happy homeowners in Western Massachusetts</p>
+          <div class="cta-btn-group">
+            <a href="/contact" class="cta-btn-primary">Get Your Free Quote</a>
+            <a href="tel:+14135833399" class="cta-btn-phone">📞 Call Us Now</a>
+          </div>
+        </div>
+        
         <figure class="gallery-item" data-category="bathroom" data-title="Double Vanity"><img src="/images/IMG_07-1.webp" loading="lazy" alt="Marble bathroom vanity with custom cabinetry"><figcaption class="gallery-caption"><span>Bathroom</span>Double Vanity</figcaption></figure>
         <figure class="gallery-item" data-category="detail" data-title="Countertop Detail"><img src="/images/IMG_0114-1.jpg" loading="lazy" alt="Granite countertop detail"><figcaption class="gallery-caption"><span>Detail</span>Countertop Detail</figcaption></figure>
         <figure class="gallery-item" data-category="kitchen" data-title="Custom Kitchen Island"><img src="/images/IMG_0694-1-1.webp" loading="lazy" alt="Custom granite kitchen island with wood cabinetry"><figcaption class="gallery-caption"><span>Kitchen</span>Custom Kitchen Island</figcaption></figure>
         <figure class="gallery-item" data-category="kitchen" data-title="Farmhouse Sink"><img src="/images/IMG_1601-1.jpg" loading="lazy" alt="Granite countertops with farmhouse sink and dark cabinetry"><figcaption class="gallery-caption"><span>Kitchen</span>Farmhouse Sink</figcaption></figure>
+        
+        <!-- CTA Card #2 -->
+        <div class="portfolio-cta-card">
+          <h3>Ready to Transform Your Kitchen?</h3>
+          <p>Free in-home consultation • Professional installation • Lifetime support</p>
+          <div class="cta-btn-group">
+            <a href="/contact" class="cta-btn-primary">Schedule Free Consultation</a>
+            <a href="tel:+14135833399" class="cta-btn-phone">📞 (413) 583-3399</a>
+          </div>
+        </div>
+        
         <figure class="gallery-item" data-category="kitchen" data-title="Dark Granite Kitchen"><img src="/images/IMG_1613-1.webp" loading="lazy" alt="White cabinets with dark granite countertops"><figcaption class="gallery-caption"><span>Kitchen</span>Dark Granite Kitchen</figcaption></figure>
         <figure class="gallery-item" data-category="kitchen" data-title="Full Kitchen Stonework"><img src="/images/IMG_20201204_120939-scaled.webp" loading="lazy" alt="Granite kitchen island and countertops with custom backsplash"><figcaption class="gallery-caption"><span>Kitchen</span>Full Kitchen Stonework</figcaption></figure>
         <figure class="gallery-item" data-category="bathroom" data-title="Bathroom Vanity"><img src="/images/IMG_20201209_125716-scaled.webp" loading="lazy" alt="Bathroom vanity with granite countertop and two undermount sinks"><figcaption class="gallery-caption"><span>Bathroom</span>Bathroom Vanity</figcaption></figure>
+        
+        <!-- CTA Card #3 -->
+        <div class="portfolio-cta-card">
+          <h3>See a Style You Like?</h3>
+          <p>We'll help you choose the perfect countertop for your home</p>
+          <div class="cta-btn-group">
+            <a href="/contact" class="cta-btn-primary">Request Your Quote</a>
+            <a href="tel:+14135833399" class="cta-btn-phone">📞 Talk to Expert</a>
+          </div>
+        </div>
+        
         <figure class="gallery-item" data-category="fireplace" data-title="Fireplace Surround"><img src="/images/IMG_20201209_125907-1-scaled.webp" loading="lazy" alt="Granite fireplace surround and hearth"><figcaption class="gallery-caption"><span>Fireplace</span>Fireplace Surround</figcaption></figure>
         <figure class="gallery-item" data-category="kitchen" data-title="Modern Quartz Kitchen"><img src="/images/IMG_20201215_144723-scaled.webp" loading="lazy" alt="Modern white kitchen with quartz countertops and large island"><figcaption class="gallery-caption"><span>Kitchen</span>Modern Quartz Kitchen</figcaption></figure>
         <figure class="gallery-item" data-category="kitchen" data-title="Granite Kitchen"><img src="/images/IMG_20210210_124753-1-scaled.webp" loading="lazy" alt="Granite kitchen countertops with island"><figcaption class="gallery-caption"><span>Kitchen</span>Granite Kitchen</figcaption></figure>
@@ -568,6 +666,14 @@
         <figure class="gallery-item" data-category="kitchen" data-title="Northfield Project"><img src="/images/Leyden-Northfield-1.webp" loading="lazy" alt="Granite countertop project in Northfield MA"><figcaption class="gallery-caption"><span>Kitchen</span>Northfield Project</figcaption></figure>
         <figure class="gallery-item" data-category="detail" data-title="Granite Detail"><img src="/images/Picture-237-1.webp" loading="lazy" alt="Granite kitchen island and countertop detail"><figcaption class="gallery-caption"><span>Detail</span>Granite Detail</figcaption></figure>
         <figure class="gallery-item" data-category="detail" data-title="Silver Fantasy Leather Finish"><img src="/images/Silver-Fantasy-leather-finish-1-1.webp" loading="lazy" alt="Silver Fantasy leather finish stone countertop"><figcaption class="gallery-caption"><span>Detail</span>Silver Fantasy</figcaption></figure>
+        
+        <!-- New Portfolio Photos -->
+        <figure class="gallery-item" data-category="kitchen" data-title="Granite Kitchen Island"><img src="/images/IMG_0083.webp" loading="lazy" alt="Granite kitchen island and perimeter countertops in modern white kitchen"><figcaption class="gallery-caption"><span>Kitchen</span>Granite Island & Perimeter</figcaption></figure>
+        <figure class="gallery-item" data-category="bathroom" data-title="White Marble Desk"><img src="/images/IMG_0092.webp" loading="lazy" alt="White marble desk vanity with backsplash"><figcaption class="gallery-caption"><span>Bathroom</span>Marble Desk Vanity</figcaption></figure>
+        <figure class="gallery-item" data-category="bathroom" data-title="Marble Bathroom Vanity"><img src="/images/IMG_0094.webp" loading="lazy" alt="White marble bathroom vanity with undermount sink"><figcaption class="gallery-caption"><span>Bathroom</span>White Marble Vanity</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Modern Quartz Kitchen"><img src="/images/IMG_0070.webp" loading="lazy" alt="Modern kitchen with quartz countertops and glass tile backsplash"><figcaption class="gallery-caption"><span>Kitchen</span>Dark Cabinets & Quartz</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Kitchen with Island"><img src="/images/IMG_0074.webp" loading="lazy" alt="Complete kitchen renovation with quartz island and countertops"><figcaption class="gallery-caption"><span>Kitchen</span>Quartz Island Kitchen</figcaption></figure>
+        <figure class="gallery-item" data-category="detail" data-title="Glass Tile Backsplash"><img src="/images/IMG_0075.webp" loading="lazy" alt="Glass tile backsplash with quartz countertop detail"><figcaption class="gallery-caption"><span>Detail</span>Backsplash & Countertop</figcaption></figure>
       </div>
     </section>
 
@@ -807,5 +913,8 @@
       });
     });
   </script>
+  <!-- Microsoft Teams Live Chat Widget -->
+  <script type="text/javascript" src="https://res.public.onecdn.static.microsoft/customerconnect/v1/7dttl/init.js" id="chatbot" environmentId="ed72c4b9-50c6-e77e-a765-6d02974acb04" region="unitedstates" crossorigin="anonymous"></script>
+
 </body>
 </html>
