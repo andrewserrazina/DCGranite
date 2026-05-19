@@ -450,10 +450,20 @@
       box-shadow: var(--shadow);
       border: 1px solid rgba(212,160,23,.18);
       transition: all .3s ease;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
     }
     .category-card:hover {
-      border-color: rgba(212,160,23,.32);
-      transform: translateY(-3px);
+      border-color: rgba(212,160,23,.45);
+      transform: translateY(-4px);
+      background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+    }
+    .category-card.active {
+      background: linear-gradient(135deg, rgba(212,160,23,0.18), rgba(242,215,122,0.1));
+      border-color: var(--gold);
+      box-shadow: 0 0 30px rgba(212,160,23,0.35), var(--shadow);
+      transform: scale(1.02);
     }
     .category-card h3 {
       font-size: 1.25rem;
@@ -633,38 +643,42 @@
         <h2>Browse by topic.</h2>
       </div>
       <div class="category-grid">
-        <div class="category-card">
+        <button class="category-card" data-category="all">
+          <h3>📋 All Topics</h3>
+          <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Show all questions</p>
+        </button>
+        <button class="category-card" data-category="pricing">
           <h3>💰 Pricing & Cost</h3>
           <ul class="category-list">
             <li>How much do countertops cost?</li>
             <li>What affects the price?</li>
             <li>Do you offer financing?</li>
           </ul>
-        </div>
-        <div class="category-card">
+        </button>
+        <button class="category-card" data-category="process">
           <h3>📐 Process & Timeline</h3>
           <ul class="category-list">
             <li>How long does installation take?</li>
             <li>What's the process?</li>
             <li>When do I schedule templating?</li>
           </ul>
-        </div>
-        <div class="category-card">
+        </button>
+        <button class="category-card" data-category="materials">
           <h3>🪨 Materials</h3>
           <ul class="category-list">
             <li>Granite vs Quartz vs Marble</li>
             <li>Which is most durable?</li>
             <li>What colors are available?</li>
           </ul>
-        </div>
-        <div class="category-card">
+        </button>
+        <button class="category-card" data-category="care">
           <h3>🧼 Care & Maintenance</h3>
           <ul class="category-list">
             <li>How do I clean granite?</li>
             <li>Does granite need sealing?</li>
             <li>Can I cut on the surface?</li>
           </ul>
-        </div>
+        </button>
       </div>
     </section>
 
@@ -675,71 +689,71 @@
       </div>
       <div class="faq-grid">
         
-        <article class="faq-item">
+        <article class="faq-item" data-category="pricing">
           <h3>How much do granite countertops cost?</h3>
           <p>Granite countertop costs vary based on the slab you select, edge profile, sink cutouts, and total square footage. Basic granite starts around $40-60 per square foot installed, while premium exotic slabs can range $80-150+ per square foot. The best way to get an accurate quote is to visit D&C's showroom with rough measurements of your countertop area.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="materials">
           <h3>What's the difference between granite and quartz countertops?</h3>
           <p><strong>Granite</strong> is natural stone mined from quarries. Each slab has unique patterns, colors, and veining. It's heat-resistant, durable, and requires periodic sealing.</p>
           <p><strong>Quartz</strong> is engineered stone made from 90-95% natural quartz combined with resins and pigments. It offers more uniform appearance, requires no sealing, and is non-porous and stain-resistant.</p>
           <p>Both are excellent choices — granite offers natural beauty and uniqueness, while quartz offers consistency and low maintenance.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="process">
           <h3>How long does countertop installation take?</h3>
           <p>After you select your slab, most countertop projects take 2-3 weeks from start to finish. The timeline includes templating (measuring your space), fabrication (cutting and finishing the stone), and installation. Complex projects with multiple seams, unique cutouts, or specialty edge details may take longer. D&C provides a realistic timeline estimate when you place your order.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="care">
           <h3>Do I need to seal granite countertops?</h3>
           <p>Most granite countertops benefit from periodic sealing to maintain stain resistance. Darker granites are typically less porous and may not need sealing as often. Lighter granites generally require sealing every 1-2 years. D&C seals all granite countertops before installation and can provide recommendations for your specific granite type.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="care">
           <h3>Can I put hot pots and pans directly on granite?</h3>
           <p>Yes, granite is heat-resistant and can handle hot cookware. However, it's still good practice to use trivets or hot pads to protect your countertop from thermal shock and potential discoloration over time. Quartz is also heat-resistant but more sensitive than granite to extreme heat.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="process">
           <h3>What's included in the installation?</h3>
           <p>D&C's countertop installation includes precision templating, slab fabrication (cutting, edge profiling, polishing), sink cutouts, installation, sealing (for granite), and cleanup. Plumbing connections for sinks and faucets are typically handled by your plumber.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="process">
           <h3>When should I schedule templating?</h3>
           <p>Template after your cabinets are installed and the sink location is confirmed. The cabinets need to be level and in their final position. If you're doing a remodel, remove the old countertop before templating. D&C schedules templating appointments after you select your slab.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="process">
           <h3>Do you work with contractors and designers?</h3>
           <p>Yes! D&C works with homeowners, contractors, kitchen designers, and remodelers throughout Western Massachusetts. We coordinate with your project team on templating schedules, material selection, and installation timing.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="materials">
           <h3>Can I see the actual slab before purchasing?</h3>
           <p>Absolutely. Visit D&C's Ludlow showroom to view available slabs in person. Natural stone varies from slab to slab, so selecting your actual piece ensures you get the exact colors and patterns you want.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="pricing">
           <h3>What edge profiles are available?</h3>
           <p>D&C offers a variety of edge profiles including straight edge, eased edge, bullnose, bevel, ogee, and half bullnose. The edge profile affects both aesthetics and cost. Simple edges (straight, eased) are included in standard pricing, while decorative edges (ogee, waterfall) add to the cost.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="care">
           <h3>How do I clean and maintain my countertops?</h3>
           <p><strong>Granite:</strong> Use mild dish soap and water for daily cleaning. Avoid acidic or abrasive cleaners. Reseal every 1-2 years depending on use.</p>
           <p><strong>Quartz:</strong> Clean with mild soap and water or quartz-specific cleaner. No sealing required. Avoid harsh chemicals.</p>
           <p><strong>Marble:</strong> Use pH-neutral cleaners only. Marble is more porous and stain-prone than granite or quartz. Seal regularly.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="process">
           <h3>Do you install in areas outside Ludlow?</h3>
           <p>Yes, D&C serves Ludlow, Springfield, Chicopee, Wilbraham, Longmeadow, East Longmeadow, Holyoke, and surrounding Western Massachusetts communities. Contact D&C to confirm service availability for your area.</p>
         </article>
 
-        <article class="faq-item">
+        <article class="faq-item" data-category="materials">
           <h3>Can you do bathroom vanities and fireplace surrounds?</h3>
           <p>Yes! D&C fabricates and installs granite, quartz, and marble for bathroom vanity tops, tub surrounds, shower benches, fireplace surrounds, hearths, and other custom stone applications beyond kitchen countertops.</p>
         </article>
@@ -866,6 +880,59 @@
           'event_category': 'Contact',
           'event_label': 'Email Click'
         });
+      });
+    });
+
+    // FAQ Category Filtering
+    const categoryCards = document.querySelectorAll('.category-card');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    // Set "All Topics" as active by default
+    const allTopicsCard = document.querySelector('.category-card[data-category="all"]');
+    if (allTopicsCard) {
+      allTopicsCard.classList.add('active');
+    }
+
+    categoryCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const selectedCategory = this.dataset.category;
+        
+        // Remove active class from all cards
+        categoryCards.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked card
+        this.classList.add('active');
+        
+        // Filter FAQ items
+        let visibleCount = 0;
+        faqItems.forEach(item => {
+          if (selectedCategory === 'all') {
+            item.style.display = '';
+            visibleCount++;
+          } else if (item.dataset.category === selectedCategory) {
+            item.style.display = '';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        
+        // Smooth scroll to FAQ section
+        const faqSection = document.querySelector('.faq-section');
+        if (faqSection && selectedCategory !== 'all') {
+          setTimeout(() => {
+            faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+        
+        // Track category filter in GA4
+        if (typeof gtag === 'function') {
+          gtag('event', 'faq_filter', {
+            'event_category': 'FAQ Interaction',
+            'event_label': selectedCategory,
+            'value': visibleCount
+          });
+        }
       });
     });
   </script>
