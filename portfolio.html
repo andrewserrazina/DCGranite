@@ -248,9 +248,7 @@
     .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
     
-    @media (max-width: 768px) {
-      .topbar { display: none; }
-    }
+    
     @media (max-width: 768px) {
       .topbar { font-size: .72rem; padding: .5rem 4vw; }
       .topbar-contact { gap: 1rem; }
@@ -522,9 +520,9 @@
     </div>
   </div>
 
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="/" aria-label="D&C Granite home">
-      <img src="/images/DCGraniteWide.png" alt="D&C Granite and Marble Design Gallery logo">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
+      <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery" width="64" height="64" />
     </a>
     
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -532,7 +530,8 @@
       <span></span>
       <span></span>
     </button>
-        <div class="nav-links">
+
+    <div class="nav-links">
       <a href="/">Home</a>
       <div class="nav-item">
         <span>
@@ -551,7 +550,7 @@
       <a href="/faq">FAQ</a>
       <a href="/testimonials">Reviews</a>
       <a href="/about">About</a>
-      <a href="/contact" class="btn btn-primary">Get a Quote</a>
+      <a href="/contact" class="btn btn-primary">Request Free Quote</a>
     </div>
   </nav>
 
@@ -824,7 +823,7 @@
   <!-- GA4 Enhanced Event Tracking -->
   <script>
     // Track phone number clicks
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    document.querySelectorAll('a[href^="tel:+14135833399"]').forEach(link => {
       link.addEventListener('click', () => {
         gtag('event', 'phone_call', {
           'event_category': 'Contact',

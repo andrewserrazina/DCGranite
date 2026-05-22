@@ -258,9 +258,7 @@
     .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
     
-    @media (max-width: 768px) {
-      .topbar { display: none; }
-    }
+    
     @media (max-width: 768px) {
       .topbar { font-size: .72rem; padding: .5rem 4vw; }
       .topbar-contact { gap: 1rem; }
@@ -484,7 +482,7 @@
     .contact-card strong { display: block; color: var(--gold-light); font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; }
 
     footer { background: #050505; color: rgba(255,255,255,.62); padding: 2rem 5vw; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(212,160,23,.18); }
-    .mobile-cta { display: none; position: fixed; z-index: 40; left: 1rem; right: 1rem; bottom: 1rem; background: var(--gold-gradient); color: #050505; text-align: center; padding: 1rem; border-radius: 999px; font-weight: 950; box-shadow: 0 18px 45px rgba(0,0,0,.35); text-transform: uppercase; letter-spacing: .08em; }
+    
 
     @media (max-width: 980px) {
       .nav-links { display: none; }
@@ -498,7 +496,7 @@
       section { padding: 4.5rem 5vw; }
       .image-card img { height: 380px; }
       .cta { padding: 2rem; }
-      .mobile-cta { display: block; }
+      
       .area-list { grid-template-columns: 1fr; }
     }
   
@@ -532,9 +530,9 @@
     </div>
   </div>
 
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="/" aria-label="D&C Granite home">
-      <img src="/images/DCGraniteWide.png" alt="D&C Granite and Marble Design Gallery logo">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
+      <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery" width="64" height="64" />
     </a>
     
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -542,7 +540,8 @@
       <span></span>
       <span></span>
     </button>
-        <div class="nav-links">
+
+    <div class="nav-links">
       <a href="/">Home</a>
       <div class="nav-item">
         <span>
@@ -557,10 +556,11 @@
         </div>
       </div>
       <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a>
       <a href="/faq">FAQ</a>
       <a href="/testimonials">Reviews</a>
       <a href="/about">About</a>
-      <a href="/contact" class="btn btn-primary">Get a Quote</a>
+      <a href="/contact" class="btn btn-primary">Request Free Quote</a>
     </div>
   </nav>
 
@@ -716,7 +716,7 @@
         <div class="eyebrow">Start your granite project</div>
         <h2>Get a quote for granite countertops in Ludlow, MA.</h2>
         <p>Call the showroom, stop by during business hours, or send project details. Rough measurements, photos, or a sketch can help D&C provide a more accurate granite countertop estimate.</p>
-        <a class="btn btn-primary" href="/contact">Request a Quote</a>
+        <a class="btn btn-primary" href="/contact">Request Free Quote</a>
       </div>
       <div class="contact-card">
         <div><strong>Showroom</strong>664 Center Street<br>Ludlow, MA 01056</div>
@@ -732,7 +732,7 @@
     <span><a href="/">Home</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
   </footer>
 
-  <a class="mobile-cta" href="/contact">Request a Quote</a>
+  
 
   <script>
 
@@ -799,7 +799,7 @@
   <!-- GA4 Enhanced Event Tracking -->
   <script>
     // Track phone number clicks
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    document.querySelectorAll('a[href^="tel:+14135833399"]').forEach(link => {
       link.addEventListener('click', () => {
         gtag('event', 'phone_call', {
           'event_category': 'Contact',

@@ -279,9 +279,7 @@
     }
 
     
-    @media (max-width: 768px) {
-      .topbar { display: none; }
-    }
+    
     @media (max-width: 768px) {
       .topbar {
         font-size: .72rem;
@@ -810,32 +808,13 @@
       color: var(--gold-light);
     }
 
-    .mobile-cta {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 998;
-      background: var(--gold);
-      color: #0b0b0b;
-      padding: 1rem 2rem;
-      border-radius: 999px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: .85rem;
-      box-shadow: 0 12px 40px rgba(212,160,23,.4);
-      animation: pulse 2s infinite;
-    }
+    
     @keyframes pulse {
       0%, 100% { transform: translateX(-50%) scale(1); }
       50% { transform: translateX(-50%) scale(1.05); }
     }
     @media (max-width: 768px) {
-      .mobile-cta {
-        display: block;
-      }
+      
     }
 
     /* Smooth fade-in for sections */
@@ -878,7 +857,7 @@
     </div>
   </div>
 
-  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
     <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
       <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery" width="64" height="64" />
     </a>
@@ -908,7 +887,7 @@
       <a href="/faq">FAQ</a>
       <a href="/testimonials">Reviews</a>
       <a href="/about">About</a>
-      <a href="/contact" class="btn btn-primary">Get a Quote</a>
+      <a href="/contact" class="btn btn-primary">Request Free Quote</a>
     </div>
   </nav>
 
@@ -935,7 +914,7 @@
         <h1>Custom granite, quartz, and marble countertops.</h1>
         <p>D&C Granite & Marble Design Gallery specializes in custom countertops, bathroom vanities, fireplace surrounds, and precision stone fabrication. Serving Ludlow, Springfield, and all of Western Massachusetts since 1990.</p>
         <div class="hero-actions">
-          <a href="/contact" class="btn btn-primary">Request a Quote</a>
+          <a href="/contact" class="btn btn-primary">Request Free Quote</a>
           <a href="#portfolio" class="btn btn-outline">View Our Work</a>
         </div>
       </div>
@@ -1105,7 +1084,7 @@
         <div class="eyebrow">Start your project</div>
         <h2>Get a quote for granite countertops in Ludlow, MA.</h2>
         <p>Call the showroom, stop by during business hours, or send a message with your project details. A simple sketch or rough measurements can help D&C provide a more accurate quote for countertops, vanities, fireplaces, and custom stonework.</p>
-        <a class="btn btn-primary" href="/contact">Request a Quote</a>
+        <a class="btn btn-primary" href="/contact">Request Free Quote</a>
       </div>
       <div class="contact-card">
         <div><strong>Showroom</strong>664 Center Street<br>Ludlow, MA 01056</div>
@@ -1196,7 +1175,7 @@
   <!-- GA4 Enhanced Event Tracking -->
   <script>
     // Track phone number clicks
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    document.querySelectorAll('a[href^="tel:+14135833399"]').forEach(link => {
       link.addEventListener('click', () => {
         gtag('event', 'phone_call', {
           'event_category': 'Contact',

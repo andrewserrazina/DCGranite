@@ -237,9 +237,7 @@
     .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
     
-    @media (max-width: 768px) {
-      .topbar { display: none; }
-    }
+    
     @media (max-width: 768px) {
       .topbar { font-size: .72rem; padding: .5rem 4vw; }
       .topbar-contact { gap: 1rem; }
@@ -530,30 +528,13 @@
     }
     footer a:hover { color: var(--gold-light); }
 
-    .mobile-cta { 
-      display: none; 
-      position: fixed; 
-      bottom: 20px; 
-      left: 50%; 
-      transform: translateX(-50%); 
-      z-index: 998; 
-      background: var(--gold); 
-      color: #0b0b0b; 
-      padding: 1rem 2rem; 
-      border-radius: 999px; 
-      font-weight: 900; 
-      text-transform: uppercase; 
-      letter-spacing: .08em; 
-      font-size: .85rem; 
-      box-shadow: 0 12px 40px rgba(212,160,23,.4); 
-      animation: pulse 2s infinite;
-    }
+    
     @keyframes pulse {
       0%, 100% { transform: translateX(-50%) scale(1); }
       50% { transform: translateX(-50%) scale(1.05); }
     }
     @media (max-width: 768px) {
-      .mobile-cta { display: block; }
+      
     }
 
     .fade-in {
@@ -595,9 +576,9 @@
     </div>
   </div>
 
-  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
     <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
-      <img src="/images/DCGraniteWide.png" alt="D&C Granite and Marble Design Gallery" width="200" height="64" />
+      <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery" width="64" height="64" />
     </a>
     
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -606,7 +587,7 @@
       <span></span>
     </button>
 
-        <div class="nav-links">
+    <div class="nav-links">
       <a href="/">Home</a>
       <div class="nav-item">
         <span>
@@ -621,10 +602,11 @@
         </div>
       </div>
       <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a>
       <a href="/faq">FAQ</a>
       <a href="/testimonials">Reviews</a>
       <a href="/about">About</a>
-      <a href="/contact" class="btn btn-primary">Get a Quote</a>
+      <a href="/contact" class="btn btn-primary">Request Free Quote</a>
     </div>
   </nav>
 
@@ -789,7 +771,7 @@
     <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></span>
   </footer>
 
-  <a class="mobile-cta" href="/contact">Request a Quote</a>
+  
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
@@ -854,7 +836,7 @@
   <!-- GA4 Enhanced Event Tracking -->
   <script>
     // Track phone number clicks
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    document.querySelectorAll('a[href^="tel:+14135833399"]').forEach(link => {
       link.addEventListener('click', () => {
         gtag('event', 'phone_call', {
           'event_category': 'Contact',
