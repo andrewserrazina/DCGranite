@@ -271,12 +271,31 @@
       .nav-links.active { right: 0; }
       .nav-links a,
       .nav-links .nav-item > span {
-        font-size: 1.1rem; }
+        font-size: 1.1rem; 
+      }
+      
+      /* FIX: Services button alignment */
+      .nav-links .nav-item > span {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        justify-content: center !important;
+      }
       
       /* Mobile dropdown styles */
       .nav-item {
         width: 100%;
         text-align: center;
+      }
+      
+      /* FIX: Services button alignment */
+      .nav-links .nav-item > span {
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        justify-content: center !important;
+        padding: 0.5rem !important;
       }
       .dropdown-menu {
         position: static;
@@ -782,17 +801,20 @@
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
       const trigger = item.querySelector('span');
-      if (trigger && window.innerWidth <= 768) {
+      if (trigger) {
         trigger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          item.classList.toggle('mobile-open');
+          if (window.innerWidth <= 900) {
+            e.preventDefault();
+            e.stopPropagation();
+            item.classList.toggle('mobile-open');
+          }
         });
       }
     });
 
     // Re-init mobile dropdown on resize
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 900) {
         navItems.forEach(item => item.classList.remove('mobile-open'));
       }
     });
