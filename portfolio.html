@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Countertop Portfolio Ludlow MA | Granite, Quartz & Marble | D&C Granite</title>
-  <meta name="description" content="View D&C Granite & Marble Design Gallery's portfolio of granite countertops, quartz countertops, bathroom vanities, fireplaces, and custom stonework across Ludlow and Western Massachusetts." />
+  <meta name="description" content="Before & after photos of granite, quartz & marble countertops installed across Western MA. 100+ completed projects. Real customer transformations. Expert fabrication. Free estimates." />
   <meta name="keywords" content="granite countertop portfolio Ludlow MA, quartz countertop portfolio Western MA, marble vanity photos, countertop installer Springfield MA, D&C Granite portfolio" />
   <meta name="author" content="D&C Granite and Marble Design Gallery" />
   <meta name="robots" content="index, follow" />
@@ -429,6 +429,100 @@
     .filter-btn.active, .filter-btn:hover { border-color: rgba(212,160,23,.45); color: #0b0b0b; background: var(--gold); }
 
     .portfolio-page { background: #0f0f0f; }
+    /* Featured Projects Section */
+    .featured-projects {
+      padding: 6rem 5vw;
+      background: rgba(255,255,255,.02);
+      border-bottom: 1px solid rgba(212,160,23,.18);
+    }
+    .featured-projects .section-head {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+    .featured-projects .eyebrow {
+      color: var(--gold-light);
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: .75rem;
+      display: block;
+    }
+    .featured-projects h2 {
+      font-family: Cinzel, serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      color: var(--champagne);
+      margin-bottom: 1rem;
+    }
+    .featured-projects .section-head p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.75);
+      line-height: 1.7;
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .featured-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--stone-texture);
+      border: 1px solid rgba(212,160,23,.2);
+      transition: all .4s cubic-bezier(.25,.46,.45,.94);
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+      display: block;
+      text-decoration: none;
+    }
+    .featured-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(212,160,23,.3);
+      border-color: rgba(212,160,23,.4);
+    }
+    .featured-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .featured-card:hover img {
+      transform: scale(1.08);
+    }
+    .featured-content {
+      padding: 2rem;
+    }
+    .featured-content h3 {
+      font-family: Cinzel, serif;
+      font-size: 1.75rem;
+      color: var(--gold-light);
+      margin-bottom: .75rem;
+      line-height: 1.3;
+    }
+    .featured-content p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      transition: gap .3s ease;
+    }
+    .featured-card:hover .read-more {
+      gap: .85rem;
+    }
+
     .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; grid-auto-rows: 260px; }
     
     /* Mid-Gallery CTA Card */
@@ -499,6 +593,8 @@
     @media (max-width: 980px) {
       .brand img { height: 54px; }
       .hero { min-height: 68vh; padding-top: 5rem; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .featured-card img { height: 280px; }
       .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
       .gallery-item:nth-child(1), .gallery-item:nth-child(7), .gallery-item:nth-child(14) { grid-column: auto; grid-row: auto; }
       .section-head, .cta { display: block; }
@@ -581,8 +677,41 @@
         <p>Real kitchens, bathroom vanities, fireplaces, and custom stone projects completed by D&C Granite & Marble Design Gallery across Western Massachusetts.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#portfolio-gallery">View Projects</a>
-          <a class="btn btn-outline" href="#contact">Request a Quote</a>
+          <a class="btn btn-outline" href="/contact">Request a Quote</a>
         </div>
+      </div>
+    </section>
+
+    <!-- Featured Case Studies -->
+    <section class="featured-projects">
+      <div class="section-head">
+        <div class="eyebrow">Featured Case Studies</div>
+        <h2>In-Depth Project Stories</h2>
+        <p>Explore detailed transformations showcasing our craftsmanship, customer results, and the process behind each stunning installation</p>
+      </div>
+      
+      <div class="featured-grid">
+        
+        <!-- Project 1: White Quartz Kitchen -->
+        <a href="/projects/white-quartz-kitchen-remodel" class="featured-card">
+          <img src="/images/IMG_0108.jpg" alt="Modern White Quartz Kitchen Remodel" />
+          <div class="featured-content">
+            <h3>Modern White Quartz Kitchen</h3>
+            <p>Timeless elegance meets daily durability in this Springfield kitchen transformation featuring pristine white quartz countertops, subway tile backsplash, and custom oak cabinetry.</p>
+            <span class="read-more">Read Full Story →</span>
+          </div>
+        </a>
+
+        <!-- Project 2: Dramatic Granite Transformation -->
+        <a href="/projects/dramatic-granite-kitchen-transformation" class="featured-card">
+          <img src="/images/IMG_20201215_144809.jpg" alt="Dramatic Granite Kitchen Transformation" />
+          <div class="featured-content">
+            <h3>Dramatic Granite Transformation</h3>
+            <p>From dated laminate to breathtaking natural stone — see how dramatic granite veining transformed a country kitchen while honoring classic oak cabinets and traditional charm.</p>
+            <span class="read-more">Read Full Story →</span>
+          </div>
+        </a>
+
       </div>
     </section>
 
