@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0ST495NY7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -9,21 +9,20 @@
     gtag('js', new Date());
     gtag('config', 'G-S0ST495NY7');
   </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Granite Countertops Somers CT | Quartz & Marble | D&C Granite</title>
-  <meta name="description" content="Professional granite, quartz, and marble countertop installation in Somers, Connecticut. D&C Granite serves Somers CT with expert stone fabrication. Just 22 minutes from our Ludlow MA showroom!" />
-  <meta name="keywords" content="granite countertops Somers CT, quartz countertops Somers Connecticut, kitchen countertops Somers, marble Somers CT" />
+  <title>Granite Countertops Somers CT | Custom Stone Fabrication | D&C Granite</title>
+  <meta name="description" content="Professional granite countertops in Somers, CT. Free estimates, 30+ years experience. D&C Granite serves Northern Connecticut. Call (413) 583-3399!" />
+  <meta name="keywords" content="granite countertops Somers CT, quartz countertops Somers, marble countertops Somers CT, countertop installation Somers, D&C Granite Somers" />
   <meta name="author" content="D&C Granite and Marble Design Gallery" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://dcgraniteandmarble.net/somers-ct-granite-countertops" />
 
   <meta name="geo.region" content="US-CT" />
-  <meta name="geo.placename" content="Somers, Connecticut" />
+  <meta name="geo.placename" content="Somers, CT" />
   <meta property="og:title" content="Granite Countertops Somers CT | D&C Granite" />
-  <meta property="og:description" content="Expert granite, quartz & marble countertops in Somers, Connecticut. Professional installation by D&C Granite & Marble." />
+  <meta property="og:description" content="Custom granite, quartz, and marble countertops serving Somers, CT and surrounding areas." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dcgraniteandmarble.net/somers-ct-granite-countertops" />
   <meta property="og:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
@@ -37,10 +36,10 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://dcgraniteandmarble.net",
     "name": "D&C Granite and Marble Design Gallery",
-    "image": "https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp",
-    "priceRange": "$$$",
+    "url": "https://dcgraniteandmarble.net/",
+    "telephone": "+14135833399",
+    "email": "info@dcgraniteandmarble.net",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "664 Center Street",
@@ -49,34 +48,20 @@
       "postalCode": "01056",
       "addressCountry": "US"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 42.1601,
-      "longitude": -72.4762
-    },
-    "url": "https://dcgraniteandmarble.net",
-    "telephone": "+14135833399",
-    "openingHoursSpecification": [
-      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:30","closes":"16:30"},
-      {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:30","closes":"13:00"}
-    ],
-    "areaServed": [
-      {
-        "@type": "City",
-        "name": "Somers",
-        "containedIn": {
-          "@type": "State",
-          "name": "Connecticut"
-        }
+    "areaServed": {
+      "@type": "City",
+      "name": "Somers",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "Connecticut"
       }
-    ]
+    }
   }
   </script>
 
   <style>
     :root {
       --obsidian: #0F1113;
-      --blackstone: #151515;
       --gold: #D4A017;
       --gold-light: #F2D77A;
       --champagne: #F2EFEA;
@@ -99,48 +84,63 @@
     img { max-width: 100%; display: block; height: auto; }
     ::selection { background: var(--gold); color: var(--obsidian); }
 
-    .topbar {
-      background: rgba(15,17,19,.94);
-      backdrop-filter: blur(16px);
-      padding: .75rem 5vw;
-      font-size: .82rem;
-      border-bottom: 1px solid rgba(212,160,23,.18);
-      display: flex;
-      justify-content: space-between;
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gold);
+      color: var(--obsidian);
+      padding: 8px;
+      z-index: 100;
+      font-weight: 700;
+    }
+    .skip-link:focus { top: 0; }
+
+    .topbar { 
+      background: #050505; 
+      color: rgba(255,255,255,.74); 
+      font-size: .78rem; 
+      padding: .62rem 5vw; 
+      display: flex; 
+      justify-content: space-between; 
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      gap: 1rem; 
+      flex-wrap: wrap; 
+      border-bottom: 1px solid rgba(212,160,23,.2); 
     }
     .topbar-contact {
       display: flex;
       gap: 1.5rem;
       flex-wrap: wrap;
     }
-    .topbar a {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      color: rgba(255,255,255,.78);
-      font-weight: 600;
-    }
-    .topbar a:hover { color: var(--gold-light); }
+    .topbar-contact a:hover { color: var(--gold-light); }
 
-    .nav {
-      background: var(--obsidian);
-      padding: 1rem 5vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      position: sticky;
-      top: 52px;
-      z-index: 998;
+    .nav { 
+      position: sticky; 
+      top: 0; 
+      z-index: 999; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: .95rem 5vw; 
+      background: rgba(15,17,19,.92); 
+      backdrop-filter: blur(18px); 
+      border-bottom: 1px solid rgba(212,160,23,.18); 
+      transition: background .3s ease;
     }
-    .brand img { height: 64px; transition: transform .3s ease; }
-    .brand:hover img { transform: scale(1.05); }
+    .nav.scrolled {
+      background: rgba(15,17,19,.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .brand img { 
+      height: 64px; 
+      width: auto; 
+      filter: drop-shadow(0 12px 26px rgba(212,160,23,.2)); 
+      transition: filter .3s ease;
+    }
+    .brand img:hover {
+      filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
+    }
 
     .nav-links { 
       display: flex; 
@@ -154,6 +154,7 @@
     }
     .nav-links a:not(.btn):hover { color: var(--gold-light); }
 
+    /* Dropdown Navigation Styles */
     .nav-item {
       position: relative;
     }
@@ -174,19 +175,20 @@
     .dropdown-menu {
       position: absolute;
       top: 100%;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 1rem;
       background: rgba(15,17,19,.98);
       backdrop-filter: blur(24px);
-      min-width: 220px;
-      border: 1px solid rgba(212,160,23,.2);
+      border: 1px solid rgba(212,160,23,.3);
       border-radius: 12px;
-      padding: .5rem 0;
-      margin-top: 0;
+      padding: .8rem 0;
+      min-width: 240px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
       transition: all .3s ease;
-      box-shadow: 0 12px 40px rgba(0,0,0,.4);
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+      z-index: 1000;
     }
     .nav-item:hover .dropdown-menu {
       opacity: 1;
@@ -195,35 +197,19 @@
     }
     .dropdown-menu a {
       display: block;
-      padding: .75rem 1.25rem;
+      padding: .7rem 1.5rem;
       color: rgba(255,255,255,.85);
-      font-size: .82rem;
+      font-size: .8rem;
+      text-transform: none;
+      letter-spacing: .04em;
       transition: all .2s ease;
+      border-left: 3px solid transparent;
     }
     .dropdown-menu a:hover {
-      background: rgba(212,160,23,.15);
+      background: rgba(212,160,23,.12);
       color: var(--gold-light);
-      padding-left: 1.5rem;
-    }
-
-    .btn {
-      padding: .85rem 1.85rem;
-      background: var(--gold-gradient);
-      color: #000;
-      font-weight: 800;
-      font-size: .78rem;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      transition: all .3s cubic-bezier(.25,.46,.45,.94);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      box-shadow: 0 6px 20px rgba(212,160,23,.25);
-      display: inline-block;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(212,160,23,.4);
+      border-left-color: var(--gold-light);
+      padding-left: 1.7rem;
     }
 
     .menu-toggle {
@@ -243,17 +229,13 @@
       transition: all .3s ease;
       border-radius: 2px;
     }
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 7px);
-    }
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
-    }
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
-    @media (max-width: 900px) {
+    
+    
+    @media (max-width: 768px) {
       .topbar { font-size: .72rem; padding: .5rem 4vw; }
       .topbar-contact { gap: 1rem; }
       .menu-toggle { display: block; }
@@ -265,22 +247,21 @@
         height: 100vh;
         background: rgba(15,17,19,.98);
         backdrop-filter: blur(24px);
-        display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
         gap: 2rem;
         transition: right .4s cubic-bezier(.25,.46,.45,.94);
         border-left: 1px solid rgba(212,160,23,.2);
         box-shadow: -10px 0 40px rgba(0,0,0,.5);
-        z-index: 1000;
-        padding: 2rem 1.5rem;
       }
       .nav-links.active { right: 0; }
       .nav-links a,
       .nav-links .nav-item > span {
-        font-size: 1.1rem;
-        display: block;
+        font-size: 1.1rem; }
+      
+      /* Mobile dropdown styles */
+      .nav-item {
+        width: 100%;
         text-align: center;
       }
       
@@ -292,11 +273,6 @@
         gap: 0.5rem !important;
         justify-content: center !important;
         padding: 0.5rem !important;
-      }
-      
-      .nav-item {
-        width: 100%;
-        text-align: center;
       }
       .dropdown-menu {
         position: static;
@@ -312,132 +288,342 @@
         overflow: hidden;
         transition: max-height .3s ease, padding .3s ease;
         padding: 0;
-        width: 100%;
       }
       .nav-item.mobile-open .dropdown-menu {
         max-height: 400px;
-        padding: 0.5rem 0;
+        padding: .5rem 0;
       }
       .dropdown-menu a {
         font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-        display: block;
-        text-align: center;
+        padding: .8rem 1.5rem;
       }
     }
 
-    .hero {
-      background: var(--stone-texture);
-      padding: 4.5rem 5vw 5rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(212,160,23,.2);
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: .95rem 1.55rem; 
+      border-radius: 999px; 
+      font-weight: 900; 
+      text-transform: uppercase; 
+      letter-spacing: .08em; 
+      font-size: .8rem; 
+      transition: all .3s cubic-bezier(.25,.46,.45,.94); 
+      border: 0; 
+      cursor: pointer; 
+      white-space: nowrap;
     }
-    .eyebrow {
-      color: var(--gold-light);
-      font-size: .95rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      margin-bottom: 1.5rem;
-      display: block;
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { 
+      background: var(--gold); 
+      color: #0b0b0b; 
+      box-shadow: 0 10px 25px rgba(212,160,23,.2); 
+      border: 1px solid rgba(212,160,23,.5); 
     }
-    .hero h1 {
-      font-family: Cinzel, serif;
-      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #fff 0%, var(--champagne) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .btn-primary:hover {
+      box-shadow: 0 14px 32px rgba(212,160,23,.3);
+      background: var(--gold-light);
     }
-    .hero p {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,.82);
-      max-width: 800px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.75;
+    .btn-outline { 
+      border: 1px solid rgba(212,160,23,.35); 
+      color: var(--champagne); 
+      background: transparent; 
     }
-    .hero-actions {
-      display: flex;
-      gap: 1.25rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(212,160,23,.08);
     }
 
-    .content-section {
-      padding: 5rem 5vw;
+    .hero { 
+      position: relative; 
+      min-height: 50vh; 
+      display: grid; 
+      align-items: center; 
+      padding: 4rem 5vw 3rem; 
+      background: linear-gradient(90deg, rgba(5,5,5,.96), rgba(10,10,10,.8), rgba(10,10,10,.36)), url('/images/IMG_20201204_120939-scaled.webp') center/cover; 
+      overflow: hidden; 
     }
-    .content-section:nth-child(even) {
-      background: rgba(255,255,255,.02);
+    .hero::before { 
+      content: ""; 
+      position: absolute; 
+      inset: 0; 
+      background: var(--stone-texture); 
+      opacity: .55; 
+      mix-blend-mode: multiply; 
     }
-    .container {
-      max-width: 1200px;
+    .hero-content { 
+      position: relative; 
+      z-index: 1; 
+      max-width: 940px; 
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .eyebrow { 
+      text-transform: uppercase; 
+      letter-spacing: .24em; 
+      font-size: .73rem; 
+      color: var(--gold-light); 
+      font-weight: 900; 
+      margin-bottom: 1rem; 
+    }
+    h1, h2, h3 { 
+      font-family: Cinzel, Georgia, serif; 
+      line-height: 1.12; 
+      margin: 0; 
+      font-weight: 600; 
+      letter-spacing: .02em; 
+    }
+    h1 { 
+      font-size: clamp(2rem, 5.5vw, 5rem); 
+      color: var(--white); 
+      max-width: 980px; 
+      margin-bottom: .5rem;
+    }
+    h2 { 
+      font-size: clamp(1.8rem, 4.5vw, 4.35rem); 
+      color: var(--white); 
+      margin-bottom: .8rem;
+    }
+    h3 { 
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); 
+      color: var(--white); 
+      margin-bottom: .6rem;
+    }
+    p { 
+      color: rgba(242,239,234,.72); 
+      margin-bottom: 1rem;
+    }
+    .hero p { 
+      font-size: clamp(.95rem, 1.5vw, 1.15rem); 
+      color: rgba(255,255,255,.82); 
+      max-width: 760px; 
+      margin: 1rem 0 1.5rem; 
+    }
+    .hero-actions { 
+      display: flex; 
+      gap: .85rem; 
+      flex-wrap: wrap; 
+    }
+
+    section { 
+      padding: 6rem 5vw; 
+      position: relative; 
+    }
+    @media (max-width: 768px) {
+      section { padding: 4rem 5vw; }
+    }
+
+    .intro {
+      background: linear-gradient(180deg, var(--obsidian), #171717);
+    }
+    .intro-grid {
+      max-width: 1400px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-    h2 {
-      font-family: Cinzel, serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 2rem;
-      color: var(--gold-light);
+    @media (max-width: 900px) {
+      .intro-grid { grid-template-columns: 1fr; }
     }
-    h3 {
-      font-family: Cinzel, serif;
-      font-size: 1.75rem;
-      margin: 2.5rem 0 1.25rem;
-      color: var(--champagne);
+    .copy-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      border-radius: 30px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.22);
     }
-    p {
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
+    .feature-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: grid;
+      gap: .8rem;
+    }
+    .feature-list li {
+      padding-left: 1.8rem;
+      position: relative;
       color: rgba(255,255,255,.85);
     }
-    ul {
-      margin: 1.5rem 0 1.5rem 2rem;
-      line-height: 1.9;
+    .feature-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--gold-light);
+      font-weight: 900;
+      font-size: 1.2rem;
     }
-    li {
-      margin-bottom: .75rem;
-      color: rgba(255,255,255,.82);
-    }
-    strong { color: var(--gold-light); }
 
-    .cta-box {
-      background: linear-gradient(135deg, rgba(212,160,23,.12), rgba(242,215,122,.08));
-      border: 1px solid rgba(212,160,23,.25);
+    .services {
+      background: var(--stone-texture);
+    }
+    .service-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.22);
+      transition: all .4s cubic-bezier(.25,.46,.45,.94);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,160,23,.4);
+      box-shadow: 0 32px 100px rgba(212,160,23,.15);
+    }
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--gold-gradient);
       border-radius: 16px;
-      padding: 3rem;
-      text-align: center;
-      margin: 4rem 0;
-    }
-    .cta-box h3 { margin-top: 0; }
-
-    footer {
-      background: #050505;
-      color: rgba(255,255,255,.62);
-      padding: 2rem 5vw;
       display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(212,160,23,.18);
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 20px rgba(212,160,23,.25);
+    }
+
+    .cta-section {
+      background: #0a0a0a;
+      padding: 7rem 5vw;
+    }
+    .cta-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem;
+      border-radius: 40px;
+      background: var(--stone-texture);
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212,160,23,.24);
+    }
+    @media (max-width: 900px) {
+      .cta-content {
+        grid-template-columns: 1fr;
+        padding: 3rem 2rem;
+      }
+    }
+    .contact-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      border-radius: 28px;
+      padding: 2rem;
+      display: grid;
+      gap: 1.2rem;
+    }
+    .contact-card div {
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(212,160,23,.18);
+    }
+    .contact-card div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    .contact-card strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: .3rem;
+    }
+    .contact-card a:hover {
+      color: var(--gold-light);
+    }
+
+    footer { 
+      background: #050505; 
+      color: rgba(255,255,255,.6); 
+      padding: 2.5rem 5vw; 
+      border-top: 1px solid rgba(212,160,23,.15); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 2rem; 
+      flex-wrap: wrap; 
+      font-size: .85rem; 
+    }
+    footer a:hover { color: var(--gold-light); }
+
+    
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+    }
+    @media (max-width: 768px) {
+      
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    
+    @media (max-width: 480px) {
+      section { padding: 3rem 4vw; }
+      .hero { padding: 1.5rem 4vw 2.5rem; }
+      h1 { font-size: clamp(1.8rem, 5vw, 5rem); }
+      .intro-card, .material-card, .service-card { padding: 2rem 1.5rem; }
     }
   </style>
-</head>
 
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wnz5flnb3g");
+  </script>
+</head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <div class="topbar">
+    <div>📍 664 Center Street, Ludlow, MA 01056</div>
     <div class="topbar-contact">
       <a href="tel:+14135833399">📞 (413) 583-3399</a>
       <span>🕒 Mon–Fri 9:30–4:30 · Sat 9:30–1:00</span>
     </div>
-    <div>
-      <a href="/">📍 664 Center Street, Ludlow, MA 01056</a>
-    </div>
   </div>
 
-  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
     <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
       <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery" width="64" height="64" />
     </a>
@@ -471,154 +657,98 @@
     </div>
   </nav>
 
-  <main>
-    <section class="hero">
-      <span class="eyebrow">Somers, Connecticut</span>
-      <h1>Granite, Quartz & Marble Countertops</h1>
-      <p>
-        Professional stone countertop fabrication and installation serving Somers, Connecticut. 
-        D&C Granite & Marble brings 30+ years of expertise to your Somers home—just 22 minutes from our Ludlow, MA showroom.
-      </p>
-      <div class="hero-actions">
-        <a href="/contact" class="btn">Request Free Quote</a>
-        <a href="tel:+14135833399" class="btn">Call (413) 583-3399</a>
+  <main id="main-content">
+    <header class="hero" role="banner">
+      <div class="hero-content">
+        <div class="eyebrow">Serving Somers, CT</div>
+        <h1>Granite Countertops in Somers, CT</h1>
+        <p>D&C Granite & Marble Design Gallery provides custom granite, quartz, and marble countertops, bathroom vanities, and fireplace surrounds to homeowners and contractors throughout Somers and the surrounding area.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Request Free Quote</a>
+          <a href="tel:+14135833399" class="btn btn-outline">Call (413) 583-3399</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="intro fade-in">
+      <div class="intro-grid">
+        <div class="copy-card">
+          <div class="eyebrow">Local service</div>
+          <h2>Professional countertop installation serving Somers.</h2>
+          <p>D&C Granite & Marble is located just minutes from Somers in nearby Ludlow, making it easy for Somers homeowners to visit our showroom, review slabs, and work with our team on kitchen and bathroom stone projects.</p>
+          <p>From initial consultation and slab selection to precision templating, fabrication, and installation, D&C provides complete countertop services for Somers homes and businesses.</p>
+          <ul class="feature-list">
+            <li>Custom granite kitchen countertops and islands</li>
+            <li>Quartz countertops for modern kitchens</li>
+            <li>Marble and granite bathroom vanities</li>
+            <li>Fireplace surrounds and custom stone details</li>
+            <li>Professional templating and installation</li>
+          </ul>
+        </div>
+        <div class="copy-card">
+          <h3>Why Somers homeowners choose D&C</h3>
+          <p><strong>Close proximity:</strong> Our Ludlow showroom is just a short drive from Somers, making it convenient to visit, review materials, and discuss your project.</p>
+          <p><strong>Local expertise:</strong> D&C has worked with hundreds of homeowners across Somers and Northern Connecticut for over three decades.</p>
+          <p><strong>Quality fabrication:</strong> Every countertop is custom-cut, finished, and installed with attention to detail and craftsmanship.</p>
+          <p><strong>Full service:</strong> From slab selection to final installation, D&C handles the entire process.</p>
+        </div>
       </div>
     </section>
 
-    <section class="content-section">
-      <div class="container">
-        <h2>Serving Somers, Connecticut with Premium Countertops</h2>
-        
-        <p>
-          Somers is a peaceful rural town in Tolland County, Connecticut, located along the Massachusetts state line. Known for its scenic countryside, excellent schools, and family-friendly atmosphere, Somers offers a quiet retreat while maintaining convenient access to Springfield and Hartford.
-        </p>
-
-        <p>
-          D&C Granite & Marble Design Gallery is proud to serve homeowners and businesses in <strong>Somers, CT</strong> with expert stone fabrication and installation. Located just <strong>22 minutes</strong> from our Ludlow showroom, we provide the same premium service to Somers residents that we've delivered across Western Massachusetts for over 30 years.
-        </p>
-
-        <h3>Why Somers Homeowners Choose D&C Granite</h3>
-        
-        <ul>
-          <li><strong>Convenient Location:</strong> Just 22 minutes from Somers to our Ludlow showroom at 664 Center Street</li>
-          <li><strong>100+ Stone Slabs:</strong> See granite, quartz, and marble in person before you buy</li>
-          <li><strong>Free Consultation:</strong> We come to your Somers home to measure and provide estimates</li>
-          <li><strong>Expert Installation:</strong> Our team has 15+ years average experience</li>
-          <li><strong>2-3 Week Timeline:</strong> From selection to installation</li>
-          <li><strong>Lifetime Warranty:</strong> We stand behind our craftsmanship</li>
-        </ul>
-
-        <h3>Popular Neighborhoods We Serve in Somers</h3>
-        
-        <p>We proudly serve all Somers neighborhoods, including:</p>
-        <ul>
-          <li>Somersville</li>
-          <li>North Somers</li>
-          <li>South Somers</li>
-          <li>Four Bridges</li>
-        </ul>
-
-        <h3>Our Services in Somers, Connecticut</h3>
-
-        <p>
-          <strong><a href="/granite-countertops-ludlow-ma">Granite Countertops</a>:</strong> 
-          Timeless, durable, and heat-resistant. Perfect for Somers kitchens that need to handle daily cooking and entertaining.
-        </p>
-
-        <p>
-          <strong><a href="/quartz-countertops-ludlow-ma">Quartz Countertops</a>:</strong> 
-          The most popular choice in Somers! Non-porous, stain-resistant, and virtually maintenance-free. Available in dozens of colors and patterns.
-        </p>
-
-        <p>
-          <strong><a href="/bathroom-vanities">Marble Bathroom Vanities</a>:</strong> 
-          Luxury marble vanities that transform Somers bathrooms into spa-like retreats.
-        </p>
-
-        <p>
-          <strong><a href="/fireplace-surrounds">Fireplace Surrounds</a>:</strong> 
-          Custom stone fireplace surrounds that become the focal point of your Somers living room.
-        </p>
-
-        <div class="cta-box">
-          <h3>Ready to Transform Your Somers Kitchen?</h3>
-          <p>Visit our Ludlow showroom to see 100+ granite, quartz, and marble slabs in person. Just 22 minutes from Somers!</p>
-          <a href="/contact" class="btn">Schedule Free Consultation</a>
+    <section class="services fade-in">
+      <div style="max-width:1400px;margin:0 auto 3rem;">
+        <div class="eyebrow">What we offer</div>
+        <h2>Countertop services for Somers homes.</h2>
+        <p style="max-width:760px;margin-top:1rem;">D&C provides complete stone fabrication and installation for residential and commercial projects throughout Somers and the greater Northern Connecticut area.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">🪨</div>
+          <h3>Granite Countertops</h3>
+          <p>Natural granite slabs with unique patterns, colors, and veining. Durable, heat-resistant, and timeless for Somers kitchens and bathrooms.</p>
         </div>
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Quartz Countertops</h3>
+          <p>Engineered stone surfaces that combine beauty with low maintenance. Perfect for busy kitchens in Somers homes.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛁</div>
+          <h3>Bathroom Vanities</h3>
+          <p>Custom marble and granite vanity tops fabricated to your exact measurements with undermount sinks and backsplash options.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔥</div>
+          <h3>Fireplace Surrounds</h3>
+          <p>Granite, marble, and stone hearths and mantels that add elegance to Somers living spaces.</p>
+        </div>
+      </div>
+    </section>
 
-        <h3>Serving Somers and Nearby Connecticut Communities</h3>
-        
-        <p>
-          In addition to Somers, we serve nearby Connecticut towns including Hampden, Wilbraham, Longmeadow, and throughout Tolland County. No matter where you live in the Somers area, D&C Granite is your local stone countertop specialist.
-        </p>
-
-        <h3>Why Choose D&C Granite for Your Somers Project?</h3>
-
-        <ul>
-          <li><strong>30+ Years in Business:</strong> Family-owned and operated since the 1990s</li>
-          <li><strong>Master Fabricators:</strong> CNC precision cutting and expert hand-finishing</li>
-          <li><strong>No Pressure Sales:</strong> We educate, you decide</li>
-          <li><strong>Transparent Pricing:</strong> Detailed quotes with no hidden fees</li>
-          <li><strong>Licensed & Insured:</strong> Fully bonded for your protection</li>
-          <li><strong>5-Star Reviews:</strong> Hundreds of satisfied customers across CT and MA</li>
-        </ul>
-
-        <h3>Our Process for Somers Homeowners</h3>
-
-        <p><strong>1. Free Consultation</strong><br>
-        Visit our showroom or we come to you in Somers. We discuss your vision, budget, and timeline.</p>
-
-        <p><strong>2. Slab Selection</strong><br>
-        Choose from 100+ granite, quartz, and marble slabs. We help you find the perfect match for your Somers home.</p>
-
-        <p><strong>3. Precision Templating</strong><br>
-        After your cabinets are installed, we create exact templates using laser measurement technology.</p>
-
-        <p><strong>4. Expert Fabrication</strong><br>
-        Our master fabricators cut your stone with CNC precision at our Ludlow facility.</p>
-
-        <p><strong>5. Professional Installation</strong><br>
-        We install your new countertops in your Somers home, typically in 4-6 hours. Plumbing hookup included.</p>
-
-        <h3>Visit Our Showroom Near Somers</h3>
-
-        <p>
-          <strong>D&C Granite and Marble Design Gallery</strong><br>
-          664 Center Street<br>
-          Ludlow, MA 01056<br>
-          <a href="tel:+14135833399" style="color: var(--gold-light);">(413) 583-3399</a>
-        </p>
-
-        <p>
-          <strong>Hours:</strong><br>
-          Monday-Friday: 9:30 AM - 4:30 PM<br>
-          Saturday: 9:30 AM - 1:00 PM<br>
-          Sunday: Closed
-        </p>
-
-        <p>
-          <strong>From Somers to our showroom:</strong> 22 minutes<br>
-          Easy parking and wheelchair accessible.
-        </p>
-
-        <div class="cta-box">
-          <h3>Get Your Free Quote Today</h3>
-          <p>Call <a href="tel:+14135833399" style="color: var(--gold-light); font-weight: 700;">(413) 583-3399</a> or request a quote online.</p>
-          <a href="/contact" class="btn">Request Free Quote</a>
+    <section class="cta-section fade-in">
+      <div class="cta-content">
+        <div>
+          <div class="eyebrow">Ready to start?</div>
+          <h2>Get a countertop quote for your Somers project.</h2>
+          <p>Call the showroom, stop by during business hours, or send project details online. Photos, sketches, or rough measurements help D&C provide a more accurate estimate.</p>
+          <a class="btn btn-primary" href="/contact">Request Free Quote</a>
+        </div>
+        <div class="contact-card">
+          <div><strong>Showroom</strong>664 Center Street<br>Ludlow, MA 01056<br><em style="font-size:.88rem;color:rgba(255,255,255,.7);">Minutes from Somers</em></div>
+          <div><strong>Phone</strong><a href="tel:+14135833399">(413) 583-3399</a></div>
+          <div><strong>Email</strong><a href="mailto:info@dcgraniteandmarble.net">info@dcgraniteandmarble.net</a></div>
+          <div><strong>Hours</strong>Mon–Fri 9:30 AM–4:30 PM<br>Sat 9:30 AM–1:00 PM</div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div>&copy; 2026 D&C Granite and Marble Design Gallery. All rights reserved.</div>
-    <div>
-      <a href="/springfield-ma-granite-countertops">Springfield MA</a> | 
-      <a href="/longmeadow-ma-granite-countertops">Longmeadow MA</a> | 
-      <a href="/chicopee-ma-granite-countertops">Chicopee MA</a> | 
-      <a href="/contact">Contact</a>
-    </div>
+    <span>© 2026 D&C Granite and Marble Design Gallery</span>
+    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a> · <a href="/contact">Contact</a></span>
   </footer>
+
+  
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
@@ -641,17 +771,76 @@
     });
 
     // Mobile dropdown toggle
-    document.querySelectorAll('.nav-item > span').forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
-        if (window.innerWidth <= 900) {
-          e.preventDefault();
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const trigger = item.querySelector('span');
+      if (trigger && window.innerWidth <= 768) {
+        trigger.addEventListener('click', (e) => {
           e.stopPropagation();
-          const parent = trigger.closest('.nav-item');
-          parent.classList.toggle('mobile-open');
+          item.classList.toggle('mobile-open');
+        });
+      }
+    });
+
+    // Re-init mobile dropdown on resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        navItems.forEach(item => item.classList.remove('mobile-open'));
+      }
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+  </script>
+
+  <!-- GA4 Enhanced Event Tracking -->
+  <script>
+    // Track phone number clicks
+    document.querySelectorAll('a[href^="tel:+14135833399"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'phone_call', {
+          'event_category': 'Contact',
+          'event_label': 'Phone Click'
+        });
+      });
+    });
+
+    // Track Get Quote button clicks
+    document.querySelectorAll('.btn-primary').forEach(button => {
+      button.addEventListener('click', () => {
+        gtag('event', 'cta_click', {
+          'event_category': 'Engagement',
+          'event_label': 'Get Quote Button'
+        });
+      });
+    });
+
+    // Track email link clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'email_click', {
+          'event_category': 'Contact',
+          'event_label': 'Email Click'
+        });
       });
     });
   </script>
-
 </body>
 </html>
