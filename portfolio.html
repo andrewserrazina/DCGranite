@@ -604,6 +604,44 @@
       .lightbox-nav { width: 42px; height: 42px; }
     }
   
+    .testimonials-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .page-links-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .contact-card {
+        padding: 1.5rem 1rem;
+      }
+    }
     
     @media (max-width: 480px) {
       section { padding: 3rem 4vw; }
@@ -773,7 +811,7 @@
         </div>
         <p>Real feedback from homeowners across Western Massachusetts.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1rem;">
         <div class="contact-card"><div style="color:#F2D77A;">★★★★★</div><p>“Best granite in western mass... no others could beat the quality and value.”</p><strong>- Chris S</strong></div>
         <div class="contact-card"><div style="color:#F2D77A;">★★★★★</div><p>“We love our new kitchen and the granite is beautiful and perfectly installed.”</p><strong>- Carrie P</strong></div>
         <div class="contact-card"><div style="color:#F2D77A;">★★★★★</div><p>“Great professional quality... only 3 weeks from call to install.”</p><strong>- Nick D</strong></div>
@@ -787,7 +825,7 @@
           <h2>Continue planning your project.</h2>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:1rem;">
         <a href="/granite-countertops-ludlow-ma" class="contact-card"><strong>Granite</strong><p>Explore natural stone options.</p></a>
         <a href="/quartz-countertops-ludlow-ma" class="contact-card"><strong>Quartz</strong><p>Modern low-maintenance surfaces.</p></a>
         <a href="/about" class="contact-card"><strong>About</strong><p>Learn about craftsmanship.</p></a>
