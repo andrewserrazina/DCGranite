@@ -26,7 +26,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dcgraniteandmarble.net/contact" />
   <meta property="og:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact D&C Granite | Countertop Quotes Ludlow MA" />
+  <meta name="twitter:description" content="Request a quote for granite, quartz, marble, vanities, fireplaces, and custom stonework from D&C Granite & Marble in Ludlow, MA." />
+  <meta name="twitter:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
   <meta name="theme-color" content="#0F1113" />
+  <link rel="icon" type="image/png" href="/images/dc-granite-logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -211,7 +216,8 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.5);
       z-index: 1000;
     }
-    .nav-item:hover .dropdown-menu {
+    .nav-item:hover .dropdown-menu,
+    .nav-item.touch-open .dropdown-menu {
       opacity: 1;
       visibility: visible;
       margin-top: .5rem;
@@ -1011,7 +1017,7 @@
           <p>Fill out the form below and we'll get back to you within 1 business day. For urgent requests, please call the showroom directly.</p>
 
           <div class="microsoft-form-container">
-            <iframe width="640px" height="1000px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=k1JZcFmGREGnbjp7LL6Pod587W94Mm1GvnjJ9AbQ_KhUMlBEUTA0N05ENFJHMEo0S1UzTklHQkZUSy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; width: 100%; min-height: 1000px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+            <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=k1JZcFmGREGnbjp7LL6Pod587W94Mm1GvnjJ9AbQ_KhUMlBEUTA0N05ENFJHMEo0S1UzTklHQkZUSy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; width: 100%; min-height: 1000px;" title="D&amp;C Granite Quote Request Form" allowfullscreen></iframe>
           </div>
         </div>
 
@@ -1041,21 +1047,6 @@
         <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"From the owner on down everyone was so professional, knowledgeable and a pleasure to work with."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Theresa L</strong></div>
         <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"D&C was super helpful & always willing to work with us as we made our final choices."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Bernadette B</strong></div>
         <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"Perfect! Our renovation was complex and they took the time needed to do everything perfectly."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Anne M</strong></div>
-      </div>
-    </section>
-
-    <!-- Google Map Section -->
-    <section class="fade-in" style="padding: 0; background: #0f0f0f;">
-      <div style="max-width: 1400px; margin: 0 auto;">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.8742857142857!2d-72.4761!3d42.1589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e6e7f3f3f3f3f3%3A0x1234567890abcdef!2s664%20Center%20St%2C%20Ludlow%2C%20MA%2001056!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" 
-          width="100%" 
-          height="400" 
-          style="border:0; display: block;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
       </div>
     </section>
 
@@ -1095,47 +1086,67 @@
   <footer>
     <span>© 2026 D&C Granite and Marble Design Gallery</span>
     <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a>
-      <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
+      · <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
   </footer>
 
   
 
   <script>
+    // Mobile menu overlay
+    const menuOverlay = document.createElement('div');
+    menuOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;display:none;';
+    document.body.appendChild(menuOverlay);
+
+    function closeMenu() {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuOverlay.style.display = 'none';
+    }
+
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
       const isExpanded = menuToggle.classList.contains('active');
       menuToggle.setAttribute('aria-expanded', isExpanded);
       document.body.style.overflow = isExpanded ? 'hidden' : '';
+      menuOverlay.style.display = isExpanded ? 'block' : 'none';
     });
+
+    menuOverlay.addEventListener('click', closeMenu);
 
     // Close mobile menu when clicking a link
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Services dropdown: support click/touch on all devices
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const trigger = item.querySelector(':scope > span');
+      if (!trigger) return;
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+          item.classList.toggle('mobile-open');
+        } else {
+          const isOpen = item.classList.contains('touch-open');
+          document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
+          if (!isOpen) item.classList.add('touch-open');
+        }
       });
     });
 
-    // Mobile dropdown toggle
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      const trigger = item.querySelector('span');
-      if (trigger && window.innerWidth <= 768) {
-        trigger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          item.classList.toggle('mobile-open');
-        });
-      }
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
     });
 
-    // Re-init mobile dropdown on resize
+    // Re-init on resize
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         navItems.forEach(item => item.classList.remove('mobile-open'));
