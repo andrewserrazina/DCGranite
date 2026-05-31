@@ -592,9 +592,9 @@
     </div>
   </div>
 
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-    <a href="/" class="brand" aria-label="D&C Granite and Marble Design Gallery - Home">
-      <img src="/images/dc-granite-logo.png" alt="D&C Granite and Marble Design Gallery" width="64" height="64" />
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&amp;C Granite and Marble Design Gallery - Home">
+      <img src="/images/dc-granite-logo.png" alt="D&amp;C Granite and Marble Design Gallery" width="64" height="64" />
     </a>
     
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -608,13 +608,15 @@
       <div class="nav-item">
         <span>
           Services
-          <span class="dropdown-arrow">▼</span>
+          <span class="dropdown-arrow">&#9660;</span>
         </span>
         <div class="dropdown-menu">
           <a href="/granite-countertops-ludlow-ma">Granite Countertops</a>
           <a href="/quartz-countertops-ludlow-ma">Quartz Countertops</a>
           <a href="/bathroom-vanities">Bathroom Vanities</a>
+          <a href="/bathroom-remodeling">Bathroom Remodeling</a>
           <a href="/fireplace-surrounds">Fireplace Surrounds</a>
+          <a href="/kitchen-islands">Kitchen Islands</a>
         </div>
       </div>
       <a href="/portfolio">Portfolio</a>
@@ -622,7 +624,7 @@
       <a href="/faq">FAQ</a>
       <a href="/testimonials">Reviews</a>
       <a href="/about">About</a>
-      <a href="/contact" class="btn btn-primary">Request Free Quote</a>
+      <a href="/contact" class="btn btn-primary">Free Quote</a>
     </div>
   </nav>
 
@@ -782,93 +784,21 @@
     </section>
   </main>
 
-  <footer>
-    <span>© 2026 D&C Granite and Marble Design Gallery</span>
-    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></span>
+    <footer role="contentinfo">
+    <span>&copy; 2026 D&amp;C Granite and Marble Design Gallery</span>
+    <span>
+      <a href="/granite-countertops-ludlow-ma">Granite</a> &middot;
+      <a href="/quartz-countertops-ludlow-ma">Quartz</a> &middot;
+      <a href="/bathroom-vanities">Vanities</a> &middot;
+      <a href="/bathroom-remodeling">Remodeling</a> &middot;
+      <a href="/fireplace-surrounds">Fireplaces</a> &middot;
+      <a href="/kitchen-islands">Kitchen Islands</a> &middot;
+      <a href="/portfolio">Portfolio</a> &middot;
+      <a href="/blog">Blog</a> &middot;
+      <a href="/about">About</a> &middot;
+      <a href="/contact">Contact</a>
+    </span>
   </footer>
-
-  
-
-  <script>
-    // Mobile menu overlay
-    const menuOverlay = document.createElement('div');
-    menuOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;display:none;';
-    document.body.appendChild(menuOverlay);
-
-    function closeMenu() {
-      menuToggle.classList.remove('active');
-      navLinks.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      menuOverlay.style.display = 'none';
-    }
-
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-      const isExpanded = menuToggle.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded);
-      document.body.style.overflow = isExpanded ? 'hidden' : '';
-      menuOverlay.style.display = isExpanded ? 'block' : 'none';
-    });
-
-    menuOverlay.addEventListener('click', closeMenu);
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Services dropdown: support click/touch on all devices
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      const trigger = item.querySelector(':scope > span');
-      if (!trigger) return;
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (window.innerWidth <= 768) {
-          item.classList.toggle('mobile-open');
-        } else {
-          const isOpen = item.classList.contains('touch-open');
-          document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
-          if (!isOpen) item.classList.add('touch-open');
-        }
-      });
-    });
-
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
-    });
-
-    // Re-init on resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        navItems.forEach(item => item.classList.remove('mobile-open'));
-      }
-    });
-
-    const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 100) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    fadeElements.forEach(el => fadeObserver.observe(el));
-  </script>
 
   <!-- GA4 Enhanced Event Tracking -->
   <script>
@@ -953,6 +883,53 @@
           });
         }
       });
+    });
+  </script>
+  <script>
+    const menuOverlay = document.createElement('div');
+    menuOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;display:none;';
+    document.body.appendChild(menuOverlay);
+    function closeMenu() {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuOverlay.style.display = 'none';
+    }
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      const isExpanded = menuToggle.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', isExpanded);
+      document.body.style.overflow = isExpanded ? 'hidden' : '';
+      menuOverlay.style.display = isExpanded ? 'block' : 'none';
+    });
+    menuOverlay.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.querySelectorAll('.nav-item').forEach(item => {
+      const trigger = item.querySelector(':scope > span');
+      if (!trigger) return;
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+          item.classList.toggle('mobile-open');
+        } else {
+          const isOpen = item.classList.contains('touch-open');
+          document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
+          if (!isOpen) item.classList.add('touch-open');
+        }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('mobile-open'));
+    });
+    window.addEventListener('scroll', () => {
+      document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 60);
     });
   </script>
 </body>
