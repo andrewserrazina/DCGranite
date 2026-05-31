@@ -891,35 +891,35 @@
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto 3rem;">
         
-        <!-- Method 1: Call (Primary) - SIMPLIFIED -->
-        <div style="background: linear-gradient(135deg, #D4A017, #F4C430); border: 2px solid #D4A017; border-radius: 16px; padding: 2.5rem 2rem; text-align: center;">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem;">📞</div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: white;">Call Us Now</h3>
-          <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">Talk to an expert in under 30 seconds</p>
-          <a href="tel:+14135833399" style="font-size: 2rem; font-weight: 700; color: white; background: rgba(0,0,0,0.2); padding: 1.2rem 2rem; border-radius: 8px; display: inline-block; text-decoration: none; transition: all 0.3s; margin-bottom: 1rem;">
+        <!-- Method 1: Call (Primary) - FULLY CLICKABLE -->
+        <div style="background: linear-gradient(135deg, #D4A017, #F4C430); border: 2px solid #D4A017; border-radius: 16px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; transform: translateY(0);" onclick="window.location.href='tel:+14135833399'; gtag('event', 'phone_call', {'event_category': 'Conversion', 'event_label': 'Phone Call - Contact Card'});" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 32px rgba(212,160,23,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <div style="font-size: 3.5rem; margin-bottom: 1rem; pointer-events: none;">📞</div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: white; pointer-events: none;">Call Us Now</h3>
+          <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; pointer-events: none;">Talk to an expert in under 30 seconds</p>
+          <div style="font-size: 2rem; font-weight: 700; color: white; background: rgba(0,0,0,0.2); padding: 1.2rem 2rem; border-radius: 8px; display: inline-block; text-decoration: none; margin-bottom: 1rem; pointer-events: none;">
             (413) 583-3399
-          </a>
-          <div style="font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 1rem;">Mon-Fri 9:30am-4:30pm • Sat 9:30am-1pm</div>
+          </div>
+          <div style="font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 1rem; pointer-events: none;">Mon-Fri 9:30am-4:30pm • Sat 9:30am-1pm</div>
         </div>
         
-        <!-- Method 2: Online Form -->
-        <div style="background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.05)); border: 2px solid rgba(212,160,23,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s;" onclick="document.querySelector('.quote-section').scrollIntoView({behavior:'smooth'})">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem;">📝</div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--gold-light);">Request Online</h3>
-          <p style="font-size: 0.95rem; color: rgba(242,239,234,0.7); margin-bottom: 1.5rem;">Fill form below, we'll call you back</p>
-          <span style="font-size: 1.2rem; font-weight: 700; color: var(--gold);">Fill Form Below →</span>
-          <div style="font-size: 0.85rem; color: rgba(242,239,234,0.5); margin-top: 1rem;">2-minute form</div>
+        <!-- Method 2: Online Form - FULLY CLICKABLE -->
+        <div style="background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.05)); border: 2px solid rgba(212,160,23,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; transform: translateY(0);" onclick="document.querySelector('.quote-section').scrollIntoView({behavior:'smooth'}); gtag('event', 'cta_click', {'event_category': 'Engagement', 'event_label': 'Contact Card - Form'});" onmouseover="this.style.transform='translateY(-8px)'; this.style.backgroundColor='rgba(212,160,23,0.15)'; this.style.borderColor='rgba(212,160,23,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.backgroundColor='rgba(212,160,23,0.05)'; this.style.borderColor='rgba(212,160,23,0.3)';">
+          <div style="font-size: 3.5rem; margin-bottom: 1rem; pointer-events: none;">📝</div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--gold-light); pointer-events: none;">Request Online</h3>
+          <p style="font-size: 0.95rem; color: rgba(242,239,234,0.7); margin-bottom: 1.5rem; pointer-events: none;">Fill form below, we'll call you back</p>
+          <span style="font-size: 1.2rem; font-weight: 700; color: var(--gold); pointer-events: none;">Fill Form Below →</span>
+          <div style="font-size: 0.85rem; color: rgba(242,239,234,0.5); margin-top: 1rem; pointer-events: none;">2-minute form</div>
         </div>
         
-        <!-- Method 3: Visit Showroom -->
-        <div style="background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.05)); border: 2px solid rgba(212,160,23,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; transition: all 0.3s;">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem;">🏢</div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--gold-light);">Visit Showroom</h3>
-          <p style="font-size: 0.95rem; color: rgba(242,239,234,0.7); margin-bottom: 1.5rem;">See 100+ samples in person</p>
-          <a href="https://maps.google.com/?q=664+Center+Street+Ludlow+MA+01056" target="_blank" style="font-size: 1.2rem; font-weight: 700; color: var(--gold); text-decoration: none;">
+        <!-- Method 3: Visit Showroom - FULLY CLICKABLE -->
+        <div style="background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.05)); border: 2px solid rgba(212,160,23,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; transform: translateY(0);" onclick="window.open('https://maps.google.com/?q=664+Center+Street+Ludlow+MA+01056', '_blank'); gtag('event', 'showroom_directions', {'event_category': 'Showroom', 'event_label': 'Get Directions - Contact Card'});" onmouseover="this.style.transform='translateY(-8px)'; this.style.backgroundColor='rgba(212,160,23,0.15)'; this.style.borderColor='rgba(212,160,23,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.backgroundColor='rgba(212,160,23,0.05)'; this.style.borderColor='rgba(212,160,23,0.3)';">
+          <div style="font-size: 3.5rem; margin-bottom: 1rem; pointer-events: none;">🏢</div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--gold-light); pointer-events: none;">Visit Showroom</h3>
+          <p style="font-size: 0.95rem; color: rgba(242,239,234,0.7); margin-bottom: 1.5rem; pointer-events: none;">See 100+ samples in person</p>
+          <span style="font-size: 1.2rem; font-weight: 700; color: var(--gold); text-decoration: none; pointer-events: none;">
             Get Directions →
-          </a>
-          <div style="font-size: 0.85rem; color: rgba(242,239,234,0.5); margin-top: 1rem;">664 Center St, Ludlow MA</div>
+          </span>
+          <div style="font-size: 0.85rem; color: rgba(242,239,234,0.5); margin-top: 1rem; pointer-events: none;">664 Center St, Ludlow MA</div>
         </div>
       </div>
 
@@ -1172,29 +1172,68 @@
     fadeElements.forEach(el => fadeObserver.observe(el));
   </script>
 
-  <!-- GA4 Enhanced Event Tracking -->
+  <!-- GA4 ENHANCED CONVERSION TRACKING -->
   <script>
-    // Track phone number clicks
+    // ============================================
+    // D&C GRANITE CONVERSION TRACKING SYSTEM
+    // Tracks: Forms, Phone Calls, Showroom Visits, Engagement
+    // ============================================
+
+    // 1. FORM SUBMISSION TRACKING (Microsoft Forms in iframe)
+    window.addEventListener('message', function(event) {
+      if (event.data && typeof event.data === 'object') {
+        if (event.data.type === 'success' || event.data.type === 'submitted') {
+          gtag('event', 'form_submission', {
+            'event_category': 'Conversion',
+            'event_label': 'Quote Form - Microsoft Forms',
+            'value': 1
+          });
+        }
+      }
+    });
+
+    // Fallback: Track when form is viewed
+    const formContainer = document.querySelector('.microsoft-form-container');
+    if (formContainer) {
+      let formInteractionTracked = false;
+      
+      const formObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !formInteractionTracked) {
+            gtag('event', 'form_view', {
+              'event_category': 'Engagement',
+              'event_label': 'Quote Form Viewed',
+              'value': 1
+            });
+            formInteractionTracked = true;
+          }
+        });
+      });
+      
+      formObserver.observe(formContainer);
+    }
+
+    // 2. TRACK PHONE NUMBER CLICKS (legacy links)
     document.querySelectorAll('a[href^="tel:+14135833399"]').forEach(link => {
       link.addEventListener('click', () => {
         gtag('event', 'phone_call', {
-          'event_category': 'Contact',
-          'event_label': 'Phone Click'
+          'event_category': 'Conversion',
+          'event_label': 'Phone Call - Direct Link'
         });
       });
     });
 
-    // Track Get Quote button clicks
+    // 3. TRACK CTA BUTTONS
     document.querySelectorAll('.btn-primary').forEach(button => {
       button.addEventListener('click', () => {
         gtag('event', 'cta_click', {
           'event_category': 'Engagement',
-          'event_label': 'Get Quote Button'
+          'event_label': 'CTA Click - ' + button.textContent.trim()
         });
       });
     });
 
-    // Track email link clicks
+    // 4. EMAIL TRACKING
     document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
       link.addEventListener('click', () => {
         gtag('event', 'email_click', {
@@ -1202,6 +1241,65 @@
           'event_label': 'Email Click'
         });
       });
+    });
+
+    // 5. SCROLL DEPTH TRACKING
+    let scrollTracked = {25: false, 50: false, 75: false, 100: false};
+    
+    window.addEventListener('scroll', function() {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      
+      if (scrollPercent > 25 && !scrollTracked[25]) {
+        gtag('event', 'scroll_engagement', {
+          'event_category': 'Engagement',
+          'event_label': '25% Page Scroll',
+          'value': 25
+        });
+        scrollTracked[25] = true;
+      }
+      
+      if (scrollPercent > 50 && !scrollTracked[50]) {
+        gtag('event', 'scroll_engagement', {
+          'event_category': 'Engagement',
+          'event_label': '50% Page Scroll',
+          'value': 50
+        });
+        scrollTracked[50] = true;
+      }
+      
+      if (scrollPercent > 75 && !scrollTracked[75]) {
+        gtag('event', 'scroll_engagement', {
+          'event_category': 'Engagement',
+          'event_label': '75% Page Scroll',
+          'value': 75
+        });
+        scrollTracked[75] = true;
+      }
+      
+      if (scrollPercent > 90 && !scrollTracked[100]) {
+        gtag('event', 'scroll_engagement', {
+          'event_category': 'Engagement',
+          'event_label': '90% Page Scroll',
+          'value': 90
+        });
+        scrollTracked[100] = true;
+      }
+    }, {passive: true});
+
+    // 6. PAGE TIME TRACKING
+    let pageLoadTime = new Date();
+    
+    window.addEventListener('beforeunload', function() {
+      let pageTime = new Date() - pageLoadTime;
+      let timeInSeconds = Math.round(pageTime / 1000);
+      
+      if (timeInSeconds > 30) {
+        gtag('event', 'engaged_visit', {
+          'event_category': 'Engagement',
+          'event_label': 'Page Duration - ' + timeInSeconds + 's',
+          'value': timeInSeconds
+        });
+      }
     });
   </script>
   
