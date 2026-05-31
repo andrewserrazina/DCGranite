@@ -325,10 +325,149 @@
       .testimonial { padding: 2rem; }
       .cta-box { padding: 2.5rem 2rem; }
     }
-  </style>
+  
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .95rem 5vw;
+      background: rgba(15,17,19,.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(212,160,23,.18);
+      transition: background .3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(15,17,19,.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .brand img {
+      height: 64px;
+      width: auto;
+      filter: drop-shadow(0 12px 26px rgba(212,160,23,.2));
+      transition: filter .3s ease;
+    }
+    .brand img:hover {
+      filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+      color: rgba(255,255,255,.78);
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:not(.btn):hover { color: var(--gold-light); }
+    .nav-item { position: relative; }
+    .nav-item > a, .nav-item > span {
+      display: flex; align-items: center; gap: .3rem; cursor: pointer;
+    }
+    .dropdown-arrow { font-size: .7rem; transition: transform .3s ease; }
+    .nav-item:hover .dropdown-arrow { transform: rotate(180deg); }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%); margin-top: 1rem;
+      background: rgba(15,17,19,.98); backdrop-filter: blur(24px);
+      border: 1px solid rgba(212,160,23,.3); border-radius: 12px;
+      padding: .8rem 0; min-width: 240px; opacity: 0; visibility: hidden;
+      transition: all .3s ease; box-shadow: 0 12px 40px rgba(0,0,0,.5); z-index: 1000;
+    }
+    .nav-item:hover .dropdown-menu, .nav-item.touch-open .dropdown-menu {
+      opacity: 1; visibility: visible; margin-top: .5rem;
+    }
+    .dropdown-menu a {
+      display: block; padding: .7rem 1.5rem; color: rgba(255,255,255,.85);
+      font-size: .8rem; text-transform: none; letter-spacing: .04em;
+      transition: all .2s ease; border-left: 3px solid transparent;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(212,160,23,.12); color: var(--gold-light);
+      border-left-color: var(--gold-light); padding-left: 1.7rem;
+    }
+    .menu-toggle {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 8px; z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block; width: 28px; height: 3px;
+      background: var(--gold-light); margin: 5px 0;
+      transition: all .3s ease; border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+        background: rgba(15,17,19,.98); backdrop-filter: blur(24px);
+        flex-direction: column; justify-content: center; align-items: center;
+        gap: 2rem; transition: right .4s cubic-bezier(.25,.46,.45,.94);
+        border-left: 1px solid rgba(212,160,23,.2); box-shadow: -10px 0 40px rgba(0,0,0,.5);
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a, .nav-links .nav-item > span { font-size: 1.1rem; }
+      .nav-item { width: 100%; text-align: center; }
+      .nav-links .nav-item > span {
+        display: inline-flex !important; flex-direction: row !important;
+        align-items: center !important; gap: 0.5rem !important;
+        justify-content: center !important; padding: 0.5rem !important;
+      }
+      .dropdown-menu {
+        position: static; transform: none; margin-top: 0;
+        opacity: 1; visibility: visible; background: rgba(0,0,0,.3);
+        border: none; border-radius: 0; box-shadow: none;
+        max-height: 0; overflow: hidden;
+        transition: max-height .3s ease, padding .3s ease; padding: 0;
+      }
+      .nav-item.mobile-open .dropdown-menu { max-height: 400px; padding: .5rem 0; }
+      .dropdown-menu a { font-size: 1rem; padding: .8rem 1.5rem; }
+    }
+    </style>
 </head>
 
 <body>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="brand" aria-label="D&amp;C Granite and Marble Design Gallery - Home">
+      <img src="/images/dc-granite-logo.png" alt="D&amp;C Granite and Marble Design Gallery" width="64" height="64" />
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <div class="nav-item">
+        <span>
+          Services
+          <span class="dropdown-arrow">&#9660;</span>
+        </span>
+        <div class="dropdown-menu">
+          <a href="/granite-countertops-ludlow-ma">Granite Countertops</a>
+          <a href="/quartz-countertops-ludlow-ma">Quartz Countertops</a>
+          <a href="/bathroom-vanities">Bathroom Vanities</a>
+          <a href="/bathroom-remodeling">Bathroom Remodeling</a>
+          <a href="/fireplace-surrounds">Fireplace Surrounds</a>
+          <a href="/kitchen-islands">Kitchen Islands</a>
+        </div>
+      </div>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a>
+      <a href="/faq">FAQ</a>
+      <a href="/testimonials">Reviews</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="btn btn-primary">Free Quote</a>
+    </div>
+  </nav>
+
 
   <section class="hero">
     <div class="hero-content">
@@ -524,5 +663,67 @@
     // Smooth scroll handled by CSS
   </script>
 
+  <footer role="contentinfo">
+    <span>&copy; 2026 D&amp;C Granite and Marble Design Gallery</span>
+    <span>
+      <a href="/granite-countertops-ludlow-ma">Granite</a> &middot;
+      <a href="/quartz-countertops-ludlow-ma">Quartz</a> &middot;
+      <a href="/bathroom-vanities">Vanities</a> &middot;
+      <a href="/bathroom-remodeling">Remodeling</a> &middot;
+      <a href="/fireplace-surrounds">Fireplaces</a> &middot;
+      <a href="/kitchen-islands">Kitchen Islands</a> &middot;
+      <a href="/portfolio">Portfolio</a> &middot;
+      <a href="/blog">Blog</a> &middot;
+      <a href="/about">About</a> &middot;
+      <a href="/contact">Contact</a>
+    </span>
+  </footer>
+  <script>
+    const menuOverlay = document.createElement('div');
+    menuOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;display:none;';
+    document.body.appendChild(menuOverlay);
+    function closeMenu() {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuOverlay.style.display = 'none';
+    }
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      const isExpanded = menuToggle.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', isExpanded);
+      document.body.style.overflow = isExpanded ? 'hidden' : '';
+      menuOverlay.style.display = isExpanded ? 'block' : 'none';
+    });
+    menuOverlay.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.querySelectorAll('.nav-item').forEach(item => {
+      const trigger = item.querySelector(':scope > span');
+      if (!trigger) return;
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+          item.classList.toggle('mobile-open');
+        } else {
+          const isOpen = item.classList.contains('touch-open');
+          document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
+          if (!isOpen) item.classList.add('touch-open');
+        }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('mobile-open'));
+    });
+    window.addEventListener('scroll', () => {
+      document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
 </body>
 </html>
