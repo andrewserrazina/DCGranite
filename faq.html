@@ -23,12 +23,7 @@
   <meta property="og:description" content="Common questions about granite, quartz, and marble countertops answered by D&C Granite professionals." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dcgraniteandmarble.net/faq" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Countertop FAQ | D&C Granite & Marble" />
-  <meta name="twitter:description" content="Common questions about granite, quartz, and marble countertops answered by D&C Granite professionals." />
-  <meta name="twitter:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
   <meta name="theme-color" content="#0F1113" />
-  <link rel="icon" type="image/png" href="/images/dc-granite-logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -198,8 +193,7 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.5);
       z-index: 1000;
     }
-    .nav-item:hover .dropdown-menu,
-    .nav-item.touch-open .dropdown-menu {
+    .nav-item:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
       margin-top: .5rem;
@@ -790,59 +784,38 @@
   
 
   <script>
-    // Mobile menu overlay
-    const menuOverlay = document.createElement('div');
-    menuOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;display:none;';
-    document.body.appendChild(menuOverlay);
-
-    function closeMenu() {
-      menuToggle.classList.remove('active');
-      navLinks.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      menuOverlay.style.display = 'none';
-    }
-
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
+    
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
-      const isExpanded = menuToggle.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded);
-      document.body.style.overflow = isExpanded ? 'hidden' : '';
-      menuOverlay.style.display = isExpanded ? 'block' : 'none';
+      menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+      document.body.style.overflow = menuToggle.classList.contains('active') ? 'hidden' : '';
     });
-
-    menuOverlay.addEventListener('click', closeMenu);
 
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Services dropdown: support click/touch on all devices
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      const trigger = item.querySelector(':scope > span');
-      if (!trigger) return;
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (window.innerWidth <= 768) {
-          item.classList.toggle('mobile-open');
-        } else {
-          const isOpen = item.classList.contains('touch-open');
-          document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
-          if (!isOpen) item.classList.add('touch-open');
-        }
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
     });
 
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
+    // Mobile dropdown toggle
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const trigger = item.querySelector('span');
+      if (trigger && window.innerWidth <= 768) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          item.classList.toggle('mobile-open');
+        });
+      }
     });
 
-    // Re-init on resize
+    // Re-init mobile dropdown on resize
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         navItems.forEach(item => item.classList.remove('mobile-open'));
