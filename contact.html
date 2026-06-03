@@ -26,12 +26,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dcgraniteandmarble.net/contact" />
   <meta property="og:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact D&C Granite | Countertop Quotes Ludlow MA" />
-  <meta name="twitter:description" content="Request a quote for granite, quartz, marble, vanities, fireplaces, and custom stonework from D&C Granite & Marble in Ludlow, MA." />
-  <meta name="twitter:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
   <meta name="theme-color" content="#0F1113" />
-  <link rel="icon" type="image/png" href="/images/dc-granite-logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -216,8 +211,7 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.5);
       z-index: 1000;
     }
-    .nav-item:hover .dropdown-menu,
-    .nav-item.touch-open .dropdown-menu {
+    .nav-item:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
       margin-top: .5rem;
@@ -370,11 +364,19 @@
       background: var(--gold); 
       color: #0b0b0b; 
       box-shadow: 0 10px 25px rgba(212,160,23,.2); 
-      border: 1px solid rgba(212,160,23,.5); 
+      border: 1px solid rgba(212,160,23,.5);
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
     .btn-primary:hover {
       box-shadow: 0 14px 32px rgba(212,160,23,.3);
       background: var(--gold-light);
+      transform: translateY(-2px);
     }
     .btn-outline { 
       border: 1px solid rgba(212,160,23,.35); 
@@ -875,283 +877,176 @@
   <main id="main-content">
     <header class="hero">
       <div class="hero-content">
-        <img class="hero-logo" src="/images/DCGraniteWide.png" alt="D&C Granite and Marble Design Gallery" width="480" height="153" />
-        <div class="eyebrow">Contact our showroom</div>
-        <h1>Let's talk about your countertop project.</h1>
-        <p>Call, visit the showroom, or send us your project details below. We're here to help you choose the perfect stone and bring your vision to life.</p>
+        <div class="eyebrow">Get Your Quote</div>
+        <h1>Stone Project Quote in 24 Hours</h1>
+        <p>Fill out the form. Tell us about your project. We'll create a custom quote and call you back within 24 hours. That's it.</p>
+        <div class="hero-actions">
+          <a href="#quote-form" class="btn-primary">Start Quote Form</a>
+        </div>
       </div>
     </header>
 
-    <!-- Quick Contact Methods -->
-    <section class="fade-in" style="padding: 4rem 5vw; background: #0f0f0f;">
-      <div style="text-align: center; max-width: 1000px; margin: 0 auto 3rem;">
-        <div class="eyebrow">Choose the fastest way</div>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Get Your Free Quote</h2>
-        <p style="font-size: 1.1rem; color: rgba(242,239,234,0.7);">Three easy ways to reach us</p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto 3rem;">
-        
-        <!-- Method 1: Call (Primary) - FULLY CLICKABLE -->
-        <div style="background: linear-gradient(135deg, #D4A017, #F4C430); border: 2px solid #D4A017; border-radius: 16px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; transform: translateY(0);" onclick="window.location.href='tel:+14135833399'; gtag('event', 'phone_call', {'event_category': 'Conversion', 'event_label': 'Phone Call - Contact Card'});" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 32px rgba(212,160,23,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem; pointer-events: none;">📞</div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: white; pointer-events: none;">Call Us Now</h3>
-          <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; pointer-events: none;">Talk to an expert in under 30 seconds</p>
-          <div style="font-size: 2rem; font-weight: 700; color: white; background: rgba(0,0,0,0.2); padding: 1.2rem 2rem; border-radius: 8px; display: inline-block; text-decoration: none; margin-bottom: 1rem; pointer-events: none;">
-            (413) 583-3399
-          </div>
-          <div style="font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 1rem; pointer-events: none;">Mon-Fri 9:30am-4:30pm • Sat 9:30am-1pm</div>
-        </div>
-        
-        <!-- Method 2: Online Form - FULLY CLICKABLE -->
-        <div style="background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.05)); border: 2px solid rgba(212,160,23,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; transform: translateY(0);" onclick="document.querySelector('.quote-section').scrollIntoView({behavior:'smooth'}); gtag('event', 'cta_click', {'event_category': 'Engagement', 'event_label': 'Contact Card - Form'});" onmouseover="this.style.transform='translateY(-8px)'; this.style.backgroundColor='rgba(212,160,23,0.15)'; this.style.borderColor='rgba(212,160,23,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.backgroundColor='rgba(212,160,23,0.05)'; this.style.borderColor='rgba(212,160,23,0.3)';">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem; pointer-events: none;">📝</div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--gold-light); pointer-events: none;">Request Online</h3>
-          <p style="font-size: 0.95rem; color: rgba(242,239,234,0.7); margin-bottom: 1.5rem; pointer-events: none;">Fill form below, we'll call you back</p>
-          <span style="font-size: 1.2rem; font-weight: 700; color: var(--gold); pointer-events: none;">Fill Form Below →</span>
-          <div style="font-size: 0.85rem; color: rgba(242,239,234,0.5); margin-top: 1rem; pointer-events: none;">2-minute form</div>
-        </div>
-        
-        <!-- Method 3: Visit Showroom - FULLY CLICKABLE -->
-        <div style="background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.05)); border: 2px solid rgba(212,160,23,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; transform: translateY(0);" onclick="window.open('https://maps.google.com/?q=664+Center+Street+Ludlow+MA+01056', '_blank'); gtag('event', 'showroom_directions', {'event_category': 'Showroom', 'event_label': 'Get Directions - Contact Card'});" onmouseover="this.style.transform='translateY(-8px)'; this.style.backgroundColor='rgba(212,160,23,0.15)'; this.style.borderColor='rgba(212,160,23,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.backgroundColor='rgba(212,160,23,0.05)'; this.style.borderColor='rgba(212,160,23,0.3)';">
-          <div style="font-size: 3.5rem; margin-bottom: 1rem; pointer-events: none;">🏢</div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--gold-light); pointer-events: none;">Visit Showroom</h3>
-          <p style="font-size: 0.95rem; color: rgba(242,239,234,0.7); margin-bottom: 1.5rem; pointer-events: none;">See 100+ samples in person</p>
-          <span style="font-size: 1.2rem; font-weight: 700; color: var(--gold); text-decoration: none; pointer-events: none;">
-            Get Directions →
-          </span>
-          <div style="font-size: 0.85rem; color: rgba(242,239,234,0.5); margin-top: 1rem; pointer-events: none;">664 Center St, Ludlow MA</div>
-        </div>
-      </div>
-
-      <!-- Trust Signals -->
-      <div style="background: rgba(255,255,255,0.03); border-radius: 16px; padding: 2rem; max-width: 1000px; margin: 0 auto;">
-        <!-- Social Proof Header -->
-        <div style="text-align: center; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(212,160,23,0.2);">
-          <div style="font-size: 3rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem;">30+ Years</div>
-          <p style="font-size: 1.2rem; color: var(--champagne); font-weight: 600;">Serving Western Massachusetts</p>
-          <div style="margin-top: 1rem; font-size: 2rem; color: #F2D77A;">
-            ★★★★★
-          </div>
-          <p style="font-size: 0.95rem; color: rgba(242,239,234,0.7); margin-top: 0.5rem;">5-Star Rated on Google</p>
-        </div>
-        
-        <h3 style="text-align: center; font-size: 1.3rem; color: var(--gold-light); margin-bottom: 1.5rem;">Why Choose D&C Granite?</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 1.5rem; color: var(--gold);">✓</span>
-            <span style="font-size: 0.95rem; color: rgba(242,239,234,0.8);">30+ Years Experience</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 1.5rem; color: var(--gold);">✓</span>
-            <span style="font-size: 0.95rem; color: rgba(242,239,234,0.8);">Free Consultation</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 1.5rem; color: var(--gold);">✓</span>
-            <span style="font-size: 0.95rem; color: rgba(242,239,234,0.8);">Professional Install</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 1.5rem; color: var(--gold);">✓</span>
-            <span style="font-size: 0.95rem; color: rgba(242,239,234,0.8);">Lifetime Support</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 1.5rem; color: var(--gold);">✓</span>
-            <span style="font-size: 0.95rem; color: rgba(242,239,234,0.8);">1,500 sq ft Showroom</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 1.5rem; color: var(--gold);">✓</span>
-            <span style="font-size: 0.95rem; color: rgba(242,239,234,0.8);">Licensed & Insured</span>
-          </div>
+    <!-- Fast Track Options -->
+    <section style="padding: 3rem 5vw; background: linear-gradient(180deg, var(--obsidian), #171717); border-bottom: 1px solid rgba(212,160,23,.15);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <p style="text-align: center; font-size: 0.95rem; color: rgba(242,239,234,.65); margin-bottom: 2rem;">Prefer to reach us another way?</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+          <a href="tel:+14135833399" onclick="gtag('event', 'phone_call', {'event_category': 'Conversion', 'event_label': 'Phone Call'});" style="background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); border: 1px solid rgba(212,160,23,.2); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s; display: block; cursor: pointer;" onmouseover="this.style.background='rgba(212,160,23,.12)'; this.style.borderColor='rgba(212,160,23,.4)';" onmouseout="this.style.background='linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025))'; this.style.borderColor='rgba(212,160,23,.2)';">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📞</div>
+            <div style="font-weight: 700; color: var(--gold); margin-bottom: 0.3rem;">Call</div>
+            <div style="font-size: 0.75rem; color: rgba(242,239,234,.6);">(413) 583-3399</div>
+          </a>
+          <a href="https://maps.google.com/?q=664+Center+Street+Ludlow+MA+01056" target="_blank" onclick="gtag('event', 'showroom_directions', {'event_category': 'Showroom', 'event_label': 'Directions'});" style="background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); border: 1px solid rgba(212,160,23,.2); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s; display: block; cursor: pointer;" onmouseover="this.style.background='rgba(212,160,23,.12)'; this.style.borderColor='rgba(212,160,23,.4)';" onmouseout="this.style.background='linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025))'; this.style.borderColor='rgba(212,160,23,.2)';">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏢</div>
+            <div style="font-weight: 700; color: var(--gold); margin-bottom: 0.3rem;">Visit</div>
+            <div style="font-size: 0.75rem; color: rgba(242,239,234,.6);">664 Center St</div>
+          </a>
+          <a href="mailto:info@dcgraniteandmarble.net" onclick="gtag('event', 'email_click', {'event_category': 'Contact', 'event_label': 'Email'});" style="background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); border: 1px solid rgba(212,160,23,.2); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s; display: block; cursor: pointer;" onmouseover="this.style.background='rgba(212,160,23,.12)'; this.style.borderColor='rgba(212,160,23,.4)';" onmouseout="this.style.background='linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025))'; this.style.borderColor='rgba(212,160,23,.2)';">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
+            <div style="font-weight: 700; color: var(--gold); margin-bottom: 0.3rem;">Email</div>
+            <div style="font-size: 0.75rem; color: rgba(242,239,234,.6);">info@dcgranite...</div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Quote Form Section - MOVED UP -->
-    <section class="quote-section fade-in">
+    <!-- Quote Form Section -->
+    <section id="quote-form" class="quote-section">
       <div class="quote-grid">
         <aside class="info-card">
-          <div class="eyebrow">Get in touch</div>
-          <h2>Four ways to reach us.</h2>
+          <h3 style="margin-bottom: 1.5rem;">What to Share</h3>
+          <p style="color: rgba(242,239,234,.75); margin-bottom: 1.5rem; font-size: 0.95rem;">Include what you have. We'll ask the rest on the call.</p>
           
-          <div class="info-list">
-            <div class="info-item">
-              <strong>Schedule a Visit</strong>
-              <a href="https://outlook.office365.com/owa/calendar/ShowroomTour@dcgraniteandmarble.net/bookings/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:.6rem;display:inline-flex;">📅 Book Showroom Tour</a>
-              <p style="margin-top:.6rem;font-size:.88rem;">Choose a convenient time to visit our showroom and see our stone selection in person.</p>
+          <div style="margin-bottom: 2rem;">
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+              <span style="color: var(--gold); font-weight: 700; flex-shrink: 0;">✓</span>
+              <span style="color: rgba(242,239,234,.8); font-size: 0.95rem;">Photos of your kitchen, bathroom, or space</span>
             </div>
-            <div class="info-item">
-              <strong>Phone</strong>
-              <a href="tel:+14135833399">(413) 583-3399</a>
-              <p style="margin-top:.4rem;font-size:.88rem;">Call during business hours for immediate assistance or questions.</p>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+              <span style="color: var(--gold); font-weight: 700; flex-shrink: 0;">✓</span>
+              <span style="color: rgba(242,239,234,.8); font-size: 0.95rem;">Measurements (even rough estimates work)</span>
             </div>
-            <div class="info-item">
-              <strong>Email</strong>
-              <a href="mailto:info@dcgraniteandmarble.net">info@dcgraniteandmarble.net</a>
-              <p style="margin-top:.4rem;font-size:.88rem;">Send photos, measurements, or questions about your project.</p>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+              <span style="color: var(--gold); font-weight: 700; flex-shrink: 0;">✓</span>
+              <span style="color: rgba(242,239,234,.8); font-size: 0.95rem;">Project type: Kitchen, bath, fireplace, outdoor, etc.</span>
             </div>
-            <div class="info-item">
-              <strong>Showroom</strong>
-              664 Center Street<br>
-              Ludlow, MA 01056
-              <p style="margin-top:.4rem;font-size:.88rem;">Mon–Fri 9:30 AM–4:30 PM<br>Sat 9:30 AM–1:00 PM</p>
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <span style="color: var(--gold); font-weight: 700; flex-shrink: 0;">✓</span>
+              <span style="color: rgba(242,239,234,.8); font-size: 0.95rem;">Your timeline and material preference</span>
             </div>
           </div>
 
-          <h3 style="margin-top:2rem;margin-bottom:.8rem;">For faster quotes, include:</h3>
-          <ul class="steps">
-            <li>Photos of the room or existing countertop</li>
-            <li>Rough measurements if you have them</li>
-            <li>Your preference: granite, quartz, marble, or remnants</li>
-            <li>Project timeline and any special requirements</li>
-          </ul>
+          <div style="background: rgba(212,160,23,.15); border-left: 4px solid var(--gold); padding: 1.25rem; border-radius: 8px;">
+            <p style="font-size: 0.9rem; color: rgba(242,239,234,.85); line-height: 1.6;"><strong style="color: var(--gold-light);">What Happens:</strong><br/>Same day: We review your info<br/>Within 24hrs: We call with your custom quote</p>
+          </div>
         </aside>
 
         <div class="form-card">
-          <div class="eyebrow">Project details</div>
-          <h2>Request a quote.</h2>
-          <p>Fill out the form below and we'll get back to you within 1 business day. For urgent requests, please call the showroom directly.</p>
+          <div class="eyebrow">Project Details</div>
+          <h2>Get Your Quote</h2>
+          <p style="margin-bottom: 2rem; color: rgba(242,239,234,.8);">2 minutes to fill. Custom quote in 24 hours.</p>
 
           <div class="microsoft-form-container">
-            <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=k1JZcFmGREGnbjp7LL6Pod587W94Mm1GvnjJ9AbQ_KhUMlBEUTA0N05ENFJHMEo0S1UzTklHQkZUSy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; width: 100%; min-height: 1000px;" title="D&amp;C Granite Quote Request Form" allowfullscreen></iframe>
+            <iframe width="640px" height="1000px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=k1JZcFmGREGnbjp7LL6Pod587W94Mm1GvnjJ9AbQ_KhUMlBEUTA0N05ENFJHMEo0S1UzTklHQkZUSy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; width: 100%; min-height: 1000px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
           </div>
         </div>
 
-          <div class="form-success" id="formSuccess">
-            <h3>✓ Your email client should open shortly!</h3>
-            <p>Please review and send the email from your email application. If your email client didn't open automatically, please email us directly at <a href="mailto:info@dcgraniteandmarble.net" style="color: var(--gold-light);">info@dcgraniteandmarble.net</a> or call (413) 583-3399.</p>
+        <div class="form-success" id="formSuccess" style="display:none;">
+          <h3>✓ Your email client should open shortly!</h3>
+          <p>Please review and send the email from your email application. If your email client didn't open automatically, please email us directly at <a href="mailto:info@dcgraniteandmarble.net" style="color: var(--gold-light);">info@dcgraniteandmarble.net</a> or call (413) 583-3399.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" style="padding: 4rem 5vw; background: var(--obsidian);">
+      <div style="max-width: 1400px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <div class="eyebrow">Visit Our Showroom</div>
+          <h2>See 100+ Stone Samples In Person</h2>
+          <p style="color: rgba(242,239,234,.7); margin-top: 0.5rem;">664 Center Street, Ludlow MA<br/>Mon–Fri 9:30 AM–4:30 PM • Sat 9:30 AM–1:00 PM</p>
+        </div>
+        <div style="max-width: 900px; margin: 0 auto; border-radius: 30px; overflow: hidden; box-shadow: var(--shadow);">
+          <iframe title="D&C Granite and Marble Design Gallery map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=664%20Center%20Street%2C%20Ludlow%2C%20MA%2001056&output=embed" style="width: 100%; height: 400px; border: none; display: block;" aria-label="Map showing D&C Granite showroom location at 664 Center Street, Ludlow, MA"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section style="background: linear-gradient(180deg, #171717, var(--obsidian)); padding: 5rem 5vw;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <div class="eyebrow">Trusted Since 1990</div>
+          <h2>Why Homeowners Choose D&C</h2>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+          <div>
+            <div style="font-size: 3rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem;">30+</div>
+            <p style="color: rgba(242,239,234,.8);"><strong>Years<br/>Experience</strong></p>
+          </div>
+          <div>
+            <div style="font-size: 3rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem;">1500+</div>
+            <p style="color: rgba(242,239,234,.8);"><strong>Sq Ft<br/>Showroom</strong></p>
+          </div>
+          <div>
+            <div style="font-size: 2.2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem;">★★★★★</div>
+            <p style="color: rgba(242,239,234,.8);"><strong>5-Star<br/>Rated</strong></p>
+          </div>
+          <div>
+            <div style="font-size: 3rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem;">100+</div>
+            <p style="color: rgba(242,239,234,.8);"><strong>Stone<br/>Samples</strong></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="map-section">
-      <div class="map-card">
-        <iframe title="D&C Granite and Marble Design Gallery map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=664%20Center%20Street%2C%20Ludlow%2C%20MA%2001056&output=embed" aria-label="Map showing D&C Granite showroom location at 664 Center Street, Ludlow, MA"></iframe>
-      </div>
-    </section>
-
-    <section class="testimonials fade-in">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Customer reviews</div>
-          <h2>Start with a team people recommend.</h2>
-        </div>
-        <p>Real feedback from customers across Western Massachusetts.</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"From the owner on down everyone was so professional, knowledgeable and a pleasure to work with."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Theresa L</strong></div>
-        <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"D&C was super helpful & always willing to work with us as we made our final choices."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Bernadette B</strong></div>
-        <div class="area-card"><div style="color:#F2D77A;margin-bottom:.8rem;font-size:1.1rem;">★★★★★</div><p>"Perfect! Our renovation was complex and they took the time needed to do everything perfectly."</p><strong style="color:var(--gold-light);margin-top:1rem;display:block;">- Anne M</strong></div>
-      </div>
-    </section>
-
-    <section class="page-links fade-in">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Explore more</div>
-          <h2>Not ready yet?</h2>
-        </div>
-        <p>Browse our materials, view completed projects, or learn more about our process.</p>
-      </div>
-      <div class="page-link-grid">
-        <a href="/granite-countertops-ludlow-ma" class="area-card"><strong>Granite</strong><p>Explore natural stone.</p></a>
-        <a href="/quartz-countertops-ludlow-ma" class="area-card"><strong>Quartz</strong><p>Modern surfaces.</p></a>
-        <a href="/portfolio" class="area-card"><strong>Portfolio</strong><p>See real projects.</p></a>
-        <a href="/about" class="area-card"><strong>About</strong><p>Our craftsmanship.</p></a>
-      </div>
-    </section>
-
-    <section class="service-area fade-in" id="service-area">
-      <div class="area-grid">
-        <div class="area-card">
-          <div class="eyebrow">Local service area</div>
-          <h2>Countertop quotes across Western Massachusetts.</h2>
-          <p>Based in Ludlow, D&C serves homeowners and contractors throughout the greater Springfield area.</p>
-        </div>
-        <div class="area-card">
-          <h3>Popular service areas</h3>
-          <ul class="area-list">
-            <li>Ludlow</li><li>Springfield</li><li>Chicopee</li><li>Wilbraham</li><li>Longmeadow</li><li>East Longmeadow</li><li>West Springfield</li><li>Agawam</li><li>Holyoke</li><li>South Hadley</li><li>Belchertown</li><li>Palmer</li><li>Monson</li><li>Granby</li><li>Hampden</li><li>Western MA</li>
-          </ul>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
-    <span>&copy; 2026 D&amp;C Granite and Marble Design Gallery</span>
-    <span>
-      <a href="/granite-countertops-ludlow-ma">Granite</a> &middot;
-      <a href="/quartz-countertops-ludlow-ma">Quartz</a> &middot;
-      <a href="/bathroom-vanities">Vanities</a> &middot;
-      <a href="/bathroom-remodeling">Remodeling</a> &middot;
-      <a href="/fireplace-surrounds">Fireplaces</a> &middot;
-      <a href="/kitchen-islands">Kitchen Islands</a> &middot;
-      <a href="/portfolio">Portfolio</a> &middot;
-      <a href="/blog">Blog</a> &middot;
-      <a href="/about">About</a> &middot;
-      <a href="/contact">Contact</a>
-    </span>
+    <span>© 2026 D&C Granite and Marble Design Gallery</span>
+    <span><a href="/">Home</a> · <a href="/granite-countertops-ludlow-ma">Granite</a> · <a href="/quartz-countertops-ludlow-ma">Quartz</a> · <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></span>
   </footer>
 
   
 
   <script>
-    // Mobile menu overlay
-    const menuOverlay = document.createElement('div');
-    menuOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;display:none;';
-    document.body.appendChild(menuOverlay);
-
-    function closeMenu() {
-      menuToggle.classList.remove('active');
-      navLinks.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      menuOverlay.style.display = 'none';
-    }
-
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
+    
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
       const isExpanded = menuToggle.classList.contains('active');
       menuToggle.setAttribute('aria-expanded', isExpanded);
       document.body.style.overflow = isExpanded ? 'hidden' : '';
-      menuOverlay.style.display = isExpanded ? 'block' : 'none';
     });
-
-    menuOverlay.addEventListener('click', closeMenu);
 
     // Close mobile menu when clicking a link
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Services dropdown: support click/touch on all devices
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      const trigger = item.querySelector(':scope > span');
-      if (!trigger) return;
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (window.innerWidth <= 768) {
-          item.classList.toggle('mobile-open');
-        } else {
-          const isOpen = item.classList.contains('touch-open');
-          document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
-          if (!isOpen) item.classList.add('touch-open');
-        }
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
     });
 
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
+    // Mobile dropdown toggle
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const trigger = item.querySelector('span');
+      if (trigger && window.innerWidth <= 768) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          item.classList.toggle('mobile-open');
+        });
+      }
     });
 
-    // Re-init on resize
+    // Re-init mobile dropdown on resize
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         navItems.forEach(item => item.classList.remove('mobile-open'));

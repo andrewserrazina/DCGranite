@@ -24,12 +24,7 @@
   <meta property="og:description" content="Expert countertop advice from Western Massachusetts' most trusted stone fabricators" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dcgraniteandmarble.net/blog" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Countertop Blog | D&C Granite & Marble" />
-  <meta name="twitter:description" content="Expert countertop advice from Western Massachusetts' most trusted stone fabricators" />
-  <meta name="twitter:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
   <meta name="theme-color" content="#0F1113" />
-  <link rel="icon" type="image/png" href="/images/dc-granite-logo.png" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,7 +106,7 @@
       filter: drop-shadow(0 12px 32px rgba(212,160,23,.35));
     }
     
-    .menu-toggle {
+    .hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
@@ -120,7 +115,7 @@
       cursor: pointer;
       padding: 8px;
     }
-    .menu-toggle span {
+    .hamburger span {
       width: 26px;
       height: 3px;
       background: var(--champagne);
@@ -177,8 +172,7 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.5);
       z-index: 1000;
     }
-    .nav-item:hover .dropdown-menu,
-    .nav-item.touch-open .dropdown-menu {
+    .nav-item:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
       margin-top: .5rem;
@@ -360,17 +354,8 @@
       .nav-links.active {
         transform: translateX(0);
       }
-      .menu-toggle {
+      .hamburger {
         display: flex;
-      }
-      .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
       }
       .dropdown-menu {
         position: static;
@@ -499,58 +484,14 @@
   </section>
 
   <script>
-    // Mobile menu overlay
-    const menuOverlay = document.createElement('div');
-    menuOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;display:none;';
-    document.body.appendChild(menuOverlay);
-
-    function closeMenu() {
-      menuToggle.classList.remove('active');
-      navLinks.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      menuOverlay.style.display = 'none';
-    }
-
     // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
+    const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
+    
+    hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      const isExpanded = menuToggle.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded);
-      document.body.style.overflow = isExpanded ? 'hidden' : '';
-      menuOverlay.style.display = isExpanded ? 'block' : 'none';
-    });
-
-    menuOverlay.addEventListener('click', closeMenu);
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-
-    // Services dropdown: support click/touch on all devices
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      const trigger = item.querySelector(':scope > span');
-      if (!trigger) return;
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (window.innerWidth <= 768) {
-          item.classList.toggle('mobile-open');
-        } else {
-          const isOpen = item.classList.contains('touch-open');
-          document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
-          if (!isOpen) item.classList.add('touch-open');
-        }
-      });
-    });
-
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) navItems.forEach(item => item.classList.remove('mobile-open'));
+      const isOpen = navLinks.classList.contains('active');
+      hamburger.setAttribute('aria-expanded', isOpen);
     });
 
     // Category filtering
