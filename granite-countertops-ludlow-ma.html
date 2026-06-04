@@ -12,8 +12,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Granite Countertops Ludlow MA | Custom Granite Installation | D&C Granite</title>
-  <meta name="description" content="Ludlow MA granite countertop contractor & fabricator. Custom granite, quartz & marble. Professional installation. Free estimates. 3,500 sq ft facility. (413) 583-3399." />
+  <title>Granite Countertops Ludlow MA | D&C Granite & Marble Design Gallery</title>
+  <meta name="description" content="Ludlow's granite countertop fabricator since 1990. Custom slabs, kitchen islands & vanities. 3,500 sq ft facility. Free estimates for Western MA homeowners." />
   <meta name="keywords" content="granite countertops Ludlow MA, granite countertops Springfield MA, granite countertop installation Western MA, custom granite countertops, granite kitchen island, granite vanity tops, D&C Granite" />
   <meta name="author" content="D&C Granite and Marble Design Gallery" />
   <meta name="robots" content="index, follow" />
@@ -517,6 +517,43 @@
       h1 { font-size: clamp(1.8rem, 5vw, 5rem); }
       .intro-card, .material-card, .service-card { padding: 2rem 1.5rem; }
     }
+  
+    /* Sticky mobile CTA */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: rgba(15,17,19,.97);
+      border-top: 1px solid rgba(212,160,23,.3);
+      padding: .75rem 1.25rem;
+      gap: .75rem;
+    }
+    .mobile-cta-bar a {
+      flex: 1;
+      text-align: center;
+      padding: .75rem .5rem;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 8px;
+    }
+    .mobile-cta-bar .cta-call {
+      background: rgba(212,160,23,.15);
+      border: 1px solid rgba(212,160,23,.4);
+      color: var(--gold-light);
+    }
+    .mobile-cta-bar .cta-quote {
+      background: var(--gold-gradient);
+      color: var(--obsidian);
+    }
+    @media (max-width: 768px) {
+      .mobile-cta-bar { display: flex; }
+      body { padding-bottom: 72px; }
+    }
   </style>
 
   <!-- Microsoft Clarity -->
@@ -844,5 +881,12 @@
       });
     });
   </script>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="mobile-cta-bar" role="navigation" aria-label="Quick contact">
+    <a href="tel:+14135833399" class="cta-call" onclick="gtag('event','phone_call',{'event_category':'Mobile CTA','event_label':'Sticky Bar'});">📞 Call Now</a>
+    <a href="/contact" class="cta-quote" onclick="gtag('event','quote_click',{'event_category':'Mobile CTA','event_label':'Sticky Bar'});">Get Free Quote</a>
+  </div>
+
 </body>
 </html>

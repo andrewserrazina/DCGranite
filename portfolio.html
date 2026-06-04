@@ -12,8 +12,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Countertop Portfolio Ludlow MA | Granite, Quartz & Marble | D&C Granite</title>
-  <meta name="description" content="View D&C Granite & Marble Design Gallery's portfolio of granite countertops, quartz countertops, bathroom vanities, fireplaces, and custom stonework across Ludlow and Western Massachusetts." />
+  <title>Granite & Quartz Countertop Photos — Springfield, MA | D&C Granite & Marble</title>
+  <meta name="description" content="See real kitchens, vanities & fireplaces from Western Massachusetts homes. 30+ years of granite, quartz & marble installation by D&C Granite & Marble. Browse project photos." />
   <meta name="keywords" content="granite countertop portfolio Ludlow MA, quartz countertop portfolio Western MA, marble vanity photos, countertop installer Springfield MA, D&C Granite portfolio" />
   <meta name="author" content="D&C Granite and Marble Design Gallery" />
   <meta name="robots" content="index, follow" />
@@ -21,8 +21,8 @@
 
   <meta name="geo.region" content="US-MA" />
   <meta name="geo.placename" content="Ludlow, Massachusetts" />
-  <meta property="og:title" content="Countertop Portfolio | D&C Granite & Marble" />
-  <meta property="og:description" content="Real granite, quartz, marble, vanity, fireplace, and custom stone projects from D&C Granite & Marble Design Gallery in Western Massachusetts." />
+  <meta property="og:title" content="Granite & Quartz Countertop Photos — Springfield, MA | D&C Granite & Marble" />
+  <meta property="og:description" content="Real kitchens, vanities & fireplaces from Western Massachusetts homes. 30+ years of granite, quartz & marble by D&C Granite & Marble." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dcgraniteandmarble.net/portfolio" />
   <meta property="og:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
@@ -649,6 +649,43 @@
       h1 { font-size: clamp(1.8rem, 5vw, 5rem); }
       .intro-card, .material-card, .service-card { padding: 2rem 1.5rem; }
     }
+  
+    /* Sticky mobile CTA */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: rgba(15,17,19,.97);
+      border-top: 1px solid rgba(212,160,23,.3);
+      padding: .75rem 1.25rem;
+      gap: .75rem;
+    }
+    .mobile-cta-bar a {
+      flex: 1;
+      text-align: center;
+      padding: .75rem .5rem;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 8px;
+    }
+    .mobile-cta-bar .cta-call {
+      background: rgba(212,160,23,.15);
+      border: 1px solid rgba(212,160,23,.4);
+      color: var(--gold-light);
+    }
+    .mobile-cta-bar .cta-quote {
+      background: var(--gold-gradient);
+      color: var(--obsidian);
+    }
+    @media (max-width: 768px) {
+      .mobile-cta-bar { display: flex; }
+      body { padding-bottom: 72px; }
+    }
   </style>
 
   <!-- Microsoft Clarity -->
@@ -705,9 +742,9 @@
     <section class="hero fade-in">
       <div class="hero-content">
         <img class="hero-logo" src="/images/dc-granite-logo.png" alt="Dsrc="/images/DCGraniteWide.png" alt="D&C Granite and Marble Design Gallery premium logo"C Granite and Marble Design Gallery">
-        <div class="eyebrow">Portfolio · Ludlow, Massachusetts</div>
-        <h1>Granite, Quartz & Marble Portfolio</h1>
-        <p>Real kitchens, bathroom vanities, fireplaces, and custom stone projects completed by D&C Granite & Marble Design Gallery across Western Massachusetts.</p>
+        <div class="eyebrow">Portfolio · Western Massachusetts</div>
+        <h1>Real Countertop Projects from Western Massachusetts Homes</h1>
+        <p>Browse completed kitchens, bathroom vanities, fireplaces, and custom stone work from Springfield, Ludlow, Chicopee, Wilbraham, and surrounding towns. Every project is fabricated and installed by D&C Granite & Marble — the region's most experienced stone shop since 1990.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#portfolio-gallery">View Projects</a>
           <a class="btn btn-outline" href="/contact">Request a Quote</a>
@@ -727,7 +764,7 @@
         
         <!-- Project 1: White Quartz Kitchen -->
         <a href="/projects/white-quartz-kitchen-remodel" class="featured-card">
-          <img src="/images/IMG_0108.jpg" alt="Modern White Quartz Kitchen Remodel" />
+          <img src="/images/IMG_0108.jpg" alt="Modern white quartz kitchen remodel — Springfield MA, D&C Granite & Marble" />
           <div class="featured-content">
             <h3>Modern White Quartz Kitchen</h3>
             <p>Timeless elegance meets daily durability in this Springfield kitchen transformation featuring pristine white quartz countertops, subway tile backsplash, and custom oak cabinetry.</p>
@@ -737,7 +774,7 @@
 
         <!-- Project 2: Dramatic Granite Transformation -->
         <a href="/projects/dramatic-granite-kitchen-transformation" class="featured-card">
-          <img src="/images/IMG_20201215_144809.jpg" alt="Dramatic Granite Kitchen Transformation" />
+          <img src="/images/IMG_20201215_144809.jpg" alt="Dramatic granite kitchen countertop transformation — Western Massachusetts" />
           <div class="featured-content">
             <h3>Dramatic Granite Transformation</h3>
             <p>From dated laminate to breathtaking natural stone — see how dramatic granite veining transformed a country kitchen while honoring classic oak cabinets and traditional charm.</p>
@@ -766,15 +803,15 @@
       </div>
 
       <div class="gallery-grid">
-        <figure class="gallery-item" data-category="kitchen" data-title="Granite Kitchen Detail"><img src="/images/2020-09-12-094820389-scaled.webp" loading="lazy" alt="Granite kitchen countertop near stove in Ludlow MA"><figcaption class="gallery-caption"><span>Kitchen</span>Granite Kitchen Detail</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Kitchen Countertop & Sink"><img src="/images/2020-09-12-100205706-01-scaled.webp" loading="lazy" alt="Granite countertop with undermount sink in Western Massachusetts kitchen"><figcaption class="gallery-caption"><span>Kitchen</span>Countertop & Sink</figcaption></figure>
-        <figure class="gallery-item" data-category="bathroom" data-title="Tub Surround"><img src="/images/DANNY-DIAZ-010-1.webp" loading="lazy" alt="Black granite tub surround and bathroom stonework in Massachusetts"><figcaption class="gallery-caption"><span>Bathroom</span>Tub Surround</figcaption></figure>
-        <figure class="gallery-item" data-category="bathroom" data-title="Double Vanity"><img src="/images/IMG_07-1.webp" loading="lazy" alt="Marble bathroom vanity with custom cabinetry"><figcaption class="gallery-caption"><span>Bathroom</span>Double Vanity</figcaption></figure>
-        <figure class="gallery-item" data-category="detail" data-title="Countertop Detail"><img src="/images/IMG_0114-1.jpg" loading="lazy" alt="Granite countertop detail"><figcaption class="gallery-caption"><span>Detail</span>Countertop Detail</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Custom Kitchen Island"><img src="/images/IMG_0694-1-1.webp" loading="lazy" alt="Custom granite kitchen island with wood cabinetry"><figcaption class="gallery-caption"><span>Kitchen</span>Custom Kitchen Island</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Farmhouse Sink"><img src="/images/IMG_1601-1.jpg" loading="lazy" alt="Granite countertops with farmhouse sink and dark cabinetry"><figcaption class="gallery-caption"><span>Kitchen</span>Farmhouse Sink</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Dark Granite Kitchen"><img src="/images/IMG_1613-1.webp" loading="lazy" alt="White cabinets with dark granite countertops"><figcaption class="gallery-caption"><span>Kitchen</span>Dark Granite Kitchen</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Full Kitchen Stonework"><img src="/images/IMG_20201204_120939-scaled.webp" loading="lazy" alt="Granite kitchen island and countertops with custom backsplash"><figcaption class="gallery-caption"><span>Kitchen</span>Full Kitchen Stonework</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Granite Kitchen Detail"><img src="/images/2020-09-12-094820389-scaled.webp" loading="lazy" alt="Granite kitchen countertop near stove — Western Massachusetts"><figcaption class="gallery-caption"><span>Kitchen</span>Granite Kitchen Detail</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Kitchen Countertop & Sink"><img src="/images/2020-09-12-100205706-01-scaled.webp" loading="lazy" alt="Granite countertop with undermount sink — Springfield MA area kitchen"><figcaption class="gallery-caption"><span>Kitchen</span>Countertop & Sink</figcaption></figure>
+        <figure class="gallery-item" data-category="bathroom" data-title="Tub Surround"><img src="/images/DANNY-DIAZ-010-1.webp" loading="lazy" alt="Black granite tub surround and bathroom stonework — Western Massachusetts"><figcaption class="gallery-caption"><span>Bathroom</span>Tub Surround</figcaption></figure>
+        <figure class="gallery-item" data-category="bathroom" data-title="Double Vanity"><img src="/images/IMG_07-1.webp" loading="lazy" alt="Marble bathroom vanity with custom cabinetry — D&C Granite & Marble, Western MA"><figcaption class="gallery-caption"><span>Bathroom</span>Double Vanity</figcaption></figure>
+        <figure class="gallery-item" data-category="detail" data-title="Countertop Detail"><img src="/images/IMG_0114-1.jpg" loading="lazy" alt="Granite countertop detail — fabricated in Ludlow MA for Western Massachusetts homes"><figcaption class="gallery-caption"><span>Detail</span>Countertop Detail</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Custom Kitchen Island"><img src="/images/IMG_0694-1-1.webp" loading="lazy" alt="Custom granite kitchen island with wood cabinetry — D&C Granite Springfield MA area"><figcaption class="gallery-caption"><span>Kitchen</span>Custom Kitchen Island</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Farmhouse Sink"><img src="/images/IMG_1601-1.jpg" loading="lazy" alt="Granite countertops with farmhouse sink — Western Massachusetts kitchen remodel"><figcaption class="gallery-caption"><span>Kitchen</span>Farmhouse Sink</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Dark Granite Kitchen"><img src="/images/IMG_1613-1.webp" loading="lazy" alt="White cabinets with dark granite countertops — D&C Granite Western Massachusetts"><figcaption class="gallery-caption"><span>Kitchen</span>Dark Granite Kitchen</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Full Kitchen Stonework"><img src="/images/IMG_20201204_120939-scaled.webp" loading="lazy" alt="Granite kitchen island and countertops with backsplash — Springfield MA area"><figcaption class="gallery-caption"><span>Kitchen</span>Full Kitchen Stonework</figcaption></figure>
         
         <!-- Mid-Gallery CTA -->
         <div class="portfolio-cta-card">
@@ -786,15 +823,15 @@
           </div>
         </div>
         
-        <figure class="gallery-item" data-category="bathroom" data-title="Bathroom Vanity"><img src="/images/IMG_20201209_125716-scaled.webp" loading="lazy" alt="Bathroom vanity with granite countertop and two undermount sinks"><figcaption class="gallery-caption"><span>Bathroom</span>Bathroom Vanity</figcaption></figure>
-        <figure class="gallery-item" data-category="fireplace" data-title="Fireplace Surround"><img src="/images/IMG_20201209_125907-1-scaled.webp" loading="lazy" alt="Granite fireplace surround and hearth"><figcaption class="gallery-caption"><span>Fireplace</span>Fireplace Surround</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Modern Quartz Kitchen"><img src="/images/IMG_20201215_144723-scaled.webp" loading="lazy" alt="Modern white kitchen with quartz countertops and large island"><figcaption class="gallery-caption"><span>Kitchen</span>Modern Quartz Kitchen</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Granite Kitchen"><img src="/images/IMG_20210210_124753-1-scaled.webp" loading="lazy" alt="Granite kitchen countertops with island"><figcaption class="gallery-caption"><span>Kitchen</span>Granite Kitchen</figcaption></figure>
-        <figure class="gallery-item" data-category="bathroom" data-title="Bathroom Stonework"><img src="/images/IMG_20210219_111151-1-scaled.webp" loading="lazy" alt="Custom bathroom stone vanity and shower detail"><figcaption class="gallery-caption"><span>Bathroom</span>Bathroom Stonework</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Blue Pearl"><img src="/images/Kitchen-Blue-Pearl-1.webp" loading="lazy" alt="Blue Pearl granite countertops in kitchen"><figcaption class="gallery-caption"><span>Kitchen</span>Blue Pearl</figcaption></figure>
-        <figure class="gallery-item" data-category="kitchen" data-title="Northfield Project"><img src="/images/Leyden-Northfield-1.webp" loading="lazy" alt="Granite countertop project in Northfield MA"><figcaption class="gallery-caption"><span>Kitchen</span>Northfield Project</figcaption></figure>
-        <figure class="gallery-item" data-category="detail" data-title="Granite Detail"><img src="/images/Picture-237-1.webp" loading="lazy" alt="Granite kitchen island and countertop detail"><figcaption class="gallery-caption"><span>Detail</span>Granite Detail</figcaption></figure>
-        <figure class="gallery-item" data-category="detail" data-title="Silver Fantasy Leather Finish"><img src="/images/Silver-Fantasy-leather-finish-1-1.webp" loading="lazy" alt="Silver Fantasy leather finish stone countertop"><figcaption class="gallery-caption"><span>Detail</span>Silver Fantasy</figcaption></figure>
+        <figure class="gallery-item" data-category="bathroom" data-title="Bathroom Vanity"><img src="/images/IMG_20201209_125716-scaled.webp" loading="lazy" alt="Granite bathroom vanity with two undermount sinks — Western Massachusetts"><figcaption class="gallery-caption"><span>Bathroom</span>Bathroom Vanity</figcaption></figure>
+        <figure class="gallery-item" data-category="fireplace" data-title="Fireplace Surround"><img src="/images/IMG_20201209_125907-1-scaled.webp" loading="lazy" alt="Custom granite fireplace surround and hearth — D&C Granite Ludlow MA"><figcaption class="gallery-caption"><span>Fireplace</span>Fireplace Surround</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Modern Quartz Kitchen"><img src="/images/IMG_20201215_144723-scaled.webp" loading="lazy" alt="Modern white quartz kitchen countertops with large island — Springfield MA"><figcaption class="gallery-caption"><span>Kitchen</span>Modern Quartz Kitchen</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Granite Kitchen"><img src="/images/IMG_20210210_124753-1-scaled.webp" loading="lazy" alt="Granite kitchen countertops with island — D&C Granite Western Massachusetts"><figcaption class="gallery-caption"><span>Kitchen</span>Granite Kitchen</figcaption></figure>
+        <figure class="gallery-item" data-category="bathroom" data-title="Bathroom Stonework"><img src="/images/IMG_20210219_111151-1-scaled.webp" loading="lazy" alt="Custom marble bathroom vanity and shower stonework — Western Massachusetts"><figcaption class="gallery-caption"><span>Bathroom</span>Bathroom Stonework</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Blue Pearl"><img src="/images/Kitchen-Blue-Pearl-1.webp" loading="lazy" alt="Blue Pearl granite kitchen countertops — D&C Granite Springfield MA area"><figcaption class="gallery-caption"><span>Kitchen</span>Blue Pearl</figcaption></figure>
+        <figure class="gallery-item" data-category="kitchen" data-title="Northfield Project"><img src="/images/Leyden-Northfield-1.webp" loading="lazy" alt="Custom granite countertop project — Northfield MA, D&C Granite & Marble"><figcaption class="gallery-caption"><span>Kitchen</span>Northfield Project</figcaption></figure>
+        <figure class="gallery-item" data-category="detail" data-title="Granite Detail"><img src="/images/Picture-237-1.webp" loading="lazy" alt="Granite kitchen island and countertop detail — Western Massachusetts fabricator"><figcaption class="gallery-caption"><span>Detail</span>Granite Detail</figcaption></figure>
+        <figure class="gallery-item" data-category="detail" data-title="Silver Fantasy Leather Finish"><img src="/images/Silver-Fantasy-leather-finish-1-1.webp" loading="lazy" alt="Silver Fantasy leather finish granite countertop — D&C Granite Ludlow MA"><figcaption class="gallery-caption"><span>Detail</span>Silver Fantasy</figcaption></figure>
       </div>
     </section>
 
@@ -1048,6 +1085,13 @@
   </script>
   <!-- Microsoft Teams Live Chat Widget -->
   <script type="text/javascript" src="https://res.public.onecdn.static.microsoft/customerconnect/v1/7dttl/init.js" id="chatbot" environmentId="ed72c4b9-50c6-e77e-a765-6d02974acb04" region="unitedstates" crossorigin="anonymous"></script>
+
+
+  <!-- Sticky Mobile CTA -->
+  <div class="mobile-cta-bar" role="navigation" aria-label="Quick contact">
+    <a href="tel:+14135833399" class="cta-call" onclick="gtag('event','phone_call',{'event_category':'Mobile CTA','event_label':'Sticky Bar'});">📞 Call Now</a>
+    <a href="/contact" class="cta-quote" onclick="gtag('event','quote_click',{'event_category':'Mobile CTA','event_label':'Sticky Bar'});">Get Free Quote</a>
+  </div>
 
 </body>
 </html>

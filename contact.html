@@ -12,17 +12,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Contact D&C Granite | Countertop Quotes Ludlow MA</title>
-  <meta name="description" content="Contact D&C Granite & Marble Design Gallery for granite countertops, quartz countertops, bathroom vanities, fireplaces, and custom stonework in Ludlow and Western Massachusetts." />
-  <meta name="keywords" content="contact D&C Granite, countertop quote Ludlow MA, granite countertop estimate Springfield MA, quartz countertop quote Western MA, countertop contractor Ludlow MA" />
+  <title>Get a Free Countertop Estimate | D&C Granite & Marble</title>
+  <meta name="description" content="Request a free quote from D&C Granite & Marble. Serving Western Massachusetts since 1990. Call (413) 583-3399 or submit your project details online." />
+  <meta name="keywords" content="D&C Granite contact, D&C Granite quote, D&C Granite & Marble estimate" />
   <meta name="author" content="D&C Granite and Marble Design Gallery" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://dcgraniteandmarble.net/contact" />
 
   <meta name="geo.region" content="US-MA" />
   <meta name="geo.placename" content="Ludlow, Massachusetts" />
-  <meta property="og:title" content="Contact D&C Granite | Countertop Quotes Ludlow MA" />
-  <meta property="og:description" content="Request a quote for granite, quartz, marble, vanities, fireplaces, and custom stonework from D&C Granite & Marble in Ludlow, MA." />
+  <meta property="og:title" content="Get a Free Countertop Estimate | D&C Granite & Marble" />
+  <meta property="og:description" content="Request a free quote from D&C Granite & Marble. Serving Western Massachusetts since 1990. Call (413) 583-3399." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dcgraniteandmarble.net/contact" />
   <meta property="og:image" content="https://dcgraniteandmarble.net/images/Kitchen-Blue-Pearl-1.webp" />
@@ -823,6 +823,43 @@
       h1 { font-size: clamp(1.8rem, 5vw, 5rem); }
       .intro-card, .material-card, .service-card { padding: 2rem 1.5rem; }
     }
+  
+    /* Sticky mobile CTA */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: rgba(15,17,19,.97);
+      border-top: 1px solid rgba(212,160,23,.3);
+      padding: .75rem 1.25rem;
+      gap: .75rem;
+    }
+    .mobile-cta-bar a {
+      flex: 1;
+      text-align: center;
+      padding: .75rem .5rem;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 8px;
+    }
+    .mobile-cta-bar .cta-call {
+      background: rgba(212,160,23,.15);
+      border: 1px solid rgba(212,160,23,.4);
+      color: var(--gold-light);
+    }
+    .mobile-cta-bar .cta-quote {
+      background: var(--gold-gradient);
+      color: var(--obsidian);
+    }
+    @media (max-width: 768px) {
+      .mobile-cta-bar { display: flex; }
+      body { padding-bottom: 72px; }
+    }
   </style>
 
   <!-- Microsoft Clarity -->
@@ -1216,6 +1253,13 @@
   
   <!-- Microsoft Teams Live Chat Widget -->
   <script type="text/javascript" src="https://res.public.onecdn.static.microsoft/customerconnect/v1/7dttl/init.js" id="chatbot" environmentId="ed72c4b9-50c6-e77e-a765-6d02974acb04" region="unitedstates" crossorigin="anonymous"></script>
+
+
+  <!-- Sticky Mobile CTA -->
+  <div class="mobile-cta-bar" role="navigation" aria-label="Quick contact">
+    <a href="tel:+14135833399" class="cta-call" onclick="gtag('event','phone_call',{'event_category':'Mobile CTA','event_label':'Sticky Bar'});">📞 Call Now</a>
+    <a href="/contact" class="cta-quote" onclick="gtag('event','quote_click',{'event_category':'Mobile CTA','event_label':'Sticky Bar'});">Get Free Quote</a>
+  </div>
 
 </body>
 </html>
